@@ -1,6 +1,24 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import { readFileSync, writeFileSync, existsSync } from "fs";
+
+// Plugin to copy index.html to 404.html after build
+const copy404Plugin = () => {
+  return {
+    name: "copy-404",
+    closeBundle() {
+      const indexPath = path.resolve(__dirname, "dist/index.html");
+      const notFoundPath = path.resolve(__dirname, "dist/404.html");
+      
+      if (existsSync(indexPath)) {
+        const indexContent = readFileSync(indexPath, "utf-8");
+        writeFileSync(notFoundPath, indexContent);
+        console.log("✓ Copied index.html to 404.html for GitHub Pages");
+      }
+    },
+  };
+};
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -9,7 +27,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  plugins: [react()],
+  plugins: [react(), copy404Plugin()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
