@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "quote": "Dhinova turned our product vision into a polished web platform in weeks, not months. Communication was clear and delivery was sharp.",
+    "name": "Neha Patel",
+    "role": "Founder, FinEdge",
+    "company": "FinEdge",
+    "avatar": "/placeholder.svg"
+  },
+  {
+    "id": 2,
+    "quote": "Their React Native team shipped a stable app that our users love. Performance and design quality exceeded expectations.",
+    "name": "Vikram Singh",
+    "role": "CTO, Routely",
+    "company": "Routely",
+    "avatar": "/placeholder.svg"
+  },
+  {
+    "id": 3,
+    "quote": "We needed AI features that actually worked in production. Dhinova integrated them cleanly into our existing stack.",
+    "name": "Sara Almeida",
+    "role": "Product Director, NovaOps",
+    "company": "NovaOps",
+    "avatar": "/placeholder.svg"
+  }
+]

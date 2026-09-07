@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Aarav Mehta",
+    "role": "Founder & CEO",
+    "bio": "Product strategist focused on shipping reliable software for startups and enterprises.",
+    "image": "/placeholder.svg",
+    "linkedin": ""
+  },
+  {
+    "id": 2,
+    "name": "Priya Sharma",
+    "role": "Head of Engineering",
+    "bio": "Full-stack engineer specializing in React, cloud architecture, and high-traffic systems.",
+    "image": "/placeholder.svg",
+    "linkedin": ""
+  },
+  {
+    "id": 3,
+    "name": "Rohan Kapoor",
+    "role": "Mobile Lead",
+    "bio": "React Native specialist delivering polished cross-platform apps with strong UX.",
+    "image": "/placeholder.svg",
+    "linkedin": ""
+  },
+  {
+    "id": 4,
+    "name": "Ananya Iyer",
+    "role": "AI & Data Lead",
+    "bio": "Builds practical ML features that improve customer experience and operations.",
+    "image": "/placeholder.svg",
+    "linkedin": ""
+  }
+]

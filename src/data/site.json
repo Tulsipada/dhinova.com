@@ -1,0 +1,69 @@
+{
+  "name": "Dhinova",
+  "legalName": "Dhinova Technology Pvt Ltd",
+  "tagline": "Infinite Ideas. Smarter Tomorrow.",
+  "description": "Dhinova Technology specializes in innovative web applications, mobile apps, blockchain solutions, and AI-powered projects. Transform your business with cutting-edge digital solutions.",
+  "url": "https://dhinova.com",
+  "email": "contact@dhinova.com",
+  "phone": "+91 70015 92584",
+  "location": "India",
+  "keywords": "web development, mobile apps, React, React Native, blockchain, cryptocurrency, AI, artificial intelligence, software development, India",
+  "nav": [
+    { "label": "Services", "href": "#services" },
+    { "label": "About", "href": "#about" },
+    { "label": "Team", "href": "#team" },
+    { "label": "Blog", "href": "/blogs" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "hero": {
+    "brand": "Dhinova",
+    "headline": "Build products that move business forward",
+    "subheadline": "Web, mobile, blockchain, and AI solutions crafted for ambitious teams.",
+    "primaryCta": { "label": "Start a project", "href": "#contact" },
+    "secondaryCta": { "label": "Explore services", "href": "#services" }
+  },
+  "servicesSection": {
+    "title": "Our Services",
+    "subtitle": "End-to-end product engineering for modern companies"
+  },
+  "about": {
+    "title": "About Dhinova",
+    "paragraphs": [
+      "Dhinova Technology Pvt Ltd is a software studio specializing in modern web and mobile applications, blockchain systems, and AI-powered products.",
+      "We partner with founders and enterprises to design, build, and scale digital platforms that are fast, reliable, and ready for growth."
+    ],
+    "highlights": [
+      "Expert engineers and product designers",
+      "Modern, maintainable technology stacks",
+      "Agile delivery with clear communication",
+      "Ongoing support and maintenance",
+      "Secure, scalable architectures",
+      "On-time, outcome-focused delivery"
+    ]
+  },
+  "teamSection": {
+    "title": "Our Team",
+    "subtitle": "People who design, ship, and support your product"
+  },
+  "testimonialsSection": {
+    "title": "Client Stories",
+    "subtitle": "Trusted by teams building the next wave of digital products"
+  },
+  "blogSection": {
+    "title": "From the Blog",
+    "subtitle": "Practical notes on product, engineering, and emerging tech",
+    "ctaLabel": "View all posts",
+    "ctaHref": "/blogs"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Tell us about your product idea — we’ll help you ship it.",
+    "ctaTitle": "Ready to transform your business?",
+    "ctaBody": "Share your goals and we’ll outline a clear path from idea to launch.",
+    "ctaLabel": "Start your project",
+    "ctaHref": "mailto:contact@dhinova.com"
+  },
+  "footer": {
+    "copyright": "Dhinova Technology. All rights reserved."
+  }
+}

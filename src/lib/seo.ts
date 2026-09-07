@@ -1,10 +1,11 @@
-export const SITE_URL = "https://dhinova.com";
-export const SITE_NAME = "Dhinova Technology";
-export const SITE_LEGAL_NAME = "Dhinova Technology Pvt Ltd";
-export const SITE_DESCRIPTION =
-  "Dhinova Technology specializes in innovative web applications, mobile apps, blockchain solutions, and AI-powered projects. Transform your business with cutting-edge digital solutions.";
+import site from "@/data/site.json";
+
+export const SITE_URL = site.url;
+export const SITE_NAME = site.name;
+export const SITE_LEGAL_NAME = site.legalName;
+export const SITE_DESCRIPTION = site.description;
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
-export const SITE_EMAIL = "info@dhinova.com";
+export const SITE_EMAIL = site.email;
 
 export const organizationSchema = {
   "@context": "https://schema.org",
@@ -23,6 +24,7 @@ export const organizationSchema = {
     "@type": "ContactPoint",
     contactType: "customer service",
     email: SITE_EMAIL,
+    telephone: site.phone,
     availableLanguage: ["English", "Hindi"],
   },
   sameAs: [],

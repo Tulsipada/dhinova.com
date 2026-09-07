@@ -1,44 +1,28 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Calendar, User, Tag } from "lucide-react";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
+import { Badge } from "@/components/ui/badge";
 import { DEFAULT_OG_IMAGE, SITE_LEGAL_NAME, SITE_NAME, SITE_URL } from "@/lib/seo";
+import site from "@/data/site.json";
 import blogsData from "@/data/blogs.json";
 
-interface Blog {
-  id: number;
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  image: string;
-  author: string;
-  date: string;
-  category: string;
-  tags: string[];
-}
+type Blog = (typeof blogsData)[number];
 
 const Blogs = () => {
-  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const blogs = [...blogsData].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  ) as Blog[];
 
-  useEffect(() => {
-    setBlogs(blogsData as Blog[]);
-  }, []);
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
+  const formatDate = (dateString: string) =>
+    new Date(dateString).toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
     });
-  };
 
-  const pageDescription =
-    "Explore our blog for insights, tutorials, and updates on technology, web development, mobile apps, blockchain, AI, and software engineering.";
+  const pageDescription = site.blogSection.subtitle;
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -61,35 +45,34 @@ const Blogs = () => {
         "@type": "Organization",
         name: blog.author,
       },
-      image:
-        blog.image.startsWith("http") || blog.image !== "/placeholder.svg"
-          ? blog.image.startsWith("http")
-            ? blog.image
-            : `${SITE_URL}${blog.image}`
-          : DEFAULT_OG_IMAGE,
+      image: blog.image === "/placeholder.svg" ? DEFAULT_OG_IMAGE : `${SITE_URL}${blog.image}`,
     })),
   };
+
+  const [featured, ...rest] = blogs;
 
   return (
     <>
       <Seo
-        title={`Our Blog | Technology Insights & Tutorials | ${SITE_NAME}`}
+        title={`${site.blogSection.title} | ${SITE_NAME}`}
         description={pageDescription}
         path="/blogs"
-        keywords="technology blog, web development, mobile apps, blockchain, AI, software engineering, tutorials, tech insights"
+        keywords={site.keywords}
         jsonLd={structuredData}
       />
 
-      <div className="min-h-screen bg-background">
-        <header className="bg-gradient-to-br from-primary/95 via-primary/90 to-accent/80 py-20">
+      <div className="min-h-screen">
+        <Navbar />
+        <header
+          className="pt-28 pb-16 text-primary-foreground"
+          style={{ background: "var(--gradient-hero)" }}
+        >
           <div className="container px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
-                Our Blog
+            <div className="max-w-3xl">
+              <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
+                {site.blogSection.title}
               </h1>
-              <p className="text-lg text-primary-foreground/90">
-                Insights, tutorials, and updates on technology, development, and innovation
-              </p>
+              <p className="text-lg text-primary-foreground/85">{pageDescription}</p>
             </div>
           </div>
         </header>
@@ -97,68 +80,122 @@ const Blogs = () => {
         <main className="py-16">
           <div className="container px-4">
             {blogs.length === 0 ? (
-              <div className="text-center py-20">
-                <p className="text-muted-foreground text-lg">No blogs available at the moment.</p>
-              </div>
+              <p className="text-center text-muted-foreground text-lg py-20">
+                No blogs available at the moment.
+              </p>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {blogs.map((blog) => {
-                  const blogUrl = `/blogs/${blog.slug}`;
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div className="lg:col-span-8 space-y-10">
+                  {featured ? (
+                    <article>
+                      <Link to={`/blogs/${featured.slug}`} className="group block">
+                        <div className="aspect-[16/9] overflow-hidden rounded-2xl bg-muted mb-5">
+                          <img
+                            src={featured.image}
+                            alt={featured.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = "/placeholder.svg";
+                            }}
+                          />
+                        </div>
+                        <Badge variant="secondary" className="mb-3">
+                          {featured.category}
+                        </Badge>
+                        <h2 className="font-display text-3xl font-semibold mb-3 group-hover:text-accent transition-colors">
+                          {featured.title}
+                        </h2>
+                        <p className="text-muted-foreground mb-4">{featured.excerpt}</p>
+                        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                          <span className="inline-flex items-center gap-1">
+                            <Calendar className="w-4 h-4" />
+                            <time dateTime={featured.date}>{formatDate(featured.date)}</time>
+                          </span>
+                          <span className="inline-flex items-center gap-1">
+                            <User className="w-4 h-4" />
+                            {featured.author}
+                          </span>
+                        </div>
+                      </Link>
+                    </article>
+                  ) : null}
 
-                  return (
-                    <article key={blog.id}>
-                      <Link to={blogUrl} className="block">
-                        <Card className="overflow-hidden border-border/50 hover:border-accent/50 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--accent)/0.2)] group h-full flex flex-col">
-                          <div className="relative h-48 overflow-hidden bg-muted">
+                  <div className="grid sm:grid-cols-2 gap-8">
+                    {rest.map((blog) => (
+                      <article key={blog.id}>
+                        <Link to={`/blogs/${blog.slug}`} className="group block">
+                          <div className="aspect-[16/10] overflow-hidden rounded-xl bg-muted mb-4">
                             <img
                               src={blog.image}
                               alt={blog.title}
-                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                               onError={(e) => {
                                 (e.target as HTMLImageElement).src = "/placeholder.svg";
                               }}
                             />
-                            <div className="absolute top-4 left-4">
-                              <Badge variant="secondary" className="bg-background/90">
-                                {blog.category}
-                              </Badge>
-                            </div>
                           </div>
-                          <CardHeader>
-                            <CardTitle className="text-xl line-clamp-2 group-hover:text-accent transition-colors">
-                              {blog.title}
-                            </CardTitle>
-                            <CardDescription className="line-clamp-2">
-                              {blog.excerpt}
-                            </CardDescription>
-                          </CardHeader>
-                          <CardContent className="flex-grow flex flex-col">
-                            <div className="flex flex-col gap-3">
-                              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                                <div className="flex items-center gap-1">
-                                  <Calendar className="w-4 h-4" />
-                                  <time dateTime={blog.date}>{formatDate(blog.date)}</time>
-                                </div>
-                                <div className="flex items-center gap-1">
-                                  <User className="w-4 h-4" />
-                                  <span>{blog.author}</span>
-                                </div>
-                              </div>
-                              <div className="flex flex-wrap gap-2">
-                                {blog.tags.slice(0, 3).map((tag, index) => (
-                                  <Badge key={index} variant="outline" className="text-xs">
-                                    <Tag className="w-3 h-3 mr-1" />
-                                    {tag}
-                                  </Badge>
-                                ))}
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      </Link>
-                    </article>
-                  );
-                })}
+                          <p className="text-xs text-accent font-medium mb-2">{blog.category}</p>
+                          <h3 className="font-display text-xl font-semibold mb-2 group-hover:text-accent transition-colors">
+                            {blog.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
+                            {blog.excerpt}
+                          </p>
+                          <time dateTime={blog.date} className="text-xs text-muted-foreground">
+                            {formatDate(blog.date)}
+                          </time>
+                        </Link>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+
+                <aside className="lg:col-span-4 space-y-8">
+                  <div className="rounded-2xl bg-muted/50 p-6 border border-border/60">
+                    <h2 className="font-display text-lg font-semibold mb-4">Categories</h2>
+                    <ul className="space-y-2">
+                      {[...new Set(blogs.map((b) => b.category))].map((category) => (
+                        <li
+                          key={category}
+                          className="text-sm text-muted-foreground border-b border-border/50 py-2 last:border-0"
+                        >
+                          {category}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="rounded-2xl bg-muted/50 p-6 border border-border/60">
+                    <h2 className="font-display text-lg font-semibold mb-4">Recent</h2>
+                    <ul className="space-y-4">
+                      {blogs.slice(0, 5).map((blog) => (
+                        <li key={blog.id}>
+                          <Link
+                            to={`/blogs/${blog.slug}`}
+                            className="text-sm font-medium hover:text-accent transition-colors"
+                          >
+                            {blog.title}
+                          </Link>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            {formatDate(blog.date)}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="rounded-2xl bg-muted/50 p-6 border border-border/60">
+                    <h2 className="font-display text-lg font-semibold mb-4">Popular tags</h2>
+                    <div className="flex flex-wrap gap-2">
+                      {[...new Set(blogs.flatMap((b) => b.tags))].slice(0, 12).map((tag) => (
+                        <Badge key={tag} variant="outline" className="text-xs">
+                          <Tag className="w-3 h-3 mr-1" />
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </aside>
               </div>
             )}
           </div>

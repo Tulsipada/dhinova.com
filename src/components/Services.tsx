@@ -1,60 +1,43 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Smartphone, Blocks, Brain } from "lucide-react";
+import { Globe, Smartphone, Blocks, Brain, type LucideIcon } from "lucide-react";
+import services from "@/data/services.json";
+import site from "@/data/site.json";
 
-const services = [
-  {
-    icon: Globe,
-    title: "Web Development",
-    description: "Modern, responsive web applications built with React, ensuring exceptional user experiences and performance.",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Apps",
-    description: "Cross-platform mobile solutions using React Native, delivering native-like performance on iOS and Android.",
-  },
-  {
-    icon: Blocks,
-    title: "Blockchain & Crypto",
-    description: "Innovative blockchain solutions and cryptocurrency projects that leverage decentralized technologies.",
-  },
-  {
-    icon: Brain,
-    title: "AI Solutions",
-    description: "Intelligent applications powered by artificial intelligence and machine learning technologies.",
-  },
-];
+const iconMap: Record<string, LucideIcon> = {
+  globe: Globe,
+  smartphone: Smartphone,
+  blocks: Blocks,
+  brain: Brain,
+};
 
 const Services = () => {
+  const { title, subtitle } = site.servicesSection;
+
   return (
-    <section className="py-24 bg-muted/30">
+    <section id="services" className="py-24">
       <div className="container px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
-          <p className="text-lg text-muted-foreground">
-            Comprehensive technology solutions tailored to your business needs
-          </p>
+        <div className="max-w-2xl mb-14">
+          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">{title}</h2>
+          <p className="text-lg text-muted-foreground">{subtitle}</p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => {
-            const Icon = service.icon;
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {services.map((service) => {
+            const Icon = iconMap[service.icon] ?? Globe;
             return (
-              <Card 
-                key={index} 
-                className="border-border/50 hover:border-accent/50 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--accent)/0.2)] group"
+              <article
+                key={service.id}
+                className="group relative py-2 pr-4 border-t border-border/80 pt-8"
               >
-                <CardHeader>
-                  <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-7 h-7 text-accent" />
+                <div className="flex items-start gap-5">
+                  <div className="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    <Icon className="w-6 h-6" />
                   </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">
-                    {service.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+                  <div>
+                    <h3 className="font-display text-2xl font-semibold mb-2">{service.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                  </div>
+                </div>
+              </article>
             );
           })}
         </div>

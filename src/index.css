@@ -2,91 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 210 100% 97%;
-    --foreground: 210 60% 8%;
+    /* DhiNova logo palette: cyan → blue → violet on deep navy */
+    --background: 220 40% 98%;
+    --foreground: 216 65% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 60% 8%;
+    --card-foreground: 216 65% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 60% 8%;
+    --popover-foreground: 216 65% 11%;
 
-    --primary: 210 100% 15%;
-    --primary-foreground: 210 100% 98%;
+    --primary: 216 65% 11%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 189 100% 85%;
-    --secondary-foreground: 210 100% 15%;
+    --secondary: 220 45% 94%;
+    --secondary-foreground: 216 65% 11%;
 
-    --muted: 210 40% 94%;
-    --muted-foreground: 210 20% 40%;
+    --muted: 220 30% 94%;
+    --muted-foreground: 215 16% 40%;
 
-    --accent: 189 94% 55%;
+    --accent: 202 100% 50%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --nova: 271 76% 51%;
+    --nova-foreground: 0 0% 100%;
 
-    --border: 210 30% 88%;
-    --input: 210 30% 88%;
-    --ring: 189 94% 55%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --radius: 0.75rem;
+    --border: 220 25% 88%;
+    --input: 220 25% 88%;
+    --ring: 227 100% 59%;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(210, 100%, 15%), hsl(189, 94%, 35%));
-    --gradient-accent: linear-gradient(135deg, hsl(189, 94%, 55%), hsl(210, 100%, 50%));
-    --shadow-glow: 0 10px 40px -10px hsl(189 94% 55% / 0.3);
-    --shadow-elegant: 0 20px 60px -15px hsl(210 100% 15% / 0.2);
+    --radius: 0.875rem;
+
+    --font-display: "Outfit", system-ui, sans-serif;
+    --font-body: "Manrope", system-ui, sans-serif;
+
+    --gradient-brand: linear-gradient(
+      90deg,
+      hsl(202 100% 50%) 0%,
+      hsl(227 100% 59%) 48%,
+      hsl(271 76% 51%) 100%
+    );
+    --gradient-hero: linear-gradient(
+      145deg,
+      hsl(216 70% 9%) 0%,
+      hsl(227 65% 24%) 48%,
+      hsl(271 55% 28%) 100%
+    );
+    --gradient-mesh: radial-gradient(
+        ellipse 80% 60% at 15% 15%,
+        hsl(202 100% 50% / 0.14),
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 70% 50% at 85% 10%,
+        hsl(271 76% 51% / 0.12),
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 50% 95%,
+        hsl(227 100% 59% / 0.08),
+        transparent 55%
+      );
+    --shadow-soft: 0 18px 50px -24px hsl(227 80% 40% / 0.35);
+    --shadow-brand: 0 0 30px hsl(227 100% 59% / 0.4);
   }
 
   .dark {
-    --background: 210 50% 6%;
-    --foreground: 210 100% 98%;
-
-    --card: 210 45% 10%;
-    --card-foreground: 210 100% 98%;
-
-    --popover: 210 45% 10%;
-    --popover-foreground: 210 100% 98%;
-
-    --primary: 189 94% 55%;
-    --primary-foreground: 210 100% 10%;
-
-    --secondary: 210 40% 18%;
-    --secondary-foreground: 210 100% 98%;
-
-    --muted: 210 40% 18%;
-    --muted-foreground: 210 30% 65%;
-
-    --accent: 189 94% 55%;
-    --accent-foreground: 210 100% 10%;
-
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 210 40% 18%;
-    --input: 210 40% 18%;
-    --ring: 189 94% 55%;
-
-    --sidebar-background: 210 50% 8%;
-    --sidebar-foreground: 210 30% 70%;
-    --sidebar-primary: 189 94% 55%;
-    --sidebar-primary-foreground: 210 100% 10%;
-    --sidebar-accent: 210 40% 15%;
-    --sidebar-accent-foreground: 210 100% 98%;
-    --sidebar-border: 210 40% 15%;
-    --sidebar-ring: 189 94% 55%;
-
-    --gradient-primary: linear-gradient(135deg, hsl(189, 94%, 55%), hsl(210, 100%, 50%));
-    --gradient-accent: linear-gradient(135deg, hsl(189, 94%, 65%), hsl(210, 100%, 60%));
-    --shadow-glow: 0 10px 40px -10px hsl(189 94% 55% / 0.5);
-    --shadow-elegant: 0 20px 60px -15px hsl(189 94% 55% / 0.3);
+    --background: 216 50% 7%;
+    --foreground: 210 40% 96%;
+    --card: 216 40% 10%;
+    --card-foreground: 210 40% 96%;
+    --popover: 216 40% 10%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 202 100% 50%;
+    --primary-foreground: 216 65% 8%;
+    --secondary: 216 30% 16%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 216 30% 16%;
+    --muted-foreground: 215 15% 65%;
+    --accent: 271 76% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 216 25% 18%;
+    --input: 216 25% 18%;
+    --ring: 202 100% 50%;
   }
 }
 
@@ -95,7 +100,84 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    background-image: var(--gradient-mesh);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-brand-gradient {
+    background-image: var(--gradient-brand);
+  }
+
+  .text-brand-gradient {
+    background-image: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .animate-rise {
+    animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-rise-delay-1 {
+    animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+  }
+
+  .animate-rise-delay-2 {
+    animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+  }
+
+  .animate-float {
+    animation: float 7s ease-in-out infinite;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }

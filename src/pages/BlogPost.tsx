@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, User, Tag, ArrowLeft } from "lucide-react";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import {
@@ -191,7 +192,8 @@ const BlogPost = () => {
       </Seo>
 
       <div className="min-h-screen bg-background">
-        <div className="container px-4 pt-8">
+        <Navbar />
+        <div className="container px-4 pt-24">
           <Button variant="ghost" onClick={() => navigate("/blogs")} className="mb-4">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Blogs
@@ -205,7 +207,9 @@ const BlogPost = () => {
                 {blog.category}
               </Badge>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">{blog.title}</h1>
+            <h1 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground">
+              {blog.title}
+            </h1>
             <p className="text-xl text-muted-foreground mb-6">{blog.excerpt}</p>
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">

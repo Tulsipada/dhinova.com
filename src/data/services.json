@@ -1,0 +1,26 @@
+[
+  {
+    "id": "web",
+    "icon": "globe",
+    "title": "Web Development",
+    "description": "Fast, responsive web apps with React and modern APIs — built for clarity, performance, and growth."
+  },
+  {
+    "id": "mobile",
+    "icon": "smartphone",
+    "title": "Mobile Apps",
+    "description": "Cross-platform iOS and Android apps with React Native that feel native and scale with your users."
+  },
+  {
+    "id": "blockchain",
+    "icon": "blocks",
+    "title": "Blockchain & Crypto",
+    "description": "Secure smart contracts, wallets, and decentralized product features for real-world use cases."
+  },
+  {
+    "id": "ai",
+    "icon": "brain",
+    "title": "AI Solutions",
+    "description": "Practical AI features — assistants, automation, and insights — integrated into your workflows."
+  }
+]
