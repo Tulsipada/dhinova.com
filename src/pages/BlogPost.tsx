@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, User, Tag, ArrowLeft } from "lucide-react";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
+import {
+  DEFAULT_OG_IMAGE,
+  SITE_LEGAL_NAME,
+  SITE_NAME,
+  SITE_URL,
+  absoluteImageUrl,
+} from "@/lib/seo";
 import blogsData from "@/data/blogs.json";
 
 interface Blog {
@@ -27,7 +34,6 @@ const BlogPost = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Find blog by slug
     const foundBlog = (blogsData as Blog[]).find((b) => b.slug === slug);
     if (foundBlog) {
       setBlog(foundBlog);
@@ -49,7 +55,6 @@ const BlogPost = () => {
   };
 
   const formatContent = (content: string) => {
-    // Simple markdown-like formatting
     return content.split("\n").map((line, index) => {
       if (line.startsWith("## ")) {
         return (
@@ -85,21 +90,31 @@ const BlogPost = () => {
 
   if (!blog) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Blog Post Not Found</h1>
-          <p className="text-muted-foreground mb-6">The blog post you're looking for doesn't exist.</p>
-          <Button onClick={() => navigate("/blogs")}>Back to Blogs</Button>
+      <>
+        <Seo
+          title={`Blog Post Not Found | ${SITE_NAME}`}
+          description="The blog post you're looking for doesn't exist."
+          path={`/blogs/${slug || ""}`}
+          noindex
+        />
+        <div className="min-h-screen bg-background flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold mb-4">Blog Post Not Found</h1>
+            <p className="text-muted-foreground mb-6">
+              The blog post you're looking for doesn't exist.
+            </p>
+            <Button onClick={() => navigate("/blogs")}>Back to Blogs</Button>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
-  const siteUrl = "https://dhinova.com";
-  const pageUrl = `${siteUrl}/blogs/${blog.slug}`;
-  const imageUrl = blog.image.startsWith("http") ? blog.image : `${siteUrl}${blog.image}`;
+  const pagePath = `/blogs/${blog.slug}`;
+  const pageUrl = `${SITE_URL}${pagePath}`;
+  const imageUrl =
+    blog.image === "/placeholder.svg" ? DEFAULT_OG_IMAGE : absoluteImageUrl(blog.image);
 
-  // Structured Data (JSON-LD)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -111,12 +126,16 @@ const BlogPost = () => {
     author: {
       "@type": "Organization",
       name: blog.author,
-      url: siteUrl,
+      url: SITE_URL,
     },
     publisher: {
       "@type": "Organization",
-      name: "Dhinova Technology Pvt Ltd",
-      url: siteUrl,
+      name: SITE_LEGAL_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/favicon.svg`,
+      },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -126,85 +145,59 @@ const BlogPost = () => {
     keywords: blog.tags.join(", "),
   };
 
-  // Article structured data
-  const articleStructuredData = {
+  const breadcrumbSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: blog.title,
-    description: blog.excerpt,
-    image: imageUrl,
-    datePublished: formatDateISO(blog.date),
-    dateModified: formatDateISO(blog.date),
-    author: {
-      "@type": "Organization",
-      name: blog.author,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Dhinova Technology Pvt Ltd",
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteUrl}/favicon.svg`,
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_URL,
       },
-    },
-    mainEntityOfPage: pageUrl,
-    articleSection: blog.category,
-    keywords: blog.tags.join(", "),
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${SITE_URL}/blogs`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: blog.title,
+        item: pageUrl,
+      },
+    ],
   };
 
   return (
     <>
-      <Helmet>
-        {/* Primary Meta Tags */}
-        <title>{blog.title} | Dhinova Technology Blog</title>
-        <meta name="title" content={blog.title} />
-        <meta name="description" content={blog.excerpt} />
-        <meta name="keywords" content={blog.tags.join(", ")} />
+      <Seo
+        title={`${blog.title} | ${SITE_NAME} Blog`}
+        description={blog.excerpt}
+        path={pagePath}
+        image={imageUrl}
+        type="article"
+        keywords={blog.tags.join(", ")}
+        jsonLd={[structuredData, breadcrumbSchema]}
+      >
         <meta name="author" content={blog.author} />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:title" content={blog.title} />
-        <meta property="og:description" content={blog.excerpt} />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:site_name" content="Dhinova Technology" />
         <meta property="article:published_time" content={formatDateISO(blog.date)} />
         <meta property="article:author" content={blog.author} />
         <meta property="article:section" content={blog.category} />
         {blog.tags.map((tag, index) => (
           <meta key={index} property="article:tag" content={tag} />
         ))}
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={pageUrl} />
-        <meta name="twitter:title" content={blog.title} />
-        <meta name="twitter:description" content={blog.excerpt} />
-        <meta name="twitter:image" content={imageUrl} />
-
-        {/* Canonical URL */}
-        <link rel="canonical" href={pageUrl} />
-
-        {/* Structured Data */}
-        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
-        <script type="application/ld+json">{JSON.stringify(articleStructuredData)}</script>
-      </Helmet>
+      </Seo>
 
       <div className="min-h-screen bg-background">
-        {/* Back Button */}
         <div className="container px-4 pt-8">
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/blogs")}
-            className="mb-4"
-          >
+          <Button variant="ghost" onClick={() => navigate("/blogs")} className="mb-4">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Blogs
           </Button>
         </div>
 
-        {/* Blog Header */}
         <article className="container px-4 py-8">
           <header className="max-w-4xl mx-auto mb-8">
             <div className="mb-4">
@@ -212,18 +205,12 @@ const BlogPost = () => {
                 {blog.category}
               </Badge>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-              {blog.title}
-            </h1>
-            <p className="text-xl text-muted-foreground mb-6">
-              {blog.excerpt}
-            </p>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">{blog.title}</h1>
+            <p className="text-xl text-muted-foreground mb-6">{blog.excerpt}</p>
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
-                <time dateTime={formatDateISO(blog.date)}>
-                  {formatDate(blog.date)}
-                </time>
+                <time dateTime={formatDateISO(blog.date)}>{formatDate(blog.date)}</time>
               </div>
               <div className="flex items-center gap-2">
                 <User className="w-4 h-4" />
@@ -232,7 +219,6 @@ const BlogPost = () => {
             </div>
           </header>
 
-          {/* Featured Image */}
           <div className="max-w-4xl mx-auto mb-8">
             <img
               src={blog.image}
@@ -244,12 +230,10 @@ const BlogPost = () => {
             />
           </div>
 
-          {/* Blog Content */}
           <div className="max-w-4xl mx-auto prose prose-lg dark:prose-invert prose-headings:font-bold prose-p:text-muted-foreground prose-p:leading-relaxed">
             {formatContent(blog.content)}
           </div>
 
-          {/* Tags */}
           <footer className="max-w-4xl mx-auto mt-12 pt-8 border-t">
             <div className="flex flex-wrap items-center gap-2 mb-4">
               <Tag className="w-4 h-4 text-muted-foreground" />
@@ -264,7 +248,6 @@ const BlogPost = () => {
             </div>
           </footer>
 
-          {/* Back to Blogs Link */}
           <div className="max-w-4xl mx-auto mt-8">
             <Link to="/blogs">
               <Button variant="outline">

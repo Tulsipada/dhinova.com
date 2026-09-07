@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground py-8">
@@ -9,6 +11,17 @@ const Footer = () => {
               Innovative Technology Solutions
             </p>
           </div>
+          <nav className="flex flex-wrap justify-center gap-4 text-sm text-primary-foreground/80" aria-label="Footer">
+            <Link to="/" className="hover:text-primary-foreground transition-colors">
+              Home
+            </Link>
+            <Link to="/blogs" className="hover:text-primary-foreground transition-colors">
+              Blog
+            </Link>
+            <a href="mailto:info@dhinova.com" className="hover:text-primary-foreground transition-colors">
+              Contact
+            </a>
+          </nav>
           <div className="text-center md:text-right text-sm text-primary-foreground/80">
             <p>&copy; {new Date().getFullYear()} Dhinova Technology. All rights reserved.</p>
           </div>
