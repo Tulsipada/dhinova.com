@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Aarav Mehta",
+    "name": "Tulsipada Das",
     "role": "Founder & CEO",
     "bio": "Product strategist focused on shipping reliable software for startups and enterprises.",
     "image": "/placeholder.svg",
@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "name": "Priya Sharma",
+    "name": "Anik Mitra",
     "role": "Head of Engineering",
     "bio": "Full-stack engineer specializing in React, cloud architecture, and high-traffic systems.",
     "image": "/placeholder.svg",
@@ -17,7 +17,7 @@
   },
   {
     "id": 3,
-    "name": "Rohan Kapoor",
+    "name": "Rajkumar Haldar",
     "role": "Mobile Lead",
     "bio": "React Native specialist delivering polished cross-platform apps with strong UX.",
     "image": "/placeholder.svg",
