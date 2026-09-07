@@ -1,3 +1,4 @@
+import { Github, Linkedin } from "lucide-react";
 import team from "@/data/team.json";
 import site from "@/data/site.json";
 
@@ -28,6 +29,32 @@ const Team = () => {
               <h3 className="font-display text-xl font-semibold">{member.name}</h3>
               <p className="text-sm text-accent font-medium mt-1">{member.role}</p>
               <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{member.bio}</p>
+              {(member.linkedin || member.github) && (
+                <div className="flex items-center gap-3 mt-4">
+                  {member.linkedin && (
+                    <a
+                      href={`https://linkedin.com/in/${member.linkedin}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} on LinkedIn`}
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                    </a>
+                  )}
+                  {member.github && (
+                    <a
+                      href={`https://github.com/${member.github}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} on GitHub`}
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <Github className="h-4 w-4" />
+                    </a>
+                  )}
+                </div>
+              )}
             </article>
           ))}
         </div>
