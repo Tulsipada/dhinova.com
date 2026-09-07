@@ -27,7 +27,8 @@ const Testimonials = () => {
                   alt=""
                   className="w-11 h-11 rounded-full object-cover bg-muted"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = "/placeholder.svg";
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "/logo_bg.png";
                   }}
                 />
                 <div>

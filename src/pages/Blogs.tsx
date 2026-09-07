@@ -45,7 +45,7 @@ const Blogs = () => {
         "@type": "Organization",
         name: blog.author,
       },
-      image: blog.image === "/placeholder.svg" ? DEFAULT_OG_IMAGE : `${SITE_URL}${blog.image}`,
+      image: blog.image === "/logo_bg.png" ? DEFAULT_OG_IMAGE : `${SITE_URL}${blog.image}`,
     })),
   };
 
@@ -95,7 +95,8 @@ const Blogs = () => {
                             alt={featured.title}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             onError={(e) => {
-                              (e.target as HTMLImageElement).src = "/placeholder.svg";
+                              e.currentTarget.onerror = null;
+                              e.currentTarget.src = "/logo_bg.png";
                             }}
                           />
                         </div>
@@ -130,7 +131,8 @@ const Blogs = () => {
                               alt={blog.title}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                               onError={(e) => {
-                                (e.target as HTMLImageElement).src = "/placeholder.svg";
+                                e.currentTarget.onerror = null;
+                                e.currentTarget.src = "/logo_bg.png";
                               }}
                             />
                           </div>

@@ -114,7 +114,7 @@ const BlogPost = () => {
   const pagePath = `/blogs/${blog.slug}`;
   const pageUrl = `${SITE_URL}${pagePath}`;
   const imageUrl =
-    blog.image === "/placeholder.svg" ? DEFAULT_OG_IMAGE : absoluteImageUrl(blog.image);
+    blog.image === "/logo_bg.png" ? DEFAULT_OG_IMAGE : absoluteImageUrl(blog.image);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -229,7 +229,8 @@ const BlogPost = () => {
               alt={blog.title}
               className="w-full h-auto rounded-lg object-cover"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = "/placeholder.svg";
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = "/logo_bg.png";
               }}
             />
           </div>

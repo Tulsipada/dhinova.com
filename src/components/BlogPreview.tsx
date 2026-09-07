@@ -43,7 +43,8 @@ const BlogPreview = () => {
                     alt={posts[0].title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = "/placeholder.svg";
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "/logo_bg.png";
                     }}
                   />
                 </div>

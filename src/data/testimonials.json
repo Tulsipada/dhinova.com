@@ -5,7 +5,7 @@
     "name": "Neha Patel",
     "role": "Founder, FinEdge",
     "company": "FinEdge",
-    "avatar": "/placeholder.svg"
+    "avatar": "/logo_bg.png"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "name": "Vikram Singh",
     "role": "CTO, Routely",
     "company": "Routely",
-    "avatar": "/placeholder.svg"
+    "avatar": "/logo_bg.png"
   },
   {
     "id": 3,
@@ -21,6 +21,6 @@
     "name": "Sara Almeida",
     "role": "Product Director, NovaOps",
     "company": "NovaOps",
-    "avatar": "/placeholder.svg"
+    "avatar": "/logo_bg.png"
   }
 ]
