@@ -144,7 +144,7 @@ const BlogPost = () => {
       name: "Dhinova Technology Pvt Ltd",
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/favicon.ico`,
+        url: `${siteUrl}/favicon.svg`,
       },
     },
     mainEntityOfPage: pageUrl,

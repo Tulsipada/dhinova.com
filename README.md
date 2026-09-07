@@ -94,7 +94,7 @@ npm run preview
 ```
 dhinova.com/
 ├── public/              # Static assets
-│   ├── favicon.ico
+│   ├── favicon.svg
 │   └── placeholder.svg
 ├── src/
 │   ├── components/      # React components
