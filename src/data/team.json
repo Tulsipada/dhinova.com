@@ -13,7 +13,7 @@
     "name": "Anik Mitra",
     "role": "Head of Engineering",
     "bio": "Full-stack engineer specializing in React, cloud architecture, and high-traffic systems.",
-    "image": "/placeholder.svg",
+    "image": "",
     "linkedin": "",
     "github": ""
   },
@@ -22,7 +22,7 @@
     "name": "Rajkumar Haldar",
     "role": "Mobile Lead",
     "bio": "React Native specialist delivering polished cross-platform apps with strong UX.",
-    "image": "/placeholder.svg",
+    "image": "",
     "linkedin": "",
     "github": ""
   },
@@ -31,7 +31,7 @@
     "name": "Ananya Iyer",
     "role": "AI & Data Lead",
     "bio": "Builds practical ML features that improve customer experience and operations.",
-    "image": "/placeholder.svg",
+    "image": "",
     "linkedin": "",
     "github": ""
   }

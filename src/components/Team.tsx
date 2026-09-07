@@ -16,16 +16,18 @@ const Team = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {team.map((member) => (
             <article key={member.id} className="group">
-              <div className="aspect-[4/5] mb-5 overflow-hidden rounded-2xl bg-muted">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "/placeholder.svg";
-                  }}
-                />
-              </div>
+              {member.image && (
+                <div className="aspect-[4/5] mb-5 overflow-hidden rounded-2xl bg-muted">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = "none";
+                    }}
+                  />
+                </div>
+              )}
               <h3 className="font-display text-xl font-semibold">{member.name}</h3>
               <p className="text-sm text-accent font-medium mt-1">{member.role}</p>
               <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{member.bio}</p>
