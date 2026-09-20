@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "title": "Dhinova Website",
+    "summary": "Company website showcasing services, team, and technology insights.",
+    "description": "A modern marketing site for Dhinova Technology with SEO-ready pages, blog, and contact flows.",
+    "image": "/dhinova.png",
+    "category": "Web Development",
+    "status": "Completed",
+    "year": "2026",
+    "client": "Dhinova",
+    "technologies": ["React", "TypeScript", "Tailwind CSS"],
+    "url": "https://dhinova.com"
+  },
+  {
+    "id": 2,
+    "title": "FinEdge Dashboard",
+    "summary": "Secure analytics dashboard for a fintech startup.",
+    "description": "Built a responsive web dashboard for financial reporting, role-based access, and real-time KPI tracking.",
+    "image": "/dhinova.png",
+    "category": "Web Development",
+    "status": "Completed",
+    "year": "2025",
+    "client": "FinEdge",
+    "technologies": ["React", "Node.js", "PostgreSQL"],
+    "url": ""
+  },
+  {
+    "id": 3,
+    "title": "Routely Mobile App",
+    "summary": "Cross-platform logistics app for field teams.",
+    "description": "React Native app with live tracking, offline sync, and push notifications for delivery operations.",
+    "image": "/dhinova.png",
+    "category": "Mobile Apps",
+    "status": "Completed",
+    "year": "2025",
+    "client": "Routely",
+    "technologies": ["React Native", "Firebase", "Maps"],
+    "url": ""
+  },
+  {
+    "id": 4,
+    "title": "NovaOps AI Assistant",
+    "summary": "AI support assistant embedded in an operations platform.",
+    "description": "Production AI features for ticket deflection, knowledge search, and guided workflows.",
+    "image": "/dhinova.png",
+    "category": "AI Solutions",
+    "status": "Completed",
+    "year": "2024",
+    "client": "NovaOps",
+    "technologies": ["OpenAI", "Python", "React"],
+    "url": ""
+  }
+]

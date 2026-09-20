@@ -2,43 +2,65 @@ import { Link } from "react-router-dom";
 import site from "@/data/site.json";
 
 const Footer = () => {
+  const { company, services, legal } = site.footerLinks;
+
   return (
-    <footer className="bg-primary text-primary-foreground py-10">
+    <footer className="bg-primary py-14 text-primary-foreground">
       <div className="container px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-center md:text-left">
-            <h3 className="font-display text-xl font-bold mb-1">{site.legalName}</h3>
-            <p className="text-sm text-primary-foreground/75">{site.tagline}</p>
+        <div className="grid gap-10 border-b border-primary-foreground/15 pb-12 md:grid-cols-2 lg:grid-cols-4">
+          <div className="lg:col-span-1">
+            <h3 className="font-display text-2xl font-bold">{site.legalName}</h3>
+            <p className="mt-3 max-w-sm text-sm text-primary-foreground/60">{site.tagline}</p>
+            <a
+              href={`mailto:${site.email}`}
+              className="mt-5 inline-block border-b border-accent pb-1 text-sm font-semibold"
+            >
+              {site.email}
+            </a>
           </div>
-          <nav
-            className="flex flex-wrap justify-center gap-5 text-sm text-primary-foreground/80"
-            aria-label="Footer"
-          >
-            {site.nav.map((item) =>
-              item.href.startsWith("/") ? (
-                <Link
-                  key={item.label}
-                  to={item.href}
-                  className="hover:text-primary-foreground transition-colors"
-                >
+
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/50">
+              Company
+            </p>
+            <nav className="flex flex-col gap-3 text-sm text-primary-foreground/75" aria-label="Company">
+              {company.map((item) => (
+                <Link key={item.href} to={item.href} className="hover:text-primary-foreground">
                   {item.label}
                 </Link>
-              ) : (
-                <a
-                  key={item.label}
-                  href={`/${item.href}`}
-                  className="hover:text-primary-foreground transition-colors"
-                >
-                  {item.label}
-                </a>
-              )
-            )}
-          </nav>
-          <div className="text-center md:text-right text-sm text-primary-foreground/75">
-            <p>
-              &copy; {new Date().getFullYear()} {site.footer.copyright}
-            </p>
+              ))}
+            </nav>
           </div>
+
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/50">
+              Services
+            </p>
+            <nav className="flex flex-col gap-3 text-sm text-primary-foreground/75" aria-label="Services">
+              {services.map((item) => (
+                <Link key={item.href} to={item.href} className="hover:text-primary-foreground">
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/50">
+              Legal
+            </p>
+            <nav className="flex flex-col gap-3 text-sm text-primary-foreground/75" aria-label="Legal">
+              {legal.map((item) => (
+                <Link key={item.href} to={item.href} className="hover:text-primary-foreground">
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </div>
+
+        <div className="pt-6 text-sm text-primary-foreground/50">
+          &copy; {new Date().getFullYear()} {site.footer.copyright}
         </div>
       </div>
     </footer>

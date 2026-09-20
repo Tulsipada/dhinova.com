@@ -16,6 +16,16 @@ const generateSitemapXml = () => {
 
   const staticUrls = [
     { loc: `${SITE_URL}/`, changefreq: "weekly", priority: "1.0" },
+    { loc: `${SITE_URL}/about`, changefreq: "monthly", priority: "0.9" },
+    { loc: `${SITE_URL}/projects`, changefreq: "weekly", priority: "0.9" },
+    { loc: `${SITE_URL}/clients`, changefreq: "monthly", priority: "0.8" },
+    { loc: `${SITE_URL}/whitelabel`, changefreq: "monthly", priority: "0.8" },
+    { loc: `${SITE_URL}/calculator`, changefreq: "monthly", priority: "0.8" },
+    { loc: `${SITE_URL}/contact`, changefreq: "monthly", priority: "0.9" },
+    { loc: `${SITE_URL}/faq`, changefreq: "monthly", priority: "0.7" },
+    { loc: `${SITE_URL}/careers`, changefreq: "monthly", priority: "0.7" },
+    { loc: `${SITE_URL}/privacy`, changefreq: "yearly", priority: "0.4" },
+    { loc: `${SITE_URL}/terms`, changefreq: "yearly", priority: "0.4" },
     { loc: `${SITE_URL}/blogs`, changefreq: "weekly", priority: "0.9" },
   ];
 

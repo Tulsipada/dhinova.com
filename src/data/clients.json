@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "FinEdge",
+    "industry": "Fintech",
+    "result": "Launched a secure reporting platform used by internal ops daily.",
+    "quote": "Dhinova turned our product vision into a polished web platform in weeks, not months."
+  },
+  {
+    "id": 2,
+    "name": "Routely",
+    "industry": "Logistics",
+    "result": "Shipped a stable React Native app with strong field adoption.",
+    "quote": "Performance and design quality exceeded expectations."
+  },
+  {
+    "id": 3,
+    "name": "NovaOps",
+    "industry": "SaaS / Operations",
+    "result": "Integrated practical AI that reduced support load.",
+    "quote": "Dhinova integrated AI features cleanly into our existing stack."
+  },
+  {
+    "id": 4,
+    "name": "BrightCart",
+    "industry": "E-commerce",
+    "result": "Improved checkout conversion with a faster storefront rebuild.",
+    "quote": "Clear communication and reliable delivery on every milestone."
+  },
+  {
+    "id": 5,
+    "name": "HealthSpan",
+    "industry": "Healthcare",
+    "result": "Delivered a HIPAA-aware patient portal MVP on schedule.",
+    "quote": "They understood compliance constraints without slowing product progress."
+  },
+  {
+    "id": 6,
+    "name": "LedgerMint",
+    "industry": "Web3",
+    "result": "Built wallet-connected dashboards for token holders.",
+    "quote": "Strong engineering judgment on blockchain UX and security."
+  }
+]

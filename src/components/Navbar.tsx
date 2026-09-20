@@ -52,7 +52,7 @@ const Navbar = () => {
             )
           )}
           <Button asChild variant="hero" size="sm">
-            <a href={isHome ? "#contact" : "/#contact"}>{site.hero.primaryCta.label}</a>
+            <Link to="/contact">{site.hero.primaryCta.label}</Link>
           </Button>
         </nav>
 
@@ -90,9 +90,9 @@ const Navbar = () => {
             )
           )}
           <Button asChild variant="hero" size="sm" className="w-full">
-            <a href={isHome ? "#contact" : "/#contact"} onClick={() => setOpen(false)}>
+            <Link to="/contact" onClick={() => setOpen(false)}>
               {site.hero.primaryCta.label}
-            </a>
+            </Link>
           </Button>
         </div>
       ) : null}

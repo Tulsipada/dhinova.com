@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "question": "What services does Dhinova offer?",
+    "answer": "We design and build web applications, mobile apps, blockchain features, and AI-powered product workflows for startups and growing companies."
+  },
+  {
+    "id": 2,
+    "question": "How long does a typical project take?",
+    "answer": "MVPs usually take 4–12 weeks depending on scope. Larger platforms are delivered in phased milestones with clear release plans."
+  },
+  {
+    "id": 3,
+    "question": "Do you offer whitelabel development?",
+    "answer": "Yes. Agencies and consultants can use Dhinova as a silent engineering partner with branded delivery under your company name."
+  },
+  {
+    "id": 4,
+    "question": "Can you estimate project cost?",
+    "answer": "Use our Project Calculator for a quick range, then share your brief and we will refine a fixed or milestone-based proposal."
+  },
+  {
+    "id": 5,
+    "question": "Do you provide support after launch?",
+    "answer": "Yes. We offer maintenance, monitoring, feature iterations, and on-call support packages after go-live."
+  },
+  {
+    "id": 6,
+    "question": "Where is Dhinova based?",
+    "answer": "Dhinova Technology Pvt Ltd is based in India and works with clients remotely across time zones."
+  }
+]

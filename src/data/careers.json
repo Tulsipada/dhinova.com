@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Full-Stack Engineer",
+    "type": "Full-time",
+    "location": "Remote / India",
+    "summary": "Build production web apps with React, Node.js, and modern cloud tooling."
+  },
+  {
+    "id": 2,
+    "title": "React Native Developer",
+    "type": "Full-time",
+    "location": "Remote / India",
+    "summary": "Ship polished iOS and Android experiences with strong UX and performance focus."
+  },
+  {
+    "id": 3,
+    "title": "AI Engineer",
+    "type": "Contract / Full-time",
+    "location": "Remote",
+    "summary": "Integrate practical LLM features, retrieval systems, and automation into client products."
+  }
+]
