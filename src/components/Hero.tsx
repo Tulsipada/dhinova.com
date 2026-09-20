@@ -29,16 +29,16 @@ const Hero = () => {
 
       <div className="container relative z-10 px-4 py-24">
         <div className="max-w-3xl">
-          <h1 className="animate-rise font-display text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight mb-4">
+          <p className="animate-rise font-display text-4xl md:text-5xl font-bold leading-[1.05] tracking-tight mb-4">
             <span className="text-white">Dhi</span>
             <span className="text-brand-gradient">Nova</span>
-          </h1>
+          </p>
           <p className="animate-rise-delay-1 text-sm md:text-base uppercase tracking-[0.28em] text-white/75 mb-8">
             {tagline}
           </p>
-          <p className="animate-rise-delay-1 font-display text-2xl md:text-4xl font-semibold text-white/95 text-balance mb-5">
+          <h1 className="animate-rise-delay-1 font-display text-2xl md:text-4xl font-semibold text-white/95 text-balance mb-5">
             {hero.headline}
-          </p>
+          </h1>
           <p className="animate-rise-delay-2 text-lg md:text-xl text-white/80 max-w-2xl mb-10">
             {hero.subheadline}
           </p>

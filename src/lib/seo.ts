@@ -12,8 +12,9 @@ export const organizationSchema = {
   "@type": "Organization",
   name: SITE_LEGAL_NAME,
   alternateName: SITE_NAME,
-  url: SITE_URL,
+  url: SITE_URL.endsWith("/") ? SITE_URL : `${SITE_URL}/`,
   logo: `${SITE_URL}/dhinova.png`,
+  image: DEFAULT_OG_IMAGE,
   email: SITE_EMAIL,
   description: SITE_DESCRIPTION,
   address: {
@@ -45,7 +46,9 @@ export const websiteSchema = {
 
 export function absoluteUrl(path = "/"): string {
   if (path.startsWith("http")) return path;
-  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  if (normalized === "/") return `${SITE_URL}/`;
+  return `${SITE_URL}${normalized}`;
 }
 
 export function absoluteImageUrl(image?: string): string {
