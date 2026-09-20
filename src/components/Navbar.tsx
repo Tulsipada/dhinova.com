@@ -17,14 +17,18 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 inset-x-0 z-50 border-b border-border/70 bg-background/95 backdrop-blur-md">
       <div className="container px-4 h-16 flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-center shrink-0" aria-label={site.name}>
+        <Link to="/" className="flex items-center gap-2.5 shrink-0" aria-label={site.name}>
           <img
-            src="/logo_bg.png"
-            alt={site.name}
-            width={371}
-            height={293}
-            className="h-11 w-auto object-contain object-left bg-transparent"
+            src="/dhinova.png"
+            alt=""
+            width={40}
+            height={40}
+            className="h-10 w-10 rounded-lg object-contain"
           />
+          <span className="font-display text-lg font-bold tracking-tight">
+            <span className="text-foreground">Dhi</span>
+            <span className="text-brand-gradient">Nova</span>
+          </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8" aria-label="Primary">

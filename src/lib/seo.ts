@@ -13,7 +13,7 @@ export const organizationSchema = {
   name: SITE_LEGAL_NAME,
   alternateName: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/favicon.svg`,
+  logo: `${SITE_URL}/dhinova.png`,
   email: SITE_EMAIL,
   description: SITE_DESCRIPTION,
   address: {

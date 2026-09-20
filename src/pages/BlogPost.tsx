@@ -135,7 +135,7 @@ const BlogPost = () => {
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/favicon.svg`,
+        url: `${SITE_URL}/dhinova.png`,
       },
     },
     mainEntityOfPage: {
