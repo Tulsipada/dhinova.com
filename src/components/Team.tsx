@@ -20,7 +20,7 @@ const Team = () => {
               <div className="mb-6 aspect-[4/5] overflow-hidden rounded-[1.25rem] bg-gradient-to-br from-muted to-secondary">
                 <img
                   src={member.image || "/dhinova.png"}
-                  alt={member.name}
+                  alt={member.name || "Team member"}
                   className={`h-full w-full transition-transform duration-700 ${
                     member.image
                       ? "object-cover group-hover:scale-105"
@@ -32,9 +32,15 @@ const Team = () => {
                   }}
                 />
               </div>
-              <h3 className="font-display text-xl font-bold">{member.name}</h3>
-              <p className="mt-1 text-sm font-medium text-accent">{member.role}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{member.bio}</p>
+              {member.name ? (
+                <h3 className="font-display text-xl font-bold">{member.name}</h3>
+              ) : null}
+              {member.role ? (
+                <p className="mt-1 text-sm font-medium text-accent">{member.role}</p>
+              ) : null}
+              {member.bio ? (
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{member.bio}</p>
+              ) : null}
               {(member.linkedin || member.github) && (
                 <div className="mt-4 flex items-center gap-3">
                   {member.linkedin && (

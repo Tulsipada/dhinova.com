@@ -11,6 +11,8 @@
   "nav": [
     { "label": "Services", "href": "#services" },
     { "label": "Projects", "href": "/projects" },
+    { "label": "Whitelabel", "href": "/whitelabel" },
+    { "label": "Calculator", "href": "/calculator" },
     { "label": "About", "href": "/about" },
     { "label": "Blog", "href": "/blogs" },
     { "label": "Contact", "href": "/contact" }

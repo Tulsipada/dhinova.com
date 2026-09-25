@@ -6,12 +6,13 @@ import { Button } from "@/components/ui/button";
 import site from "@/data/site.json";
 import { SITE_URL } from "@/lib/seo";
 
+/* Starter Indian baselines — typical mid estimate stays ~₹1–2L */
 const projectTypes = [
-  { id: "web", label: "Web Application", base: 180000 },
-  { id: "mobile", label: "Mobile App", base: 250000 },
-  { id: "ai", label: "AI Feature / Product", base: 220000 },
-  { id: "blockchain", label: "Blockchain / Web3", base: 300000 },
-  { id: "whitelabel", label: "Whitelabel Engagement", base: 150000 },
+  { id: "web", label: "Web Application", base: 95000 },
+  { id: "mobile", label: "Mobile App", base: 120000 },
+  { id: "ai", label: "AI Feature / Product", base: 110000 },
+  { id: "blockchain", label: "Blockchain / Web3", base: 130000 },
+  { id: "whitelabel", label: "Whitelabel Engagement", base: 85000 },
 ] as const;
 
 const complexityOptions = [
@@ -40,7 +41,7 @@ const Calculator = () => {
   const [screens, setScreens] = useState(12);
 
   const estimate = useMemo(() => {
-    const base = projectTypes.find((item) => item.id === type)?.base ?? 180000;
+    const base = projectTypes.find((item) => item.id === type)?.base ?? 95000;
     const complexityMul =
       complexityOptions.find((item) => item.id === complexity)?.multiplier ?? 1;
     const timelineMul = timelineOptions.find((item) => item.id === timeline)?.multiplier ?? 1;
@@ -159,7 +160,7 @@ const Calculator = () => {
             Typical range: {formatInr(estimate.low)} – {formatInr(estimate.high)}
           </p>
           <p className="mt-6 text-sm text-primary-foreground/60">
-            This is an indicative INR estimate for planning only. Actual pricing depends on scope,
+            Indicative Indian market pricing in INR (excl. 18% GST). Final quote depends on scope,
             integrations, design depth, and compliance needs.
           </p>
           <Button asChild size="lg" className="mt-8 rounded-full bg-accent text-accent-foreground hover:bg-accent/90">
