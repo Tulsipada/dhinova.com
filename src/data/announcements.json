@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Dhinova website redesign is live",
+    "excerpt": "A cleaner portfolio experience, new SEO pages, and faster project discovery tools are now available.",
+    "body": "We shipped a refreshed Dhinova.com experience with stronger branding, dedicated service pages, and a project calculator to help teams plan builds with clarity.",
+    "date": "2026-09-23",
+    "tag": "Company"
+  },
+  {
+    "id": 2,
+    "title": "Now accepting AI feature engagements",
+    "excerpt": "From support assistants to workflow automation, we are booking practical AI integrations for production products.",
+    "body": "If you need AI that works inside an existing stack — search, assistants, document workflows, or ops automation — share your use case and we will propose a scoped MVP.",
+    "date": "2026-09-10",
+    "tag": "Services"
+  },
+  {
+    "id": 3,
+    "title": "Hiring React Native and Full-stack engineers",
+    "excerpt": "Remote-friendly roles are open for engineers who care about craft, clarity, and shipping.",
+    "body": "Visit the Careers page or email contact@dhinova.com with your portfolio and preferred stack.",
+    "date": "2026-08-28",
+    "tag": "Careers"
+  }
+]

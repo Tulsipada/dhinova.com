@@ -18,6 +18,9 @@ import Careers from "./pages/Careers";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import AboutPage from "./pages/AboutPage";
+import Requirements from "./pages/Requirements";
+import Notifications from "./pages/Notifications";
+import Announcements from "./pages/Announcements";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +38,9 @@ const App = () => (
             <Route path="/clients" element={<Clients />} />
             <Route path="/whitelabel" element={<Whitelabel />} />
             <Route path="/calculator" element={<Calculator />} />
+            <Route path="/requirements" element={<Requirements />} />
+            <Route path="/notifications" element={<Notifications />} />
+            <Route path="/announcements" element={<Announcements />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/careers" element={<Careers />} />

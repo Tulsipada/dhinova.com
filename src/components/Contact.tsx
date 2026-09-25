@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
+import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin } from "lucide-react";
 import site from "@/data/site.json";
 
 const Contact = () => {
@@ -12,56 +13,57 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-muted/40">
+    <section id="contact" className="section-pad">
       <div className="container px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">{contact.title}</h2>
-            <p className="text-lg text-muted-foreground">{contact.subtitle}</p>
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-14 max-w-2xl">
+            <p className="section-eyebrow">Contact</p>
+            <h2 className="section-title mb-5">{contact.title}</h2>
+            <p className="text-lg leading-relaxed text-muted-foreground">{contact.subtitle}</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-14">
-            {items.map((item) => {
+          <div className="mb-12 grid border-y border-border md:grid-cols-3">
+            {items.map((item, index) => {
               const Icon = item.icon;
-              const content = (
+              const body = (
                 <>
-                  <div className="w-12 h-12 rounded-full bg-accent/15 text-accent flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-display font-semibold mb-1">{item.label}</h3>
+                  <Icon className="mb-4 h-5 w-5 text-accent" />
+                  <h3 className="mb-1 font-display text-lg font-bold">{item.label}</h3>
                   <p className="text-sm text-muted-foreground">{item.value}</p>
                 </>
               );
 
+              const className = `p-7 transition-colors hover:bg-secondary/60 ${
+                index < items.length - 1 ? "border-b border-border md:border-b-0 md:border-r" : ""
+              }`;
+
               return item.href ? (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="flex flex-col items-center text-center p-2 hover:opacity-90 transition-opacity"
-                >
-                  {content}
+                <a key={item.label} href={item.href} className={`block ${className}`}>
+                  {body}
                 </a>
               ) : (
-                <div key={item.label} className="flex flex-col items-center text-center p-2">
-                  {content}
+                <div key={item.label} className={className}>
+                  {body}
                 </div>
               );
             })}
           </div>
 
-          <div
-            className="p-8 md:p-10 rounded-3xl text-center text-white"
-            style={{ background: "var(--gradient-brand)", boxShadow: "var(--shadow-brand)" }}
-          >
-            <h3 className="font-display text-2xl md:text-3xl font-bold mb-4">{contact.ctaTitle}</h3>
-            <p className="text-white/90 mb-6 max-w-2xl mx-auto">{contact.ctaBody}</p>
+          <div className="relative overflow-hidden rounded-[1.75rem] bg-primary px-8 py-10 text-primary-foreground md:flex md:items-center md:justify-between md:gap-12 md:px-12 md:py-14">
+            <div className="pointer-events-none absolute -right-10 top-0 h-48 w-48 rounded-full bg-accent/25 blur-3xl" />
+            <div className="relative z-10 max-w-2xl">
+              <h3 className="mb-3 font-display text-3xl font-bold md:text-4xl">{contact.ctaTitle}</h3>
+              <p className="text-primary-foreground/65">{contact.ctaBody}</p>
+            </div>
             <Button
               asChild
-              variant="hero-outline"
               size="lg"
-              className="border-white text-white hover:bg-white hover:text-primary"
+              className="relative z-10 mt-8 shrink-0 rounded-full bg-brand-gradient px-8 text-white hover:opacity-95 md:mt-0"
             >
-              <a href={contact.ctaHref}>{contact.ctaLabel}</a>
+              <Link to="/contact">
+                {contact.ctaLabel}
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>

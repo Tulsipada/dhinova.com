@@ -10,10 +10,7 @@
   },
   {
     "id": 2,
-    "name": "Anik Mitra",
-    "role": "Head of Engineering",
-    "bio": "Full-stack engineer specializing in React, cloud architecture, and high-traffic systems.",
-    "image": "",
+    "image": "/team/anik.png",
     "linkedin": "",
     "github": ""
   },

@@ -1,66 +1,55 @@
 import { Link } from "react-router-dom";
 import site from "@/data/site.json";
+import BrandMark from "@/components/BrandMark";
 
 const Footer = () => {
   const { company, services, legal } = site.footerLinks;
 
   return (
-    <footer className="bg-primary py-14 text-primary-foreground">
-      <div className="container px-4">
-        <div className="grid gap-10 border-b border-primary-foreground/15 pb-12 md:grid-cols-2 lg:grid-cols-4">
-          <div className="lg:col-span-1">
-            <h3 className="font-display text-2xl font-bold">{site.legalName}</h3>
-            <p className="mt-3 max-w-sm text-sm text-primary-foreground/60">{site.tagline}</p>
+    <footer className="relative overflow-hidden bg-primary py-16 text-primary-foreground">
+      <div className="surface-grid absolute inset-0 opacity-[0.06]" />
+      <div className="container relative z-10 px-4">
+        <div className="grid gap-12 border-b border-primary-foreground/10 pb-12 md:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <BrandMark className="mb-4" textClassName="text-xl" />
+            <p className="max-w-xs text-sm leading-relaxed text-primary-foreground/55">{site.tagline}</p>
             <a
               href={`mailto:${site.email}`}
-              className="mt-5 inline-block border-b border-accent pb-1 text-sm font-semibold"
+              className="mt-6 inline-block border-b border-accent/80 pb-1 text-sm font-semibold text-primary-foreground transition-colors hover:text-accent"
             >
               {site.email}
             </a>
           </div>
 
-          <div>
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/50">
-              Company
-            </p>
-            <nav className="flex flex-col gap-3 text-sm text-primary-foreground/75" aria-label="Company">
-              {company.map((item) => (
-                <Link key={item.href} to={item.href} className="hover:text-primary-foreground">
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          <div>
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/50">
-              Services
-            </p>
-            <nav className="flex flex-col gap-3 text-sm text-primary-foreground/75" aria-label="Services">
-              {services.map((item) => (
-                <Link key={item.href} to={item.href} className="hover:text-primary-foreground">
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          <div>
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/50">
-              Legal
-            </p>
-            <nav className="flex flex-col gap-3 text-sm text-primary-foreground/75" aria-label="Legal">
-              {legal.map((item) => (
-                <Link key={item.href} to={item.href} className="hover:text-primary-foreground">
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
+          {[
+            { title: "Company", items: company },
+            { title: "Services", items: services },
+            { title: "Legal", items: legal },
+          ].map((group) => (
+            <div key={group.title}>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/40">
+                {group.title}
+              </p>
+              <nav className="flex flex-col gap-3 text-sm text-primary-foreground/70" aria-label={group.title}>
+                {group.items.map((item) => (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className="transition-colors hover:text-primary-foreground"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          ))}
         </div>
 
-        <div className="pt-6 text-sm text-primary-foreground/50">
-          &copy; {new Date().getFullYear()} {site.footer.copyright}
+        <div className="flex flex-col gap-2 pt-7 text-sm text-primary-foreground/40 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            &copy; {new Date().getFullYear()} {site.footer.copyright}
+          </p>
+          <p>{site.legalName}</p>
         </div>
       </div>
     </footer>

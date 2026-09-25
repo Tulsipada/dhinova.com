@@ -32,6 +32,9 @@ const navHtml = () => {
     { label: "Clients", href: "/clients" },
     { label: "Whitelabel", href: "/whitelabel" },
     { label: "Calculator", href: "/calculator" },
+    { label: "App Requirements", href: "/requirements" },
+    { label: "Notifications", href: "/notifications" },
+    { label: "Announcements", href: "/announcements" },
     { label: "Blog", href: "/blogs" },
     { label: "FAQ", href: "/faq" },
     { label: "Careers", href: "/careers" },
@@ -67,6 +70,9 @@ export function getSeoPages() {
   const careers = readJson("src/data/careers.json");
   const team = readJson("src/data/team.json");
   const testimonials = readJson("src/data/testimonials.json");
+  const requirements = readJson("src/data/requirements.json");
+  const notifications = readJson("src/data/notifications.json");
+  const announcements = readJson("src/data/announcements.json");
 
   const pages = [
     {
@@ -235,6 +241,65 @@ export function getSeoPages() {
             <li>Blockchain / Web3</li>
             <li>Whitelabel Engagement</li>
           </ul>
+        </main>
+      `,
+    },
+    {
+      path: "/requirements",
+      title: `App Requirements | ${site.name}`,
+      description:
+        "Prepare these details before we start. A clear brief helps us estimate accurately and ship the right MVP faster.",
+      changefreq: "monthly",
+      priority: "0.8",
+      body: `
+        ${navHtml()}
+        <main>
+          <h1>App Requirements</h1>
+          <p>Checklist for product, design, technical, delivery, and compliance details.</p>
+          <ul>${requirements
+            .map(
+              (item) =>
+                `<li><h2>${escapeHtml(item.title)}</h2><p>${escapeHtml(item.category)}</p><p>${escapeHtml(item.description)}</p></li>`
+            )
+            .join("")}</ul>
+        </main>
+      `,
+    },
+    {
+      path: "/notifications",
+      title: `Notifications | ${site.name}`,
+      description: "Operational notices, partner updates, and timely messages from the Dhinova team.",
+      changefreq: "weekly",
+      priority: "0.7",
+      body: `
+        ${navHtml()}
+        <main>
+          <h1>Notifications</h1>
+          <ul>${notifications
+            .map(
+              (item) =>
+                `<li><h2>${escapeHtml(item.title)}</h2><p>${escapeHtml(item.type)} · ${escapeHtml(item.date)}</p><p>${escapeHtml(item.body)}</p></li>`
+            )
+            .join("")}</ul>
+        </main>
+      `,
+    },
+    {
+      path: "/announcements",
+      title: `Announcements | ${site.name}`,
+      description: "Company news, service launches, hiring updates, and milestones from Dhinova Technology.",
+      changefreq: "weekly",
+      priority: "0.7",
+      body: `
+        ${navHtml()}
+        <main>
+          <h1>Announcements</h1>
+          <ul>${announcements
+            .map(
+              (item) =>
+                `<li><h2>${escapeHtml(item.title)}</h2><p>${escapeHtml(item.tag)} · ${escapeHtml(item.date)}</p><p>${escapeHtml(item.excerpt)}</p><p>${escapeHtml(item.body)}</p></li>`
+            )
+            .join("")}</ul>
         </main>
       `,
     },

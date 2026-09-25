@@ -1,32 +1,35 @@
-import { CheckCircle } from "lucide-react";
 import site from "@/data/site.json";
 
 const About = () => {
   const { about } = site;
 
   return (
-    <section id="about" className="py-24 bg-primary text-primary-foreground">
-      <div className="container px-4">
-        <div className="grid md:grid-cols-2 gap-14 items-start max-w-6xl mx-auto">
+    <section id="about" className="section-pad relative overflow-hidden bg-primary text-primary-foreground">
+      <div className="surface-grid absolute inset-0 opacity-[0.08]" />
+      <div className="pointer-events-none absolute -right-20 top-10 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
+
+      <div className="container relative z-10 px-4">
+        <div className="mx-auto grid max-w-6xl items-start gap-14 md:grid-cols-2 md:gap-20">
           <div>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 text-balance">
-              {about.title}
-            </h2>
-            {about.paragraphs.map((paragraph, index) => (
-              <p key={index} className="text-lg text-primary-foreground/80 mb-5 leading-relaxed">
+            <p className="section-eyebrow !text-[hsl(199_100%_70%)]">Studio</p>
+            <h2 className="section-title mb-8 text-balance">{about.title}</h2>
+            {about.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="mb-5 text-lg leading-relaxed text-primary-foreground/70">
                 {paragraph}
               </p>
             ))}
           </div>
 
-          <ul className="space-y-3">
+          <ul className="border-t border-primary-foreground/15">
             {about.highlights.map((highlight, index) => (
               <li
-                key={index}
-                className="flex items-start gap-3 py-3 border-b border-primary-foreground/15"
+                key={highlight}
+                className="flex items-baseline gap-5 border-b border-primary-foreground/15 py-5"
               >
-                <CheckCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                <span className="text-base text-primary-foreground/90">{highlight}</span>
+                <span className="font-display text-sm font-semibold text-accent">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="text-base text-primary-foreground/90 md:text-lg">{highlight}</span>
               </li>
             ))}
           </ul>

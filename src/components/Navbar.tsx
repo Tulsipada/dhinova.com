@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import BrandMark from "@/components/BrandMark";
 import site from "@/data/site.json";
 import { Button } from "@/components/ui/button";
 
@@ -15,29 +16,17 @@ const Navbar = () => {
   };
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 border-b border-border/70 bg-background/95 backdrop-blur-md">
-      <div className="container px-4 h-16 flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2.5 shrink-0" aria-label={site.name}>
-          <img
-            src="/dhinova.png"
-            alt=""
-            width={40}
-            height={40}
-            className="h-10 w-10 rounded-lg object-contain"
-          />
-          <span className="font-display text-lg font-bold tracking-tight">
-            <span className="text-foreground">Dhi</span>
-            <span className="text-brand-gradient">Nova</span>
-          </span>
-        </Link>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[hsl(218_54%_8%/0.78)] text-white backdrop-blur-xl supports-[backdrop-filter]:bg-[hsl(218_54%_8%/0.62)]">
+      <div className="container flex h-[4.25rem] items-center justify-between gap-4 px-4">
+        <BrandMark />
 
-        <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
           {site.nav.map((item) =>
             item.href.startsWith("/") ? (
               <Link
                 key={item.label}
                 to={item.href}
-                className="text-sm text-foreground/75 hover:text-foreground transition-colors"
+                className="text-sm text-white/70 transition-colors hover:text-white"
               >
                 {item.label}
               </Link>
@@ -45,20 +34,20 @@ const Navbar = () => {
               <a
                 key={item.label}
                 href={resolveHref(item.href)}
-                className="text-sm text-foreground/75 hover:text-foreground transition-colors"
+                className="text-sm text-white/70 transition-colors hover:text-white"
               >
                 {item.label}
               </a>
             )
           )}
-          <Button asChild variant="hero" size="sm">
+          <Button asChild variant="hero" size="sm" className="rounded-full px-5">
             <Link to="/contact">{site.hero.primaryCta.label}</Link>
           </Button>
         </nav>
 
         <button
           type="button"
-          className="md:hidden text-foreground p-2"
+          className="p-2 text-white md:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
         >
@@ -67,13 +56,13 @@ const Navbar = () => {
       </div>
 
       {open ? (
-        <div className="md:hidden border-t border-border bg-background px-4 py-4 space-y-3">
+        <div className="space-y-2 border-t border-white/10 bg-[hsl(218_54%_8%)] px-4 py-4 md:hidden">
           {site.nav.map((item) =>
             item.href.startsWith("/") ? (
               <Link
                 key={item.label}
                 to={item.href}
-                className="block text-foreground/90 py-2"
+                className="block py-2 text-white/90"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
@@ -82,14 +71,14 @@ const Navbar = () => {
               <a
                 key={item.label}
                 href={resolveHref(item.href)}
-                className="block text-foreground/90 py-2"
+                className="block py-2 text-white/90"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
               </a>
             )
           )}
-          <Button asChild variant="hero" size="sm" className="w-full">
+          <Button asChild variant="hero" size="sm" className="mt-2 w-full rounded-full">
             <Link to="/contact" onClick={() => setOpen(false)}>
               {site.hero.primaryCta.label}
             </Link>

@@ -1,4 +1,3 @@
-import { Quote } from "lucide-react";
 import testimonials from "@/data/testimonials.json";
 import site from "@/data/site.json";
 
@@ -6,33 +5,32 @@ const Testimonials = () => {
   const { title, subtitle } = site.testimonialsSection;
 
   return (
-    <section id="testimonials" className="py-24 bg-muted/40">
+    <section id="testimonials" className="section-pad border-y border-border bg-secondary/40">
       <div className="container px-4">
-        <div className="max-w-2xl mb-14">
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">{title}</h2>
-          <p className="text-lg text-muted-foreground">{subtitle}</p>
+        <div className="mb-16 max-w-2xl">
+          <p className="section-eyebrow">Outcomes</p>
+          <h2 className="section-title mb-5">{title}</h2>
+          <p className="text-lg leading-relaxed text-muted-foreground">{subtitle}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12">
           {testimonials.map((item) => (
-            <blockquote
-              key={item.id}
-              className="relative pt-2"
-            >
-              <Quote className="w-8 h-8 text-accent/40 mb-4" aria-hidden />
-              <p className="text-lg leading-relaxed text-foreground mb-8">“{item.quote}”</p>
+            <blockquote key={item.id} className="flex flex-col border-t border-border pt-8">
+              <p className="mb-8 flex-1 text-lg leading-relaxed text-foreground md:text-xl">
+                “{item.quote}”
+              </p>
               <footer className="flex items-center gap-3">
                 <img
                   src={item.avatar}
                   alt=""
-                  className="w-11 h-11 rounded-full object-cover bg-muted"
+                  className="h-11 w-11 rounded-full object-cover bg-muted"
                   onError={(e) => {
                     e.currentTarget.onerror = null;
-                    e.currentTarget.src = "/logo_bg.png";
+                    e.currentTarget.src = "/dhinova.png";
                   }}
                 />
                 <div>
-                  <cite className="not-italic font-display font-semibold block">{item.name}</cite>
+                  <cite className="block font-display font-semibold not-italic">{item.name}</cite>
                   <span className="text-sm text-muted-foreground">
                     {item.role}
                     {item.company ? `, ${item.company}` : ""}

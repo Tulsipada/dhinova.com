@@ -20,12 +20,15 @@
       { "label": "About", "href": "/about" },
       { "label": "Projects", "href": "/projects" },
       { "label": "Happy Clients", "href": "/clients" },
+      { "label": "Announcements", "href": "/announcements" },
       { "label": "Careers", "href": "/careers" },
       { "label": "Blog", "href": "/blogs" }
     ],
     "services": [
       { "label": "Whitelabel", "href": "/whitelabel" },
       { "label": "Project Calculator", "href": "/calculator" },
+      { "label": "App Requirements", "href": "/requirements" },
+      { "label": "Notifications", "href": "/notifications" },
       { "label": "FAQ", "href": "/faq" },
       { "label": "Contact", "href": "/contact" }
     ],

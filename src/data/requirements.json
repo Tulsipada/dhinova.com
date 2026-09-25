@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "category": "Product",
+    "title": "Define the core problem",
+    "description": "Share the user problem, target audience, and success metrics for the app."
+  },
+  {
+    "id": 2,
+    "category": "Product",
+    "title": "List must-have features",
+    "description": "Separate MVP features from later-phase ideas so we can scope delivery clearly."
+  },
+  {
+    "id": 3,
+    "category": "Design",
+    "title": "Provide brand assets",
+    "description": "Logo, colors, fonts, and any existing UI references or competitor apps you like."
+  },
+  {
+    "id": 4,
+    "category": "Technical",
+    "title": "Platforms & integrations",
+    "description": "iOS, Android, web — plus payments, maps, auth, CRM, analytics, or third-party APIs."
+  },
+  {
+    "id": 5,
+    "category": "Technical",
+    "title": "Data & admin needs",
+    "description": "User roles, dashboards, content management, reporting, and storage expectations."
+  },
+  {
+    "id": 6,
+    "category": "Delivery",
+    "title": "Timeline & budget range",
+    "description": "Target launch date, launch markets, and an approximate budget band for planning."
+  },
+  {
+    "id": 7,
+    "category": "Compliance",
+    "title": "Security & compliance",
+    "description": "Any requirements for privacy, encryption, accessibility, or industry regulations."
+  },
+  {
+    "id": 8,
+    "category": "Handoff",
+    "title": "Ownership & support",
+    "description": "Who owns accounts, app store publishing, and post-launch maintenance preferences."
+  }
+]

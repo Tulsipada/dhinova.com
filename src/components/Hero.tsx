@@ -1,63 +1,61 @@
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import site from "@/data/site.json";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
-  const { hero, name, tagline } = site;
+  const { hero, tagline } = site;
 
   return (
-    <section className="relative min-h-[100svh] flex items-center overflow-hidden pt-16">
+    <section className="relative flex min-h-[100svh] items-end overflow-hidden pt-20">
+      <div
+        className="absolute inset-0 z-0 scale-105 bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      />
       <div
         className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{ background: "var(--gradient-hero)", opacity: 0.93 }}
-        />
+        style={{ background: "var(--gradient-hero)", opacity: 0.78 }}
+      />
+      <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+        <div className="animate-soft-pulse absolute -right-20 top-16 h-[26rem] w-[26rem] rounded-full bg-[hsl(199_100%_46%/0.18)] blur-3xl" />
+        <div className="animate-drift absolute -bottom-28 left-[-12%] h-[20rem] w-[20rem] rounded-full bg-[hsl(262_72%_52%/0.14)] blur-3xl" />
       </div>
 
-      <div className="absolute inset-0 z-[1] opacity-50 pointer-events-none">
-        <div className="absolute -top-24 right-10 w-72 h-72 rounded-full bg-[hsl(202_100%_50%/0.35)] blur-3xl animate-float" />
-        <div className="absolute bottom-10 left-10 w-56 h-56 rounded-full bg-[hsl(271_76%_51%/0.28)] blur-3xl" />
-      </div>
-
-      <div className="container relative z-10 px-4 py-24">
-        <div className="max-w-3xl">
-          <p className="animate-rise font-display text-4xl md:text-5xl font-bold leading-[1.05] tracking-tight mb-4">
-            <span className="text-white">Dhi</span>
-            <span className="text-brand-gradient">Nova</span>
+      <div className="container relative z-10 px-4 pb-20 pt-16 md:pb-28">
+        <div className="max-w-4xl">
+          <p className="animate-rise mb-6 font-display text-5xl font-extrabold leading-none tracking-tight text-brand-gradient md:text-7xl lg:text-8xl">
+            DhiNova
           </p>
-          <p className="animate-rise-delay-1 text-sm md:text-base uppercase tracking-[0.28em] text-white/75 mb-8">
+          <p className="animate-rise-delay-1 mb-8 text-xs font-semibold uppercase tracking-[0.28em] text-white/55 md:text-sm">
             {tagline}
           </p>
-          <h1 className="animate-rise-delay-1 font-display text-2xl md:text-4xl font-semibold text-white/95 text-balance mb-5">
+          <h1 className="animate-rise-delay-1 mb-5 max-w-3xl font-display text-2xl font-bold leading-tight text-white/95 text-balance md:text-4xl lg:text-5xl">
             {hero.headline}
           </h1>
-          <p className="animate-rise-delay-2 text-lg md:text-xl text-white/80 max-w-2xl mb-10">
+          <p className="animate-rise-delay-2 mb-10 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
             {hero.subheadline}
           </p>
-          <div className="animate-rise-delay-2 flex flex-col sm:flex-row gap-4">
-            <Button asChild variant="hero" size="lg" className="group">
-              <a href={hero.primaryCta.href}>
+          <div className="animate-rise-delay-2 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Button asChild variant="hero" size="lg" className="group h-12 rounded-full px-8">
+              <Link to={hero.primaryCta.href.startsWith("/") ? hero.primaryCta.href : "/contact"}>
                 {hero.primaryCta.label}
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </a>
+                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
             </Button>
-            <Button asChild variant="hero-outline" size="lg">
+            <Button
+              asChild
+              variant="hero-outline"
+              size="lg"
+              className="h-12 rounded-full border-white/30 px-8 text-white hover:bg-white/10"
+            >
               <a href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
             </Button>
           </div>
-          <span className="sr-only">{name}</span>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-background to-transparent z-10" />
+      <div className="absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };

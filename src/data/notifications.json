@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Project kickoff checklist available",
+    "body": "Use the App Requirements page before your discovery call so we can estimate faster and more accurately.",
+    "date": "2026-09-20",
+    "type": "Product",
+    "priority": "High"
+  },
+  {
+    "id": 2,
+    "title": "Whitelabel partner slots open",
+    "body": "Agencies can book capacity for Q4 overflow web and mobile delivery under silent whitelabel terms.",
+    "date": "2026-09-12",
+    "type": "Partnership",
+    "priority": "Medium"
+  },
+  {
+    "id": 3,
+    "title": "Maintenance window — website deploy",
+    "body": "Planned static deploy window on Sundays 11:00–11:30 IST. No customer downtime expected for live apps.",
+    "date": "2026-09-08",
+    "type": "System",
+    "priority": "Low"
+  }
+]

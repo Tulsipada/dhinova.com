@@ -6,43 +6,44 @@ const Team = () => {
   const { title, subtitle } = site.teamSection;
 
   return (
-    <section id="team" className="py-24">
+    <section id="team" className="section-pad">
       <div className="container px-4">
-        <div className="max-w-2xl mb-14">
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">{title}</h2>
-          <p className="text-lg text-muted-foreground">{subtitle}</p>
+        <div className="mb-16 max-w-2xl">
+          <p className="section-eyebrow">People</p>
+          <h2 className="section-title mb-5">{title}</h2>
+          <p className="text-lg leading-relaxed text-muted-foreground">{subtitle}</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member) => (
             <article key={member.id} className="group">
-              <div className="aspect-[4/5] mb-5 overflow-hidden rounded-2xl bg-muted">
+              <div className="mb-6 aspect-[4/5] overflow-hidden rounded-[1.25rem] bg-gradient-to-br from-muted to-secondary">
                 <img
-                  src={member.image || "/logo_bg.png"}
+                  src={member.image || "/dhinova.png"}
                   alt={member.name}
-                  className={`w-full h-full transition-transform duration-500 ${
+                  className={`h-full w-full transition-transform duration-700 ${
                     member.image
                       ? "object-cover group-hover:scale-105"
-                      : "object-contain p-6"
+                      : "object-contain p-8 opacity-80"
                   }`}
                   onError={(e) => {
                     e.currentTarget.onerror = null;
-                    e.currentTarget.src = "/logo_bg.png";
+                    e.currentTarget.src = "/dhinova.png";
                   }}
                 />
               </div>
-              <h3 className="font-display text-xl font-semibold">{member.name}</h3>
-              <p className="text-sm text-accent font-medium mt-1">{member.role}</p>
-              <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{member.bio}</p>
+              <h3 className="font-display text-xl font-bold">{member.name}</h3>
+              <p className="mt-1 text-sm font-medium text-accent">{member.role}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{member.bio}</p>
               {(member.linkedin || member.github) && (
-                <div className="flex items-center gap-3 mt-4">
+                <div className="mt-4 flex items-center gap-3">
                   {member.linkedin && (
                     <a
                       href={`https://linkedin.com/in/${member.linkedin}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${member.name} on LinkedIn`}
-                      className="text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-muted-foreground transition-colors hover:text-foreground"
                     >
                       <Linkedin className="h-4 w-4" />
                     </a>
@@ -53,7 +54,7 @@ const Team = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${member.name} on GitHub`}
-                      className="text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-muted-foreground transition-colors hover:text-foreground"
                     >
                       <Github className="h-4 w-4" />
                     </a>

@@ -13,30 +13,30 @@ const Services = () => {
   const { title, subtitle } = site.servicesSection;
 
   return (
-    <section id="services" className="py-24">
+    <section id="services" className="section-pad">
       <div className="container px-4">
-        <div className="max-w-2xl mb-14">
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">{title}</h2>
-          <p className="text-lg text-muted-foreground">{subtitle}</p>
+        <div className="mb-16 max-w-2xl">
+          <p className="section-eyebrow">Capabilities</p>
+          <h2 className="section-title mb-5">{title}</h2>
+          <p className="text-lg leading-relaxed text-muted-foreground">{subtitle}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service) => {
+        <div className="grid grid-cols-1 gap-x-12 md:grid-cols-2">
+          {services.map((service, index) => {
             const Icon = iconMap[service.icon] ?? Globe;
             return (
               <article
                 key={service.id}
-                className="group relative py-2 pr-4 border-t border-border/80 pt-8"
+                className="group border-t border-border py-8 transition-colors hover:border-accent/50"
               >
-                <div className="flex items-start gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-2xl font-semibold mb-2">{service.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-                  </div>
+                <div className="mb-5 flex items-center justify-between gap-4">
+                  <span className="font-display text-sm font-semibold text-muted-foreground">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <Icon className="h-5 w-5 text-accent transition-transform duration-300 group-hover:scale-110" />
                 </div>
+                <h3 className="mb-3 font-display text-2xl font-bold md:text-3xl">{service.title}</h3>
+                <p className="max-w-md leading-relaxed text-muted-foreground">{service.description}</p>
               </article>
             );
           })}
