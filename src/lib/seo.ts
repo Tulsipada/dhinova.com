@@ -29,7 +29,7 @@ export const organizationSchema = {
     telephone: site.phone,
     availableLanguage: ["English", "Hindi"],
   },
-  sameAs: [],
+  sameAs: site.socials.filter((social) => social.href).map((social) => social.href),
 };
 
 export const websiteSchema = {

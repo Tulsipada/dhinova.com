@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { Facebook, Github, Instagram, Linkedin, Youtube } from "lucide-react";
 import site from "@/data/site.json";
 import BrandMark from "@/components/BrandMark";
+
+const socialIcons = { Facebook, GitHub: Github, Instagram, LinkedIn: Linkedin, YouTube: Youtube };
 
 const Footer = () => {
   const { company, services, legal } = site.footerLinks;
@@ -19,6 +22,33 @@ const Footer = () => {
             >
               {site.email}
             </a>
+            <div className="mt-6 flex items-center gap-2" aria-label="Social media">
+              {site.socials.map((social) => {
+                const Icon = socialIcons[social.label as keyof typeof socialIcons];
+                if (!Icon) return null;
+                return social.href ? (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={social.label}
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-primary-foreground/15 text-primary-foreground/60 transition-colors hover:border-accent hover:text-accent"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ) : (
+                  <span
+                    key={social.label}
+                    title={`${social.label} URL coming soon`}
+                    aria-label={`${social.label} URL coming soon`}
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-primary-foreground/10 text-primary-foreground/35"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </span>
+                );
+              })}
+            </div>
           </div>
 
           {[

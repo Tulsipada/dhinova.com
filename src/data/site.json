@@ -6,7 +6,15 @@
   "url": "https://dhinova.com",
   "email": "contact@dhinova.com",
   "phone": "+91 70015 92584",
-  "location": "India",
+  "whatsapp": "917001592584",
+  "location": "Salt Lake, West Bengal, India",
+  "socials": [
+    { "label": "LinkedIn", "href": "" },
+    { "label": "GitHub", "href": "" },
+    { "label": "Facebook", "href": "" },
+    { "label": "Instagram", "href": "" },
+    { "label": "YouTube", "href": "" }
+  ],
   "keywords": "web development, mobile apps, React, React Native, blockchain, cryptocurrency, AI, artificial intelligence, software development, India",
   "nav": [
     { "label": "Services", "href": "#services" },
