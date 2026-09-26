@@ -11,10 +11,19 @@
   {
     "id": 2,
     "name": "Anik Mitra",
-    "role": "Co-Founder | SEO Optimizer",
-    "bio": "Co-founder focused on SEO optimization, search visibility, and growing the company's digital presence.",
+    "role": "Co-Founder | SEO Optimizer | Tester",
+    "bio": "Co-founder focused on SEO optimization, search visibility, testing, and reliable product releases.",
     "image": "/team/anik.png",
     "linkedin": "anik-mitra07",
     "github": "Anik-mitra08"
+  },
+  {
+    "id": 3,
+    "name": "Maniruddin Khan",
+    "role": "Mobile & Blockchain Engineer",
+    "bio": "Engineer building reliable mobile experiences and practical blockchain solutions.",
+    "image": "/team/maniruddin-khan.jpg",
+    "linkedin": "maniruddin-khan",
+    "github": "techeduhelper"
   }
 ]
