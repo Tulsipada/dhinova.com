@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, Search } from "lucide-react";
 import PageShell from "@/components/PageShell";
+import FallbackImage from "@/components/FallbackImage";
 import { Button } from "@/components/ui/button";
 import { DEFAULT_OG_IMAGE, SITE_LEGAL_NAME, SITE_NAME, SITE_URL } from "@/lib/seo";
 import site from "@/data/site.json";
@@ -198,14 +199,10 @@ const Blogs = () => {
                   } lg:col-span-7 lg:aspect-auto lg:min-h-[340px]`}
                 >
                   <div className="surface-grid absolute inset-0 opacity-20" />
-                  <img
+                  <FallbackImage
                     src={featured.image}
                     alt={featured.title}
                     className="relative z-10 h-full w-full object-contain p-12 transition-transform duration-700 group-hover:scale-105 md:p-16"
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = "/dhinova.png";
-                    }}
                   />
                 </div>
 
@@ -256,14 +253,10 @@ const Blogs = () => {
                         categoryTone[blog.category] ?? "from-muted to-secondary"
                       }`}
                     >
-                      <img
+                      <FallbackImage
                         src={blog.image}
                         alt={blog.title}
                         className="h-full w-full object-contain p-8 transition-transform duration-500 group-hover:scale-105"
-                        onError={(e) => {
-                          e.currentTarget.onerror = null;
-                          e.currentTarget.src = "/dhinova.png";
-                        }}
                       />
                     </div>
                     <div className="flex flex-1 flex-col p-5 md:p-6">
@@ -318,7 +311,7 @@ const Blogs = () => {
                   Ready to turn an idea into a product?
                 </h2>
                 <p className="mt-3 text-sm text-primary-foreground/65 md:text-base">
-                  Tell us what you want to build — we’ll reply with scope and an INR estimate.
+                  Tell us what you want to build  -  we’ll reply with scope and an INR estimate.
                 </p>
               </div>
               <Button

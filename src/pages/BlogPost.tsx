@@ -6,6 +6,7 @@ import { Calendar, User, Tag, ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
+import FallbackImage from "@/components/FallbackImage";
 import {
   DEFAULT_OG_IMAGE,
   SITE_LEGAL_NAME,
@@ -224,14 +225,11 @@ const BlogPost = () => {
           </header>
 
           <div className="max-w-4xl mx-auto mb-8">
-            <img
+            <FallbackImage
               src={blog.image}
               alt={blog.title}
               className="w-full h-auto rounded-lg object-cover"
-              onError={(e) => {
-                e.currentTarget.onerror = null;
-                e.currentTarget.src = "/logo_bg.png";
-              }}
+              fallbackSrc="/logo_bg.png"
             />
           </div>
 

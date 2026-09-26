@@ -6,12 +6,12 @@ const Footer = () => {
   const { company, services, legal } = site.footerLinks;
 
   return (
-    <footer className="relative overflow-hidden bg-primary py-16 text-primary-foreground">
+    <footer className="relative overflow-hidden border-t border-primary-foreground/10 bg-primary py-16 text-primary-foreground">
       <div className="surface-grid absolute inset-0 opacity-[0.06]" />
       <div className="container relative z-10 px-4">
-        <div className="grid gap-12 border-b border-primary-foreground/10 pb-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-12 border-b border-primary-foreground/10 pb-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <BrandMark className="mb-4" textClassName="text-xl" />
+            <BrandMark className="mb-5" textClassName="text-xl" />
             <p className="max-w-xs text-sm leading-relaxed text-primary-foreground/55">{site.tagline}</p>
             <a
               href={`mailto:${site.email}`}

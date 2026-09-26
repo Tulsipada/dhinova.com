@@ -1,4 +1,5 @@
 import site from "@/data/site.json";
+import services from "@/data/services.json";
 
 export const SITE_URL = site.url;
 export const SITE_NAME = site.name;
@@ -42,6 +43,30 @@ export const websiteSchema = {
     name: SITE_LEGAL_NAME,
     url: SITE_URL,
   },
+};
+
+export const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Dhinova software development services",
+  url: `${SITE_URL}/#services`,
+  itemListElement: services.map((service, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Service",
+      name: service.title,
+      description: service.description,
+      serviceType: service.title,
+      provider: {
+        "@type": "Organization",
+        name: SITE_LEGAL_NAME,
+        url: SITE_URL,
+      },
+      areaServed: "Worldwide",
+      url: `${SITE_URL}/#services`,
+    },
+  })),
 };
 
 export function absoluteUrl(path = "/"): string {

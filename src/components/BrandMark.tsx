@@ -15,23 +15,17 @@ const BrandMark = ({
   asLink = true,
 }: BrandMarkProps) => {
   const content = (
-    <>
-      <img
-        src="/dhinova.png"
-        alt=""
-        width={36}
-        height={36}
-        className={cn("h-9 w-9 object-contain", iconClassName)}
-      />
-      <span
-        className={cn(
-          "font-display text-lg font-bold tracking-tight text-brand-gradient",
-          textClassName
-        )}
-      >
-        DhiNova
-      </span>
-    </>
+    <img
+      src="/nav-logo-light.png"
+      alt="DhiNova"
+      width={2172}
+      height={724}
+      className={cn(
+        "h-auto w-36 object-contain drop-shadow-[0_0_14px_rgba(14,165,233,0.28)] sm:w-40",
+        iconClassName,
+        textClassName
+      )}
+    />
   );
 
   if (!asLink) {
@@ -39,7 +33,7 @@ const BrandMark = ({
   }
 
   return (
-    <Link to="/" className={cn("inline-flex shrink-0 items-center gap-2.5", className)} aria-label="Dhinova">
+    <Link to="/" className={cn("inline-flex shrink-0 items-center gap-3", className)} aria-label="Dhinova">
       {content}
     </Link>
   );

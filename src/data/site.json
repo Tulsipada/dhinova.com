@@ -81,11 +81,7 @@
   },
   "contact": {
     "title": "Get In Touch",
-    "subtitle": "Tell us about your product idea — we’ll help you ship it.",
-    "ctaTitle": "Ready to transform your business?",
-    "ctaBody": "Share your goals and we’ll outline a clear path from idea to launch.",
-    "ctaLabel": "Start your project",
-    "ctaHref": "mailto:contact@dhinova.com"
+    "subtitle": "Tell us about your product idea. We'll help you ship it."
   },
   "footer": {
     "copyright": "Dhinova Technology. All rights reserved."

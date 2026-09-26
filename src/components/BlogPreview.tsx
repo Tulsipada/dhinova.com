@@ -3,6 +3,8 @@ import { ArrowRight, Calendar } from "lucide-react";
 import blogs from "@/data/blogs.json";
 import site from "@/data/site.json";
 import { Button } from "@/components/ui/button";
+import FallbackImage from "@/components/FallbackImage";
+import SectionHeading from "@/components/SectionHeading";
 
 const BlogPreview = () => {
   const { title, subtitle, ctaLabel, ctaHref } = site.blogSection;
@@ -21,11 +23,7 @@ const BlogPreview = () => {
     <section id="blog" className="section-pad">
       <div className="container px-4">
         <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
-            <p className="section-eyebrow">Insights</p>
-            <h2 className="section-title mb-5">{title}</h2>
-            <p className="text-lg leading-relaxed text-muted-foreground">{subtitle}</p>
-          </div>
+          <SectionHeading eyebrow="Insights" title={title} description={subtitle} />
           <Button asChild variant="outline" className="group self-start rounded-full px-6 md:self-auto">
             <Link to={ctaHref}>
               {ctaLabel}
@@ -38,16 +36,12 @@ const BlogPreview = () => {
           {posts[0] ? (
             <article className="lg:col-span-7">
               <Link to={`/blogs/${posts[0].slug}`} className="group block">
-                <div className="mb-6 aspect-[16/10] overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-muted to-secondary">
-                  <img
+                <div className="mb-6 aspect-[16/10] overflow-hidden rounded-lg bg-gradient-to-br from-muted to-secondary">
+                  <FallbackImage
                     src={posts[0].image}
                     alt={posts[0].title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = "/dhinova.png";
-                      e.currentTarget.className = "h-full w-full object-contain p-16";
-                    }}
+                    fallbackClassName="h-full w-full object-contain p-16"
                   />
                 </div>
                 <p className="mb-2 text-sm font-semibold text-accent">{posts[0].category}</p>

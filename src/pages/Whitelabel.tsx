@@ -17,7 +17,7 @@ const Whitelabel = () => (
   <PageShell
     title="Whitelabel Solutions"
     eyebrow="Partner program"
-    description="Scale your agency delivery with Dhinova as your silent product engineering partner — white-labeled code, design, and launch support."
+    description="Scale your agency delivery with Dhinova as your silent product engineering partner  -  white-labeled code, design, and launch support."
     path="/whitelabel"
     keywords={`whitelabel software development, white label web development india, agency partnership, ${site.keywords}`}
     jsonLd={{

@@ -1,12 +1,10 @@
 from PIL import Image
 from pathlib import Path
 
-src = Path(
-    r"C:\Users\tulsi\.cursor\projects\d-Projects-dhinova-com\assets\d__Projects_dhinova.com_public_logo.png"
-)
+src = Path(__file__).resolve().parent.parent / "public" / "nav-logo.png"
 out_dir = Path(r"D:\Projects\dhinova.com\public")
-dst = out_dir / "logo.png"
-dst_light = out_dir / "logo-light.png"
+dst = out_dir / "nav-logo-transparent.png"
+dst_light = out_dir / "nav-logo-light.png"
 
 
 def is_bg(r: int, g: int, b: int, a: int) -> bool:

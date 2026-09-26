@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, ArrowRight } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
 import site from "@/data/site.json";
 import { SITE_URL } from "@/lib/seo";
 
 const ContactPage = () => {
+  const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Dhinova, I would like to discuss a project.")}`;
   const items = [
     { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
     { icon: Phone, label: "Phone", value: site.phone, href: `tel:${site.phone.replace(/\s/g, "")}` },
+    { icon: MessageCircle, label: "WhatsApp", value: "Chat with us directly", href: whatsappUrl },
     { icon: MapPin, label: "Location", value: site.location },
   ];
 
@@ -16,7 +18,7 @@ const ContactPage = () => {
     <PageShell
       title="Contact Us"
       eyebrow="Get in touch"
-      description="Tell us about your product idea. Share goals, timelines, and constraints — we’ll outline a clear path from idea to launch."
+      description="Tell us about your product idea. Share goals, timelines, and constraints  -  we’ll outline a clear path from idea to launch."
       path="/contact"
       keywords={`contact dhinova, software development company india, ${site.keywords}`}
       jsonLd={{
@@ -64,14 +66,20 @@ const ContactPage = () => {
           <p className="mt-4 text-primary-foreground/70">
             Email us a short brief, or use the project calculator for a quick estimate before we talk.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button asChild size="lg" className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Button asChild size="lg" className="w-full rounded-full bg-accent text-accent-foreground hover:bg-accent/90 sm:w-auto">
               <a href={`mailto:${site.email}`}>
                 Email {site.email}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10">
+            <Button asChild size="lg" className="w-full rounded-full bg-[#25D366] text-white hover:bg-[#20bd5a] sm:w-auto">
+              <a href={whatsappUrl} target="_blank" rel="noreferrer">
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Chat on WhatsApp
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="w-full rounded-full border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 sm:w-auto">
               <Link to="/calculator">Project calculator</Link>
             </Button>
           </div>

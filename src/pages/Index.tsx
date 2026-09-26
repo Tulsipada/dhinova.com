@@ -9,7 +9,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import site from "@/data/site.json";
-import { organizationSchema, websiteSchema } from "@/lib/seo";
+import { organizationSchema, servicesSchema, websiteSchema } from "@/lib/seo";
 
 const Index = () => {
   return (
@@ -19,7 +19,7 @@ const Index = () => {
         description={site.description}
         path="/"
         keywords={site.keywords}
-        jsonLd={[organizationSchema, websiteSchema]}
+        jsonLd={[organizationSchema, websiteSchema, servicesSchema]}
       />
 
       <div className="min-h-screen">

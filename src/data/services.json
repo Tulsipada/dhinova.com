@@ -3,7 +3,7 @@
     "id": "web",
     "icon": "globe",
     "title": "Web Development",
-    "description": "Fast, responsive web apps with React and modern APIs — built for clarity, performance, and growth."
+    "description": "Fast, responsive web apps with React and modern APIs  -  built for clarity, performance, and growth."
   },
   {
     "id": "mobile",
@@ -21,6 +21,18 @@
     "id": "ai",
     "icon": "brain",
     "title": "AI Solutions",
-    "description": "Practical AI features — assistants, automation, and insights — integrated into your workflows."
+    "description": "Practical AI features  -  assistants, automation, and insights  -  integrated into your workflows."
+  },
+  {
+    "id": "seo",
+    "icon": "search",
+    "title": "SEO & Growth",
+    "description": "Technical SEO, content strategy, and search optimization that help your product reach the right audience and grow sustainably."
+  },
+  {
+    "id": "design",
+    "icon": "palette",
+    "title": "UI/UX Design",
+    "description": "Clear, conversion-focused interfaces and product experiences designed around real users, business goals, and scalable systems."
   }
 ]

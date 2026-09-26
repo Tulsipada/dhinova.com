@@ -44,7 +44,7 @@ const navHtml = () => {
   ];
   return `<nav aria-label="Primary">${links
     .map((item) => `<a href="${escapeHtml(absolute(item.href))}">${escapeHtml(item.label)}</a>`)
-    .join(" · ")}</nav><p>${escapeHtml(site.legalName)} — ${escapeHtml(site.tagline)}</p>`;
+    .join(" · ")}</nav><p>${escapeHtml(site.legalName)}  -  ${escapeHtml(site.tagline)}</p>`;
 };
 
 const markdownishToHtml = (content = "") =>
@@ -108,7 +108,7 @@ export function getSeoPages() {
           <ul>${testimonials
             .map(
               (item) =>
-                `<li><blockquote>${escapeHtml(item.quote)}</blockquote><p>${escapeHtml(item.name)} — ${escapeHtml(item.role)}</p></li>`
+                `<li><blockquote>${escapeHtml(item.quote)}</blockquote><p>${escapeHtml(item.name)}  -  ${escapeHtml(item.role)}</p></li>`
             )
             .join("")}</ul>
           <h2>${escapeHtml(site.blogSection.title)}</h2>
@@ -151,7 +151,7 @@ export function getSeoPages() {
     {
       path: "/projects",
       title: `Completed Projects | ${site.name}`,
-      description: "Selected products and digital platforms delivered by Dhinova — from MVPs to production systems.",
+      description: "Selected products and digital platforms delivered by Dhinova  -  from MVPs to production systems.",
       changefreq: "weekly",
       priority: "0.9",
       body: `
@@ -203,7 +203,7 @@ export function getSeoPages() {
       path: "/whitelabel",
       title: `Whitelabel Solutions | ${site.name}`,
       description:
-        "Scale your agency delivery with Dhinova as your silent product engineering partner — white-labeled code, design, and launch support.",
+        "Scale your agency delivery with Dhinova as your silent product engineering partner  -  white-labeled code, design, and launch support.",
       changefreq: "monthly",
       priority: "0.8",
       body: `
@@ -319,7 +319,6 @@ export function getSeoPages() {
             <li>Phone: <a href="tel:${escapeHtml(site.phone.replace(/\s/g, ""))}">${escapeHtml(site.phone)}</a></li>
             <li>Location: ${escapeHtml(site.location)}</li>
           </ul>
-          <p>${escapeHtml(site.contact.ctaBody)}</p>
         </main>
       `,
     },

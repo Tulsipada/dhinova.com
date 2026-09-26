@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import PageShell from "@/components/PageShell";
+import FallbackImage from "@/components/FallbackImage";
 import projects from "@/data/projects.json";
 import site from "@/data/site.json";
 import { SITE_URL } from "@/lib/seo";
@@ -18,7 +19,7 @@ const Projects = () => {
     <PageShell
       title="Completed Projects"
       eyebrow="Portfolio"
-      description="Selected products and digital platforms delivered by Dhinova — from MVPs to production systems."
+      description="Selected products and digital platforms delivered by Dhinova  -  from MVPs to production systems."
       path="/projects"
       keywords={`completed projects, software portfolio, react projects india, ${site.keywords}`}
       jsonLd={{
@@ -59,14 +60,10 @@ const Projects = () => {
         {visible.map((project) => (
           <article key={project.id} className="group">
             <div className="aspect-[16/10] overflow-hidden rounded-3xl border border-border/60 bg-muted">
-              <img
+              <FallbackImage
                 src={project.image || "/dhinova.png"}
                 alt={project.title}
                 className="h-full w-full object-contain p-10 transition-transform duration-500 group-hover:scale-105"
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = "/dhinova.png";
-                }}
               />
             </div>
             <div className="pt-6">

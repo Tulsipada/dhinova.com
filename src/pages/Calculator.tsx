@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import site from "@/data/site.json";
 import { SITE_URL } from "@/lib/seo";
 
-/* Starter Indian baselines — typical mid estimate stays ~₹1–2L */
+/* Starter Indian baselines  -  typical mid estimate stays ~₹1-2L */
 const projectTypes = [
   { id: "web", label: "Web Application", base: 95000 },
   { id: "mobile", label: "Mobile App", base: 120000 },
@@ -23,7 +23,7 @@ const complexityOptions = [
 
 const timelineOptions = [
   { id: "relaxed", label: "Flexible (12+ weeks)", multiplier: 0.95 },
-  { id: "normal", label: "Standard (8–12 weeks)", multiplier: 1 },
+  { id: "normal", label: "Standard (8-12 weeks)", multiplier: 1 },
   { id: "fast", label: "Fast-track (under 8 weeks)", multiplier: 1.25 },
 ] as const;
 
@@ -157,7 +157,7 @@ const Calculator = () => {
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">Estimated range</p>
           <p className="mt-4 font-display text-4xl font-bold md:text-5xl">{formatInr(estimate.mid)}</p>
           <p className="mt-3 text-primary-foreground/70">
-            Typical range: {formatInr(estimate.low)} – {formatInr(estimate.high)}
+            Typical range: {formatInr(estimate.low)} - {formatInr(estimate.high)}
           </p>
           <p className="mt-6 text-sm text-primary-foreground/60">
             Indicative Indian market pricing in INR (excl. 18% GST). Final quote depends on scope,
