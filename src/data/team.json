@@ -2,8 +2,8 @@
   {
     "id": 1,
     "name": "Tulsipada Das",
-    "role": "Founder & CEO",
-    "bio": "Product strategist focused on shipping reliable software for startups and enterprises.",
+    "role": "Founder & CEO | Full-Stack Developer",
+    "bio": "Company founder and CEO, building and shipping reliable full-stack software for startups and enterprises.",
     "image": "/team/tulsipada.jpeg",
     "linkedin": "tulsipada",
     "github": "tulsipada"
@@ -11,10 +11,10 @@
   {
     "id": 2,
     "name": "Anik Mitra",
-    "role": "Head of Engineering",
-    "bio": "Full-stack engineer specializing in React, cloud architecture, and high-traffic systems.",
+    "role": "Co-Founder | SEO Optimizer",
+    "bio": "Co-founder focused on SEO optimization, search visibility, and growing the company's digital presence.",
     "image": "/team/anik.png",
-    "linkedin": "",
-    "github": ""
+    "linkedin": "anik-mitra07",
+    "github": "Anik-mitra08"
   }
 ]
