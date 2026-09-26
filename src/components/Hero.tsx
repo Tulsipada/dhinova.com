@@ -5,7 +5,7 @@ import site from "@/data/site.json";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
-  const { hero, tagline } = site;
+  const { hero, offer, tagline } = site;
 
   return (
     <section className="relative flex min-h-[min(900px,100svh)] items-center overflow-hidden pt-20">
@@ -21,6 +21,23 @@ const Hero = () => {
         <div className="animate-soft-pulse absolute -right-20 top-16 h-[26rem] w-[26rem] rounded-full bg-[hsl(199_100%_46%/0.18)] blur-3xl" />
         <div className="animate-drift absolute -bottom-28 left-[-12%] h-[20rem] w-[20rem] rounded-full bg-[hsl(262_72%_52%/0.14)] blur-3xl" />
       </div>
+
+      {offer.enabled ? (
+        <div className="absolute inset-x-0 top-24 z-20 px-4">
+          <div className="container mx-auto flex items-center justify-center">
+            <Link
+              to={offer.ctaHref}
+              className="group mx-auto inline-flex w-fit max-w-full items-center gap-3 rounded-full border border-accent/40 bg-black/30 px-5 py-3 text-center text-sm text-white/85 shadow-lg shadow-black/10 backdrop-blur-sm transition-colors hover:border-accent/75 hover:bg-black/45 sm:px-6 sm:text-base"
+            >
+              <Sparkles className="h-4 w-4 shrink-0 text-accent motion-safe:animate-pulse" />
+              <span className="truncate">
+                <strong className="mr-1 inline-block text-accent motion-safe:animate-pulse">{offer.discount}% off</strong> {offer.title}
+              </span>
+              <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
+        </div>
+      ) : null}
 
       <div className="container relative z-10 px-4 py-16 md:py-24">
         <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(340px,0.8fr)] lg:gap-20">

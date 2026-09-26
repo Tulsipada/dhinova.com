@@ -1,4 +1,4 @@
-import { Globe, Smartphone, Blocks, Brain, type LucideIcon } from "lucide-react";
+import { Blocks, Brain, Globe, Palette, Search, Smartphone, type LucideIcon } from "lucide-react";
 import services from "@/data/services.json";
 import site from "@/data/site.json";
 import SectionHeading from "@/components/SectionHeading";
@@ -8,6 +8,8 @@ const iconMap: Record<string, LucideIcon> = {
   smartphone: Smartphone,
   blocks: Blocks,
   brain: Brain,
+  search: Search,
+  palette: Palette,
 };
 
 const Services = () => {
@@ -24,7 +26,8 @@ const Services = () => {
             return (
               <article
                 key={service.id}
-                className="group relative overflow-hidden rounded-lg border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/45 hover:shadow-[var(--shadow-soft)] md:p-8"
+                className="group relative overflow-hidden rounded-lg border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/45 hover:shadow-[var(--shadow-soft)] motion-safe:opacity-0 motion-safe:animate-rise md:p-8"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="mb-10 flex items-center justify-between gap-4">
                   <span className="font-display text-sm font-semibold text-muted-foreground transition-colors group-hover:text-accent">

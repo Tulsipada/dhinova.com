@@ -46,6 +46,16 @@
     "primaryCta": { "label": "Start a project", "href": "/contact" },
     "secondaryCta": { "label": "Explore services", "href": "#services" }
   },
+  "offer": {
+    "enabled": true,
+    "discount": 50,
+    "label": "Limited-time offer",
+    "title": "Build more. Spend less.",
+    "description": "Get 50% off all services when you start a new project with Dhinova.",
+    "ctaLabel": "Claim the offer",
+    "ctaHref": "/contact",
+    "validUntil": "While offer availability lasts"
+  },
   "servicesSection": {
     "title": "Our Services",
     "subtitle": "End-to-end product engineering for modern companies"
