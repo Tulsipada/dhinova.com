@@ -54,6 +54,35 @@ function injectMeta(html, page) {
   return next;
 }
 
+function pageSchema(page) {
+  const pageUrl = page.path === "/" ? `${SITE_URL}/` : `${SITE_URL}${page.path}`;
+  const isBlogPost = page.path.startsWith("/blogs/");
+
+  if (isBlogPost) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: page.title,
+      description: page.description,
+      url: pageUrl,
+      image: page.image,
+      datePublished: page.lastmod,
+      dateModified: page.lastmod,
+      author: { "@type": "Organization", name: "Dhinova Technology Pvt Ltd", url: SITE_URL },
+      publisher: { "@type": "Organization", name: "Dhinova Technology Pvt Ltd", url: SITE_URL },
+    };
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: page.title,
+    description: page.description,
+    url: pageUrl,
+    isPartOf: { "@type": "WebSite", name: "Dhinova", url: `${SITE_URL}/` },
+  };
+}
+
 function injectBody(html, page) {
   const content = `
     <div id="prerender" data-prerendered="true">
@@ -73,6 +102,11 @@ function injectBody(html, page) {
 
 function writePage(page, template) {
   let html = injectMeta(template, page);
+  if (page.path !== "/") {
+    html = html.replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/gi, "");
+    const schema = JSON.stringify(pageSchema(page)).replace(/</g, "\\u003c");
+    html = html.replace("</head>", `    <script type="application/ld+json">${schema}</script>\n  </head>`);
+  }
   html = injectBody(html, page);
 
   if (page.path === "/") {

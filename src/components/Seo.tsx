@@ -53,6 +53,7 @@ const Seo = ({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:alt" content={`${SITE_NAME} preview image`} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="en_IN" />
 
@@ -61,6 +62,7 @@ const Seo = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:image:alt" content={`${SITE_NAME} preview image`} />
 
       {schemas.map((schema, index) => (
         <script key={index} type="application/ld+json">
