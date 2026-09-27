@@ -28,19 +28,15 @@ const navHtml = () => {
   const links = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
+    { label: "Services", href: "/#services" },
     { label: "Projects", href: "/projects" },
     { label: "Clients", href: "/clients" },
     { label: "Whitelabel", href: "/whitelabel" },
     { label: "Calculator", href: "/calculator" },
-    { label: "App Requirements", href: "/requirements" },
-    { label: "Notifications", href: "/notifications" },
-    { label: "Announcements", href: "/announcements" },
     { label: "Blog", href: "/blogs" },
     { label: "FAQ", href: "/faq" },
     { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },
-    { label: "Privacy", href: "/privacy" },
-    { label: "Terms", href: "/terms" },
   ];
   return `<nav aria-label="Primary">${links
     .map((item) => `<a href="${escapeHtml(absolute(item.href))}">${escapeHtml(item.label)}</a>`)
@@ -49,16 +45,24 @@ const navHtml = () => {
 
 const markdownishToHtml = (content = "") =>
   content
-    .split(/\n\n+/)
-    .map((block) => {
-      const trimmed = block.trim();
+    .split(/\n/)
+    .map((line) => {
+      const trimmed = line.trim();
       if (!trimmed) return "";
+      if (trimmed.startsWith("### ")) {
+        return `<h3>${escapeHtml(trimmed.slice(4))}</h3>`;
+      }
       if (trimmed.startsWith("## ")) {
         return `<h2>${escapeHtml(trimmed.slice(3))}</h2>`;
       }
+      if (trimmed.startsWith("- ")) {
+        return `<li>${escapeHtml(trimmed.slice(2))}</li>`;
+      }
       return `<p>${escapeHtml(trimmed)}</p>`;
     })
-    .join("\n");
+    .filter(Boolean)
+    .join("\n")
+    .replace(/(?:<li>[\s\S]*?<\/li>\n?)+/g, (block) => `<ul>${block}</ul>`);
 
 export function getSeoPages() {
   const site = readJson("src/data/site.json");
@@ -71,13 +75,12 @@ export function getSeoPages() {
   const team = readJson("src/data/team.json");
   const testimonials = readJson("src/data/testimonials.json");
   const requirements = readJson("src/data/requirements.json");
-  const notifications = readJson("src/data/notifications.json");
   const announcements = readJson("src/data/announcements.json");
 
   const pages = [
     {
       path: "/",
-      title: "Dhinova | Web, Mobile, AI & Blockchain Development",
+      title: "Dhinova | Web, Mobile, AI & Blockchain Development Company",
       description: site.description,
       changefreq: "weekly",
       priority: "1.0",
@@ -92,7 +95,7 @@ export function getSeoPages() {
           <ul>${services
             .map(
               (service) =>
-                `<li><h3>${escapeHtml(service.title)}</h3><p>${escapeHtml(service.description)}</p></li>`
+                `<li><h3><a href="${escapeHtml(absolute(`/services/${service.slug}`))}">${escapeHtml(service.title)}</a></h3><p>${escapeHtml(service.description)}</p></li>`
             )
             .join("")}</ul>
           <h2>${escapeHtml(site.about.title)}</h2>
@@ -127,7 +130,7 @@ export function getSeoPages() {
     },
     {
       path: "/about",
-      title: `About Dhinova | ${site.name}`,
+      title: `About Dhinova | Software Company in India`,
       description: site.about.paragraphs[0],
       changefreq: "monthly",
       priority: "0.9",
@@ -145,6 +148,7 @@ export function getSeoPages() {
                 `<li><h3>${escapeHtml(member.name)}</h3><p>${escapeHtml(member.role)}</p><p>${escapeHtml(member.bio)}</p></li>`
             )
             .join("")}</ul>
+          <p><a href="${escapeHtml(absolute("/contact"))}">Contact Dhinova</a> · <a href="${escapeHtml(absolute("/projects"))}">See projects</a></p>
         </main>
       `,
     },
@@ -250,7 +254,7 @@ export function getSeoPages() {
       description:
         "Prepare these details before we start. A clear brief helps us estimate accurately and ship the right MVP faster.",
       changefreq: "monthly",
-      priority: "0.8",
+      priority: "0.7",
       body: `
         ${navHtml()}
         <main>
@@ -266,30 +270,11 @@ export function getSeoPages() {
       `,
     },
     {
-      path: "/notifications",
-      title: `Notifications | ${site.name}`,
-      description: "Operational notices, partner updates, and timely messages from the Dhinova team.",
-      changefreq: "weekly",
-      priority: "0.7",
-      body: `
-        ${navHtml()}
-        <main>
-          <h1>Notifications</h1>
-          <ul>${notifications
-            .map(
-              (item) =>
-                `<li><h2>${escapeHtml(item.title)}</h2><p>${escapeHtml(item.type)} · ${escapeHtml(item.date)}</p><p>${escapeHtml(item.body)}</p></li>`
-            )
-            .join("")}</ul>
-        </main>
-      `,
-    },
-    {
       path: "/announcements",
       title: `Announcements | ${site.name}`,
       description: "Company news, service launches, hiring updates, and milestones from Dhinova Technology.",
       changefreq: "weekly",
-      priority: "0.7",
+      priority: "0.6",
       body: `
         ${navHtml()}
         <main>
@@ -305,8 +290,9 @@ export function getSeoPages() {
     },
     {
       path: "/contact",
-      title: `Contact Us | ${site.name}`,
-      description: site.contact.subtitle,
+      title: `Contact Dhinova | Software Development Company India`,
+      description:
+        "Tell us about your product idea. Share goals, timelines, and constraints  -  we will outline a clear path from discovery to launch.",
       changefreq: "monthly",
       priority: "0.9",
       body: `
@@ -319,15 +305,17 @@ export function getSeoPages() {
             <li>Phone: <a href="tel:${escapeHtml(site.phone.replace(/\s/g, ""))}">${escapeHtml(site.phone)}</a></li>
             <li>Location: ${escapeHtml(site.location)}</li>
           </ul>
+          <p>Looking for a specific capability? Explore <a href="${escapeHtml(absolute("/services/web-development"))}">web development</a>, <a href="${escapeHtml(absolute("/services/mobile-app-development"))}">mobile apps</a>, or <a href="${escapeHtml(absolute("/services/ai-solutions"))}">AI solutions</a>.</p>
         </main>
       `,
     },
     {
       path: "/faq",
-      title: `FAQ | ${site.name}`,
-      description: "Quick answers about Dhinova services, timelines, whitelabel partnerships, and how we work with clients.",
+      title: `FAQ | Software Development Questions Answered`,
+      description: "Answers about Dhinova services, timelines, pricing, whitelabel partnerships, and how we deliver software projects.",
       changefreq: "monthly",
-      priority: "0.7",
+      priority: "0.8",
+      schemaType: "FAQPage",
       body: `
         ${navHtml()}
         <main>
@@ -340,6 +328,7 @@ export function getSeoPages() {
             .join("")}
         </main>
       `,
+      faq,
     },
     {
       path: "/careers",
@@ -420,6 +409,32 @@ export function getSeoPages() {
       `,
     },
   ];
+
+  for (const service of services) {
+    pages.push({
+      path: `/services/${service.slug}`,
+      title: `${service.title} | ${site.name}`,
+      description: service.longDescription,
+      changefreq: "monthly",
+      priority: "0.9",
+      schemaType: "Service",
+      service,
+      body: `
+        ${navHtml()}
+        <main>
+          <p><a href="${escapeHtml(absolute("/#services"))}">All services</a></p>
+          <h1>${escapeHtml(service.title)}</h1>
+          <p>${escapeHtml(service.longDescription)}</p>
+          <p>${escapeHtml(service.description)}</p>
+          <h2>What you get</h2>
+          <ul>${service.benefits.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+          <h2>Outcomes</h2>
+          <ul>${service.outcomes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+          <p><a href="${escapeHtml(absolute("/contact"))}">Start a project</a> · <a href="${escapeHtml(absolute("/calculator"))}">Estimate cost</a></p>
+        </main>
+      `,
+    });
+  }
 
   for (const blog of blogs) {
     pages.push({

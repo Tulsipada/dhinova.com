@@ -35,6 +35,11 @@ function injectMeta(html, page) {
   replaceMeta("property", "og:description", description);
   replaceMeta("property", "og:url", pageUrl);
   replaceMeta("property", "og:image", image);
+  replaceMeta(
+    "property",
+    "og:type",
+    page.path.startsWith("/blogs/") && page.path !== "/blogs" ? "article" : "website"
+  );
   replaceMeta("name", "twitter:title", title);
   replaceMeta("name", "twitter:description", description);
   replaceMeta("name", "twitter:image", image);
@@ -62,14 +67,50 @@ function pageSchema(page) {
     return {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      headline: page.title,
+      headline: page.title.replace(/ \| Dhinova Blog$/, ""),
       description: page.description,
       url: pageUrl,
       image: page.image,
       datePublished: page.lastmod,
       dateModified: page.lastmod,
       author: { "@type": "Organization", name: "Dhinova Technology Pvt Ltd", url: SITE_URL },
-      publisher: { "@type": "Organization", name: "Dhinova Technology Pvt Ltd", url: SITE_URL },
+      publisher: {
+        "@type": "Organization",
+        name: "Dhinova Technology Pvt Ltd",
+        url: SITE_URL,
+        logo: { "@type": "ImageObject", url: `${SITE_URL}/dhinova.png` },
+      },
+      mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+    };
+  }
+
+  if (page.schemaType === "FAQPage" && Array.isArray(page.faq)) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: page.faq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+      url: pageUrl,
+    };
+  }
+
+  if (page.schemaType === "Service" && page.service) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: page.service.title,
+      description: page.service.longDescription,
+      serviceType: page.service.title,
+      provider: {
+        "@type": "Organization",
+        name: "Dhinova Technology Pvt Ltd",
+        url: SITE_URL,
+      },
+      areaServed: "Worldwide",
+      url: pageUrl,
     };
   }
 

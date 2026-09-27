@@ -29,6 +29,7 @@ const Notifications = () => {
       description="Operational notices, partner updates, and timely messages from the Dhinova team."
       path="/notifications"
       keywords={`dhinova notifications, product updates, ${site.keywords}`}
+      noindex
       jsonLd={{
         "@context": "https://schema.org",
         "@type": "CollectionPage",

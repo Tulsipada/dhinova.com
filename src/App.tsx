@@ -22,6 +22,7 @@ import AboutPage from "./pages/AboutPage";
 import Requirements from "./pages/Requirements";
 import Notifications from "./pages/Notifications";
 import Announcements from "./pages/Announcements";
+import ServicePage from "./pages/ServicePage";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ const App = () => (
           <ScrollRestoration />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/services/:slug" element={<ServicePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/clients" element={<Clients />} />

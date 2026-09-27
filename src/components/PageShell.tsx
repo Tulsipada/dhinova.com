@@ -10,6 +10,7 @@ type PageShellProps = {
   path: string;
   eyebrow?: string;
   keywords?: string;
+  noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   headerAside?: ReactNode;
   afterHeader?: ReactNode;
@@ -22,6 +23,7 @@ const PageShell = ({
   path,
   eyebrow,
   keywords,
+  noindex = false,
   jsonLd,
   headerAside,
   afterHeader,
@@ -33,6 +35,7 @@ const PageShell = ({
       description={description}
       path={path}
       keywords={keywords}
+      noindex={noindex}
       jsonLd={jsonLd}
     />
     <div className="min-h-screen">

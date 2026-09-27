@@ -15,7 +15,7 @@ const Index = () => {
   return (
     <>
       <Seo
-        title="Dhinova | Web, Mobile, AI & Blockchain Development"
+        title="Dhinova | Web, Mobile, AI & Blockchain Development Company"
         description={site.description}
         path="/"
         keywords={site.keywords}

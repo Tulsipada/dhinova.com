@@ -11,7 +11,7 @@ const AboutPage = () => (
     eyebrow="Company"
     description={site.about.paragraphs[0]}
     path="/about"
-    keywords={`about dhinova, software company india, ${site.keywords}`}
+    keywords={`about dhinova, software company Salt Lake West Bengal, software development company India, ${site.keywords}`}
     jsonLd={{
       "@context": "https://schema.org",
       "@type": "AboutPage",

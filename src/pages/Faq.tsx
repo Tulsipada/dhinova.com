@@ -7,9 +7,9 @@ const Faq = () => (
   <PageShell
     title="Frequently Asked Questions"
     eyebrow="FAQ"
-    description="Quick answers about Dhinova services, timelines, whitelabel partnerships, and how we work with clients."
+    description="Answers about Dhinova services, timelines, pricing, whitelabel partnerships, and how we deliver software projects."
     path="/faq"
-    keywords={`dhinova faq, software development questions, ${site.keywords}`}
+    keywords={`dhinova faq, software development questions, project cost, whitelabel development, ${site.keywords}`}
     jsonLd={{
       "@context": "https://schema.org",
       "@type": "FAQPage",

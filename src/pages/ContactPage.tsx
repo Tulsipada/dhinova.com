@@ -20,7 +20,7 @@ const ContactPage = () => {
       eyebrow="Get in touch"
       description="Tell us about your product idea. Share goals, timelines, and constraints  -  we’ll outline a clear path from idea to launch."
       path="/contact"
-      keywords={`contact dhinova, software development company india, ${site.keywords}`}
+      keywords={`contact dhinova, software development company india, hire react developers, ${site.keywords}`}
       jsonLd={{
         "@context": "https://schema.org",
         "@type": "ContactPage",

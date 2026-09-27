@@ -2,31 +2,41 @@
   {
     "id": 1,
     "question": "What services does Dhinova offer?",
-    "answer": "We design and build web applications, mobile apps, blockchain features, and AI-powered product workflows for startups and growing companies."
+    "answer": "Dhinova designs and builds web applications, React Native mobile apps, blockchain features, AI-powered workflows, SEO foundations, and UI/UX product experiences for startups and growing companies in India and worldwide."
   },
   {
     "id": 2,
     "question": "How long does a typical project take?",
-    "answer": "MVPs usually take 4-12 weeks depending on scope. Larger platforms are delivered in phased milestones with clear release plans."
+    "answer": "Focused MVPs usually take 4-12 weeks depending on scope. Larger platforms ship in phased milestones with demos, QA, and a clear release plan so stakeholders always know what lands next."
   },
   {
     "id": 3,
-    "question": "Do you offer whitelabel development?",
-    "answer": "Yes. Agencies and consultants can use Dhinova as a silent engineering partner with branded delivery under your company name."
+    "question": "Do you offer whitelabel development for agencies?",
+    "answer": "Yes. Agencies and consultants can use Dhinova as a silent engineering partner. We deliver branded code, designs, and launch support under your company name with NDA-first collaboration."
   },
   {
     "id": 4,
-    "question": "Can you estimate project cost?",
-    "answer": "Use our Project Calculator for a quick range, then share your brief and we will refine a fixed or milestone-based proposal."
+    "question": "How can I estimate project cost?",
+    "answer": "Use the Dhinova Project Calculator for a quick ballpark, then share your brief. We refine a fixed-price or milestone proposal after a short discovery call covering goals, integrations, and timeline."
   },
   {
     "id": 5,
     "question": "Do you provide support after launch?",
-    "answer": "Yes. We offer maintenance, monitoring, feature iterations, and on-call support packages after go-live."
+    "answer": "Yes. We offer maintenance, monitoring, feature iterations, performance improvements, and optional on-call support packages after go-live so your product keeps improving."
   },
   {
     "id": 6,
     "question": "Where is Dhinova based?",
-    "answer": "Dhinova Technology Pvt Ltd is based in India and works with clients remotely across time zones."
+    "answer": "Dhinova Technology Pvt Ltd is based in Salt Lake, West Bengal, India, and works with clients remotely across time zones with overlapping hours for demos and decision-making."
+  },
+  {
+    "id": 7,
+    "question": "Which technologies does Dhinova use?",
+    "answer": "We primarily ship with React, TypeScript, Node.js, React Native, modern cloud backends, and carefully scoped AI or blockchain stacks when they create clear product value."
+  },
+  {
+    "id": 8,
+    "question": "Can Dhinova help with SEO for a software product?",
+    "answer": "Yes. We handle technical SEO, on-page structure, sitemaps, structured data, Core Web Vitals improvements, and content planning so product pages can earn indexing and convert organic traffic."
   }
 ]

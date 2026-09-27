@@ -1,4 +1,5 @@
-import { Blocks, Brain, Globe, Palette, Search, Smartphone, type LucideIcon } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Blocks, Brain, Globe, Palette, Search, Smartphone, type LucideIcon } from "lucide-react";
 import services from "@/data/services.json";
 import site from "@/data/site.json";
 import SectionHeading from "@/components/SectionHeading";
@@ -37,8 +38,19 @@ const Services = () => {
                     <Icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
                   </span>
                 </div>
-                <h3 className="mb-3 font-display text-2xl font-bold md:text-3xl">{service.title}</h3>
+                <h3 className="mb-3 font-display text-2xl font-bold md:text-3xl">
+                  <Link to={`/services/${service.slug}`} className="hover:text-accent">
+                    {service.title}
+                  </Link>
+                </h3>
                 <p className="max-w-md leading-relaxed text-muted-foreground">{service.description}</p>
+                <Link
+                  to={`/services/${service.slug}`}
+                  className="mt-6 inline-flex items-center text-sm font-semibold text-accent transition-transform group-hover:translate-x-0.5"
+                >
+                  Learn more
+                  <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Link>
               </article>
             );
           })}

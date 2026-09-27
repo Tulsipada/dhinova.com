@@ -17,9 +17,12 @@ export const organizationSchema = {
   logo: `${SITE_URL}/dhinova.png`,
   image: DEFAULT_OG_IMAGE,
   email: SITE_EMAIL,
+  telephone: site.phone,
   description: SITE_DESCRIPTION,
   address: {
     "@type": "PostalAddress",
+    addressLocality: "Salt Lake",
+    addressRegion: "West Bengal",
     addressCountry: "IN",
   },
   contactPoint: {
@@ -28,6 +31,7 @@ export const organizationSchema = {
     email: SITE_EMAIL,
     telephone: site.phone,
     availableLanguage: ["English", "Hindi"],
+    areaServed: "IN",
   },
   sameAs: site.socials.filter((social) => social.href).map((social) => social.href),
 };
@@ -38,6 +42,7 @@ export const websiteSchema = {
   name: SITE_NAME,
   url: SITE_URL,
   description: SITE_DESCRIPTION,
+  inLanguage: "en-IN",
   publisher: {
     "@type": "Organization",
     name: SITE_LEGAL_NAME,
@@ -64,7 +69,7 @@ export const servicesSchema = {
         url: SITE_URL,
       },
       areaServed: "Worldwide",
-      url: `${SITE_URL}/#services`,
+      url: `${SITE_URL}/services/${service.slug}`,
     },
   })),
 };
