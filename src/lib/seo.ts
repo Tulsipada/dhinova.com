@@ -6,7 +6,7 @@ export const SITE_NAME = site.name;
 export const SITE_BRAND = site.siteName || "Dhinova Technology";
 export const SITE_LEGAL_NAME = site.legalName;
 export const SITE_DESCRIPTION = site.description;
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/logo_bg.png`;
 export const SITE_EMAIL = site.email;
 
 export const organizationSchema = {

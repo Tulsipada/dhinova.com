@@ -444,7 +444,7 @@ export function getSeoPages() {
       changefreq: "monthly",
       priority: "0.8",
       lastmod: blog.date,
-      image: absolute(blog.image === "/logo_bg.png" || !blog.image ? "/og-image.jpg" : blog.image),
+      image: absolute(blog.image === "/logo_bg.png" || !blog.image ? "/logo_bg.png" : blog.image),
       body: `
         ${navHtml()}
         <main>

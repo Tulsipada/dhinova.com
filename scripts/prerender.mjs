@@ -15,7 +15,7 @@ const templatePath = path.resolve(distDir, "index.html");
 
 function injectMeta(html, page) {
   const pageUrl = page.path === "/" ? `${SITE_URL}/` : `${SITE_URL}${page.path}`;
-  const image = page.image || `${SITE_URL}/og-image.jpg`;
+  const image = page.image || `${SITE_URL}/logo_bg.png`;
   const title = page.title;
   const description = page.description;
 
