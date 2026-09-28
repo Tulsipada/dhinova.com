@@ -12,9 +12,10 @@
   "socials": [
     { "label": "LinkedIn", "href": "https://www.linkedin.com/company/dhinova" },
     { "label": "GitHub", "href": "" },
-    { "label": "Facebook", "href": "" },
-    { "label": "Instagram", "href": "" },
-    { "label": "YouTube", "href": "" }
+    { "label": "Facebook", "href": "https://www.facebook.com/dhinova.technology" },
+    { "label": "Instagram", "href": "https://www.instagram.com/dhinovatechnology" },
+    { "label": "YouTube", "href": "https://www.youtube.com/@Dhinova_Technology" },
+    { "label": "Reddit", "href": "https://www.reddit.com/user/Dhinova_Technology/" }
   ],
   "keywords": "Dhinova Technology, software development company Kolkata, custom software development India, web development, mobile app development, AI solutions, blockchain development, UI UX design, SEO, SaaS development",
   "nav": [
