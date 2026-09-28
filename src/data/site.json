@@ -2,20 +2,21 @@
   "name": "Dhinova",
   "legalName": "Dhinova Technology Pvt Ltd",
   "tagline": "Infinite Ideas. Smarter Tomorrow.",
-  "description": "Dhinova is a software development company in Salt Lake, West Bengal, building web apps, mobile apps, blockchain systems, and AI solutions for startups and growing businesses.",
+  "description": "Dhinova Technology is a software development company in Kolkata, West Bengal, building custom software, websites, mobile apps, AI, and blockchain solutions for startups and growing businesses.",
   "url": "https://dhinova.com",
   "email": "contact@dhinova.com",
   "phone": "+91 70015 92584",
   "whatsapp": "917001592584",
-  "location": "Salt Lake, West Bengal, India",
+  "location": "Kolkata, West Bengal, India",
+  "foundingDate": "2025",
   "socials": [
-    { "label": "LinkedIn", "href": "" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/company/dhinova" },
     { "label": "GitHub", "href": "" },
     { "label": "Facebook", "href": "" },
     { "label": "Instagram", "href": "" },
     { "label": "YouTube", "href": "" }
   ],
-  "keywords": "software development company India, web development Kolkata, React Native apps, blockchain development, AI solutions, SEO, UI UX design, Dhinova",
+  "keywords": "Dhinova Technology, software development company Kolkata, custom software development India, web development, mobile app development, AI solutions, blockchain development, UI UX design, SEO, SaaS development",
   "nav": [
     { "label": "Services", "href": "#services" },
     { "label": "Projects", "href": "/projects" },
@@ -72,7 +73,7 @@
   "about": {
     "title": "About Dhinova",
     "paragraphs": [
-      "Dhinova Technology Pvt Ltd is a software studio in Salt Lake, West Bengal, specializing in modern web and mobile applications, blockchain systems, and AI-powered products.",
+      "Dhinova Technology Pvt Ltd is a software studio in Kolkata, West Bengal, specializing in custom software, modern web and mobile applications, blockchain systems, and AI-powered products.",
       "We partner with founders and enterprises to design, build, and scale digital platforms that are fast, reliable, and ready for growth  -  with clear communication from discovery through launch and ongoing support."
     ],
     "highlights": [
