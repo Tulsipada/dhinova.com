@@ -39,15 +39,9 @@ export const organizationSchema = {
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: SITE_NAME,
-  url: SITE_URL,
-  description: SITE_DESCRIPTION,
-  inLanguage: "en-IN",
-  publisher: {
-    "@type": "Organization",
-    name: SITE_LEGAL_NAME,
-    url: SITE_URL,
-  },
+  url: SITE_URL.endsWith("/") ? SITE_URL : `${SITE_URL}/`,
+  name: "DhiNova",
+  alternateName: "Dhinova",
 };
 
 export const servicesSchema = {
