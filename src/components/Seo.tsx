@@ -65,9 +65,11 @@ const Seo = ({
       <meta name="twitter:image:alt" content={`${SITE_NAME} preview image`} />
 
       {schemas.map((schema, index) => (
-        <script key={index} type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
       ))}
 
       {children}
