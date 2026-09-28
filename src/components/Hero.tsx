@@ -8,7 +8,13 @@ const Hero = () => {
   const { hero, offer, tagline } = site;
 
   return (
-    <section className="relative flex min-h-[min(900px,100svh)] items-center overflow-hidden pt-20">
+    <section
+      className={`relative flex overflow-hidden pt-[4.75rem] ${
+        offer.enabled
+          ? "min-h-0 items-start md:min-h-[min(900px,100svh)] md:items-center"
+          : "min-h-[min(720px,100svh)] items-center md:min-h-[min(900px,100svh)]"
+      }`}
+    >
       <div
         className="absolute inset-0 z-0 scale-105 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
@@ -22,41 +28,42 @@ const Hero = () => {
         <div className="animate-drift absolute -bottom-28 left-[-12%] h-[20rem] w-[20rem] rounded-full bg-[hsl(262_72%_52%/0.14)] blur-3xl" />
       </div>
 
-      {offer.enabled ? (
-        <div className="absolute inset-x-0 top-24 z-20 px-4">
-          <div className="container mx-auto flex items-center justify-center">
+      <div className="container relative z-10 w-full px-4 pb-14 pt-4 md:pb-24 md:pt-8">
+        {offer.enabled ? (
+          <div className="mb-6 flex justify-center md:mb-10">
             <Link
               to={offer.ctaHref}
-              className="group mx-auto inline-flex w-fit max-w-full items-center gap-3 rounded-full border border-accent/40 bg-black/30 px-5 py-3 text-center text-sm text-white/85 shadow-lg shadow-black/10 backdrop-blur-sm transition-colors hover:border-accent/75 hover:bg-black/45 sm:px-6 sm:text-base"
+              className="group inline-flex max-w-full items-center gap-2 rounded-full border border-accent/40 bg-black/30 px-3.5 py-2.5 text-center text-xs text-white/85 shadow-lg shadow-black/10 backdrop-blur-sm transition-colors hover:border-accent/75 hover:bg-black/45 sm:gap-3 sm:px-5 sm:py-3 sm:text-sm md:text-base"
             >
-              <Sparkles className="h-4 w-4 shrink-0 text-accent motion-safe:animate-pulse" />
+              <Sparkles className="h-3.5 w-3.5 shrink-0 text-accent motion-safe:animate-pulse sm:h-4 sm:w-4" />
               <span className="truncate">
-                <strong className="mr-1 inline-block text-accent motion-safe:animate-pulse">{offer.discount}% off</strong> {offer.title}
+                <strong className="mr-1 inline-block text-accent motion-safe:animate-pulse">
+                  {offer.discount}% off
+                </strong>
+                {offer.title}
               </span>
-              <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="h-3.5 w-3.5 shrink-0 text-accent transition-transform group-hover:translate-x-0.5 sm:h-4 sm:w-4" />
             </Link>
           </div>
-        </div>
-      ) : null}
+        ) : null}
 
-      <div className="container relative z-10 px-4 py-16 md:py-24">
-        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(340px,0.8fr)] lg:gap-20">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(340px,0.8fr)] lg:gap-20">
           <div className="max-w-3xl">
-            <div className="animate-rise mb-7 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-white/60 md:text-sm">
-              <span className="h-px w-10 bg-accent" />
-              {tagline}
+            <div className="animate-rise mb-4 flex items-center gap-2.5 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/60 sm:gap-3 sm:text-xs sm:tracking-[0.2em] md:mb-7 md:text-sm md:tracking-[0.24em]">
+              <span className="h-px w-6 shrink-0 bg-accent sm:w-10" />
+              <span className="min-w-0 leading-snug">{tagline}</span>
             </div>
-            <p className="animate-rise mb-5 font-display text-4xl font-extrabold leading-none tracking-tight text-brand-gradient md:text-6xl">
+            <p className="animate-rise mb-3 font-display text-[2.35rem] font-extrabold leading-none tracking-tight text-brand-gradient sm:text-5xl md:mb-5 md:text-6xl">
               {hero.brand}
             </p>
-            <h1 className="animate-rise-delay-1 max-w-3xl font-display text-4xl font-bold leading-[1.05] text-white/95 text-balance md:text-6xl lg:text-7xl">
+            <h1 className="animate-rise-delay-1 max-w-3xl font-display text-[1.85rem] font-bold leading-[1.1] text-white/95 text-balance sm:text-4xl md:text-6xl md:leading-[1.05] lg:text-7xl">
               {hero.headline}
             </h1>
-            <p className="animate-rise-delay-2 mt-7 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
+            <p className="animate-rise-delay-2 mt-4 max-w-xl text-[0.95rem] leading-relaxed text-white/70 sm:text-base md:mt-7 md:text-lg">
               {hero.subheadline}
             </p>
-            <div className="animate-rise-delay-2 mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button asChild variant="hero" size="lg" className="group h-12 rounded-full px-8">
+            <div className="animate-rise-delay-2 mt-7 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center">
+              <Button asChild variant="hero" size="lg" className="group h-11 rounded-full px-7 sm:h-12 sm:px-8">
                 <Link to={hero.primaryCta.href.startsWith("/") ? hero.primaryCta.href : "/contact"}>
                   {hero.primaryCta.label}
                   <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -66,7 +73,7 @@ const Hero = () => {
                 asChild
                 variant="hero-outline"
                 size="lg"
-                className="h-12 rounded-full border-white/30 px-8 text-white hover:bg-white/10"
+                className="h-11 rounded-full border-white/30 px-7 text-white hover:bg-white/10 sm:h-12 sm:px-8"
               >
                 <a href={hero.secondaryCta.href}>
                   {hero.secondaryCta.label}
@@ -122,7 +129,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 z-10 h-16 bg-gradient-to-t from-background to-transparent md:h-24" />
     </section>
   );
 };
