@@ -80,7 +80,7 @@ export function getSeoPages() {
   const pages = [
     {
       path: "/",
-      title: "Dhinova | Web, Mobile, AI & Blockchain Development Company",
+      title: "Dhinova | iOS, Android & Web App Development Company",
       description: site.description,
       changefreq: "weekly",
       priority: "1.0",

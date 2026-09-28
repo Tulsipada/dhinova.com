@@ -1,8 +1,9 @@
 {
   "name": "Dhinova",
+  "siteName": "Dhinova Technology",
   "legalName": "Dhinova Technology Pvt Ltd",
   "tagline": "Infinite Ideas. Smarter Tomorrow.",
-  "description": "Dhinova Technology is a software development company in Kolkata, West Bengal, building custom software, websites, mobile apps, AI, and blockchain solutions for startups and growing businesses.",
+  "description": "Dhinova Technology builds iOS apps, Android apps, and websites for startups and businesses in Kolkata and across India  -  plus AI, blockchain, and product design when you need them.",
   "url": "https://dhinova.com",
   "email": "contact@dhinova.com",
   "phone": "+91 70015 92584",
@@ -17,7 +18,7 @@
     { "label": "YouTube", "href": "https://www.youtube.com/@Dhinova_Technology" },
     { "label": "Reddit", "href": "https://www.reddit.com/user/Dhinova_Technology/" }
   ],
-  "keywords": "Dhinova Technology, software development company Kolkata, custom software development India, web development, mobile app development, AI solutions, blockchain development, UI UX design, SEO, SaaS development",
+  "keywords": "iOS app development, Android app development, mobile app development company India, iPhone app developers Kolkata, Android app developers, web development company Kolkata, Dhinova Technology",
   "nav": [
     { "label": "Services", "href": "#services" },
     { "label": "Projects", "href": "/projects" },
@@ -37,12 +38,11 @@
       { "label": "Blog", "href": "/blogs" }
     ],
     "services": [
-      { "label": "Web Development", "href": "/services/web-development" },
+      { "label": "iOS App Development", "href": "/services/ios-app-development" },
+      { "label": "Android App Development", "href": "/services/android-app-development" },
       { "label": "Mobile Apps", "href": "/services/mobile-app-development" },
+      { "label": "Web Development", "href": "/services/web-development" },
       { "label": "AI Solutions", "href": "/services/ai-solutions" },
-      { "label": "Whitelabel", "href": "/whitelabel" },
-      { "label": "Project Calculator", "href": "/calculator" },
-      { "label": "FAQ", "href": "/faq" },
       { "label": "Contact", "href": "/contact" }
     ],
     "legal": [
@@ -52,8 +52,8 @@
   },
   "hero": {
     "brand": "Dhinova",
-    "headline": "Web, mobile, AI & blockchain software that ships",
-    "subheadline": "A product engineering studio in India helping startups and teams launch reliable digital products.",
+    "headline": "iOS, Android & web apps that ship",
+    "subheadline": "Kolkata-based product engineering for App Store, Play Store, and modern websites  -  with AI and blockchain when the roadmap needs it.",
     "primaryCta": { "label": "Start a project", "href": "/contact" },
     "secondaryCta": { "label": "Explore services", "href": "#services" }
   },

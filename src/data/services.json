@@ -20,22 +20,62 @@
     ]
   },
   {
+    "id": "ios",
+    "icon": "smartphone",
+    "slug": "ios-app-development",
+    "title": "iOS App Development",
+    "description": "Custom iPhone and iPad apps built for App Store quality, performance, and long-term maintainability.",
+    "longDescription": "Looking for an iOS app development company in India? Dhinova designs and builds iPhone and iPad applications with polished UX, secure APIs, and App Store submission support. We ship with React Native or native-focused workflows depending on your product requirements, timeline, and team constraints.",
+    "keywords": "iOS app development, iOS app development company India, iPhone app developers Kolkata, hire iOS developers, App Store app development",
+    "benefits": [
+      "iPhone and iPad product flows designed for clarity and retention",
+      "Secure auth, payments, and API integrations for production use",
+      "App Store guidelines, privacy labels, and submission support",
+      "Performance tuning for smooth scrolling, startup, and battery impact"
+    ],
+    "outcomes": [
+      "A store-ready iOS build with a clear QA checklist",
+      "Architecture your team can extend after launch",
+      "Faster path from idea to TestFlight and App Store release"
+    ]
+  },
+  {
+    "id": "android",
+    "icon": "smartphone",
+    "slug": "android-app-development",
+    "title": "Android App Development",
+    "description": "Custom Android apps for phones and tablets  -  Play Store ready, scalable, and built for real devices.",
+    "longDescription": "Need Android app development for your product? Dhinova builds Android applications that perform across device tiers, with clean architecture, Play Store release support, and integrations for notifications, maps, payments, and analytics. We use React Native for cross-platform speed or Android-focused delivery when your roadmap needs it.",
+    "keywords": "Android app development, Android app development company India, hire Android developers Kolkata, Play Store app development, Android application development",
+    "benefits": [
+      "Android UX patterns that feel native on phones and tablets",
+      "Play Console setup support, signing, and staged rollouts",
+      "Offline-friendly features for field and consumer apps",
+      "Device fragmentation testing on mid-range and flagship hardware"
+    ],
+    "outcomes": [
+      "A Play Store-ready Android release candidate",
+      "Stable performance on the devices your users actually own",
+      "A maintainable codebase for ongoing feature work"
+    ]
+  },
+  {
     "id": "mobile",
     "icon": "smartphone",
     "slug": "mobile-app-development",
     "title": "Mobile App Development",
-    "description": "Cross-platform iOS and Android apps with React Native that feel native and scale with your users.",
-    "longDescription": "We build cross-platform mobile apps with React Native so you can reach iOS and Android from one codebase without sacrificing polish. From onboarding flows to offline sync and push notifications, we focus on reliability in the hands of real users.",
-    "keywords": "React Native development, mobile app development India, iOS Android app company, cross-platform apps",
+    "description": "iOS and Android apps with React Native  -  native feel, shared codebase, store-ready delivery.",
+    "longDescription": "Dhinova builds production mobile apps for iOS and Android. Choose React Native for speed across both platforms, or go deeper on platform-specific work. We handle onboarding, offline sync, push notifications, and App Store / Play Store release support.",
+    "keywords": "mobile app development company India, iOS and Android app development Kolkata, React Native developers, hire mobile app developers",
     "benefits": [
-      "Shared React Native codebase with platform-specific polish where it matters",
-      "Offline-first patterns, push notifications, and deep linking",
-      "App Store and Play Store release support",
-      "Performance profiling for smooth lists, maps, and media-heavy screens"
+      "Dedicated paths for iOS app development and Android app development",
+      "React Native when you want one team shipping both stores",
+      "Push notifications, deep links, offline sync, and analytics hooks",
+      "App Store and Google Play submission support with release checklists"
     ],
     "outcomes": [
-      "Faster time-to-market than separate native teams",
-      "Consistent product experience across devices",
+      "A clear build plan for MVP or production v1",
+      "Consistent UX across iPhone and Android devices",
       "A release process your team can repeat every sprint"
     ]
   },

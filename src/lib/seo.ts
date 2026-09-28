@@ -3,6 +3,7 @@ import services from "@/data/services.json";
 
 export const SITE_URL = site.url;
 export const SITE_NAME = site.name;
+export const SITE_BRAND = site.siteName || "Dhinova Technology";
 export const SITE_LEGAL_NAME = site.legalName;
 export const SITE_DESCRIPTION = site.description;
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
@@ -12,7 +13,7 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: SITE_LEGAL_NAME,
-  alternateName: ["DhiNova", SITE_NAME, "Dhinova Technology"],
+  alternateName: [SITE_BRAND, "DhiNova", SITE_NAME],
   url: SITE_URL.endsWith("/") ? SITE_URL : `${SITE_URL}/`,
   logo: `${SITE_URL}/dhinova.png`,
   image: DEFAULT_OG_IMAGE,
@@ -41,8 +42,13 @@ export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   url: SITE_URL.endsWith("/") ? SITE_URL : `${SITE_URL}/`,
-  name: "DhiNova",
-  alternateName: "Dhinova",
+  name: SITE_BRAND,
+  alternateName: ["DhiNova", SITE_NAME, SITE_LEGAL_NAME],
+  publisher: {
+    "@type": "Organization",
+    name: SITE_LEGAL_NAME,
+    url: SITE_URL.endsWith("/") ? SITE_URL : `${SITE_URL}/`,
+  },
 };
 
 export const servicesSchema = {

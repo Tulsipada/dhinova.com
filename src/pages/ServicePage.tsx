@@ -37,7 +37,12 @@ const ServicePage = () => {
   }
 
   const pagePath = `/services/${service.slug}`;
-  const related = services.filter((item) => item.id !== service.id).slice(0, 3);
+  const mobileCluster = ["ios", "android", "mobile", "web"];
+  const related = (
+    mobileCluster.includes(service.id)
+      ? services.filter((item) => item.id !== service.id && mobileCluster.includes(item.id))
+      : services.filter((item) => item.id !== service.id)
+  ).slice(0, 3);
 
   return (
     <PageShell

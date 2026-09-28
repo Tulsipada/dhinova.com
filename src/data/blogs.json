@@ -94,5 +94,39 @@
       "Agile",
       "CI/CD"
     ]
+  },
+  {
+    "id": 7,
+    "slug": "ios-app-development-company-guide",
+    "title": "How to Choose an iOS App Development Company",
+    "excerpt": "A practical checklist for hiring iPhone app developers: scope, App Store readiness, architecture, cost signals, and what to ask before you sign.",
+    "content": "Hiring an iOS app development company is easier when you separate product goals from technology fashion. This guide covers what founders and product leads should verify before committing budget.\n\n## Start with the job the app must do\nWrite the primary user job in one sentence. Examples: field teams submit jobs offline, customers reorder in under 60 seconds, or patients book and pay securely. If the job is fuzzy, estimates will be fiction.\n\n## Native vs React Native for iOS\nReact Native is a strong default when you also need Android soon and want one product team. Prefer deeper native work when you need bleeding-edge Apple APIs, heavy camera pipelines, or platform-only UX. Ask the vendor to explain the trade-off in your roadmap terms, not slogans.\n\n## App Store readiness is part of the build\nA serious iOS partner plans for TestFlight, privacy nutrition labels, permission copy, review guidelines, and crash monitoring. If delivery ends at IPA handed over, you will pay twice for launch.\n\n## Questions that reveal quality\n- How do you structure features so a second team can maintain the app?\n- What is your TestFlight and release checklist?\n- How do you handle offline, auth, and payment edge cases?\n- What does post-launch support include in the first 90 days?\n\n## Cost signals to trust\nCheap fixed bids with vague scope usually explode. Better partners give milestone ranges, assumptions, and change rules. Pay for discovery when the product is still unclear.\n\n## Conclusion\nChoose an iOS app development partner who talks about users, release risk, and maintainability. Dhinova helps teams in India and abroad ship iPhone apps with clear milestones and store-ready delivery.",
+    "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1600&q=85",
+    "author": "Dhinova Team",
+    "date": "2026-09-20",
+    "category": "Mobile Development",
+    "tags": [
+      "iOS",
+      "App Development",
+      "iPhone",
+      "Hiring"
+    ]
+  },
+  {
+    "id": 8,
+    "slug": "android-app-development-company-checklist",
+    "title": "Android App Development Checklist Before You Hire",
+    "excerpt": "What to demand from an Android app development company: device coverage, Play Store process, architecture, and delivery milestones that protect your launch.",
+    "content": "Android app development succeeds when you plan for device diversity, Play Store policy, and a codebase your team can own. Use this checklist when evaluating vendors in India or abroad.\n\n## Define the Android surfaces you need\nPhone-only MVP is common. Tablets, foldables, and Chrome OS matter later for some products. Be explicit so estimates do not assume a single pixel-perfect phone.\n\n## Architecture questions that matter\nAsk how they handle navigation, state, networking failure, and background work. For React Native projects, ask where native modules are required. For Android-focused builds, ask about modularization and release variants.\n\n## Play Store is not a paperwork afterthought\nA capable Android partner accounts for signing, Play Console setup, staged rollouts, store listing assets, data safety forms, and crash reporting. Launch day should be a process, not a surprise.\n\n## Device testing reality\nYour users may be on mid-range devices with limited RAM. Demand a testing matrix that includes at least one mid-tier Android phone, not only flagships.\n\n## Pricing and milestones\nPrefer milestones tied to demos: clickable prototype, alpha on internal testing track, closed testing, production rollout. Avoid 100 percent upfront for undefined scope.\n\n## Conclusion\nHire an Android app development company that can explain risk, testing, and Play Store delivery in plain language. Dhinova builds Android apps with practical milestones for startups and growing teams.",
+    "image": "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?auto=format&fit=crop&w=1600&q=85",
+    "author": "Dhinova Team",
+    "date": "2026-09-22",
+    "category": "Mobile Development",
+    "tags": [
+      "Android",
+      "App Development",
+      "Play Store",
+      "Hiring"
+    ]
   }
 ]

@@ -120,7 +120,7 @@ function pageSchema(page) {
     name: page.title,
     description: page.description,
     url: pageUrl,
-    isPartOf: { "@type": "WebSite", name: "Dhinova", url: `${SITE_URL}/` },
+    isPartOf: { "@type": "WebSite", name: "Dhinova Technology", url: `${SITE_URL}/` },
   };
 }
 

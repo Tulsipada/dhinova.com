@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { Helmet } from "react-helmet-async";
 import {
   DEFAULT_OG_IMAGE,
-  SITE_NAME,
+  SITE_BRAND,
   absoluteUrl,
 } from "@/lib/seo";
 
@@ -53,8 +53,8 @@ const Seo = ({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageUrl} />
-      <meta property="og:image:alt" content={`${SITE_NAME} preview image`} />
-      <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:image:alt" content={`${SITE_BRAND} preview image`} />
+      <meta property="og:site_name" content={SITE_BRAND} />
       <meta property="og:locale" content="en_IN" />
 
       <meta name="twitter:card" content="summary_large_image" />
@@ -62,7 +62,7 @@ const Seo = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
-      <meta name="twitter:image:alt" content={`${SITE_NAME} preview image`} />
+      <meta name="twitter:image:alt" content={`${SITE_BRAND} preview image`} />
 
       {schemas.map((schema, index) => (
         <script
