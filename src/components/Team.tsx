@@ -22,6 +22,10 @@ const Team = () => {
                 <FallbackImage
                   src={member.image || "/dhinova.png"}
                   alt={member.name || "Team member"}
+                  width={256}
+                  height={256}
+                  loading="lazy"
+                  decoding="async"
                   className={`h-full w-full transition-transform duration-500 ${
                     member.image
                       ? "object-cover group-hover:scale-105"

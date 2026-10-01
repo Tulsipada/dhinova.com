@@ -16,10 +16,11 @@ const BrandMark = ({
 }: BrandMarkProps) => {
   const content = (
     <img
-      src="/nav-logo-light.png"
+      src="/nav-logo-light.webp"
       alt="DhiNova"
-      width={2172}
-      height={724}
+      width={640}
+      height={130}
+      decoding="async"
       className={cn(
         "h-auto w-36 object-contain drop-shadow-[0_0_14px_rgba(14,165,233,0.28)] sm:w-40",
         iconClassName,
