@@ -4,11 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" href="/dhinova.png" />
-    <link rel="apple-touch-icon" href="/dhinova.png" />
+    <link rel="preload" as="image" href="/hero-bg.webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+      />
+    </noscript>
     <title>Dhinova | iOS, Android & Web App Development Company</title>
     <meta name="description" content="Dhinova Technology builds iOS apps, Android apps, and websites for startups and businesses in Kolkata and across India - plus AI, blockchain, and product design when you need them." />
     <meta name="author" content="Dhinova Technology Pvt Ltd" />
@@ -202,13 +212,18 @@
       }
     </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-444TYMX708"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-444TYMX708');
+      window.addEventListener("load", function () {
+        var script = document.createElement("script");
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-444TYMX708";
+        script.async = true;
+        document.head.appendChild(script);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag("js", new Date());
+        gtag("config", "G-444TYMX708");
+      });
     </script>
   </head>
 

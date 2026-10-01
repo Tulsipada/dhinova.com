@@ -1,12 +1,14 @@
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import About from "@/components/About";
-import Team from "@/components/Team";
-import Testimonials from "@/components/Testimonials";
-import BlogPreview from "@/components/BlogPreview";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+
+const Team = lazy(() => import("@/components/Team"));
+const Testimonials = lazy(() => import("@/components/Testimonials"));
+const BlogPreview = lazy(() => import("@/components/BlogPreview"));
+const Contact = lazy(() => import("@/components/Contact"));
 import Seo from "@/components/Seo";
 import site from "@/data/site.json";
 import { organizationSchema, servicesSchema, websiteSchema } from "@/lib/seo";
@@ -28,10 +30,12 @@ const Index = () => {
           <Hero />
           <Services />
           <About />
-          <Team />
-          <Testimonials />
-          <BlogPreview />
-          <Contact />
+          <Suspense fallback={null}>
+            <Team />
+            <Testimonials />
+            <BlogPreview />
+            <Contact />
+          </Suspense>
         </main>
         <Footer />
       </div>

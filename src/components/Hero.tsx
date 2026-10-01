@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, CheckCircle2, Code2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import site from "@/data/site.json";
-import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   const { hero, offer, tagline } = site;
@@ -15,9 +14,14 @@ const Hero = () => {
           : "min-h-[min(720px,100svh)] items-center md:min-h-[min(900px,100svh)]"
       }`}
     >
-      <div
-        className="absolute inset-0 z-0 scale-105 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroBg})` }}
+      <img
+        src="/hero-bg.webp"
+        alt=""
+        width={1280}
+        height={720}
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 z-0 h-full w-full scale-105 object-cover"
       />
       <div
         className="absolute inset-0 z-0"

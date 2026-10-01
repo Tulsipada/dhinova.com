@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -6,23 +6,24 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import Blogs from "./pages/Blogs";
-import BlogPost from "./pages/BlogPost";
-import Projects from "./pages/Projects";
-import ContactPage from "./pages/ContactPage";
-import Whitelabel from "./pages/Whitelabel";
-import Calculator from "./pages/Calculator";
-import Clients from "./pages/Clients";
-import Faq from "./pages/Faq";
-import Careers from "./pages/Careers";
-import Privacy from "./pages/Privacy";
-import Terms from "./pages/Terms";
-import AboutPage from "./pages/AboutPage";
-import Requirements from "./pages/Requirements";
-import Notifications from "./pages/Notifications";
-import Announcements from "./pages/Announcements";
-import ServicePage from "./pages/ServicePage";
+
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Blogs = lazy(() => import("./pages/Blogs"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Projects = lazy(() => import("./pages/Projects"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const Whitelabel = lazy(() => import("./pages/Whitelabel"));
+const Calculator = lazy(() => import("./pages/Calculator"));
+const Clients = lazy(() => import("./pages/Clients"));
+const Faq = lazy(() => import("./pages/Faq"));
+const Careers = lazy(() => import("./pages/Careers"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Terms = lazy(() => import("./pages/Terms"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const Requirements = lazy(() => import("./pages/Requirements"));
+const Notifications = lazy(() => import("./pages/Notifications"));
+const Announcements = lazy(() => import("./pages/Announcements"));
+const ServicePage = lazy(() => import("./pages/ServicePage"));
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollRestoration />
+          <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/services/:slug" element={<ServicePage />} />
@@ -71,6 +73,7 @@ const App = () => (
             <Route path="/blogs/:slug" element={<BlogPost />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          </Suspense>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

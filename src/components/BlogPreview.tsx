@@ -6,6 +6,11 @@ import { Button } from "@/components/ui/button";
 import FallbackImage from "@/components/FallbackImage";
 import SectionHeading from "@/components/SectionHeading";
 
+function previewImage(src: string) {
+  if (!src.includes("images.unsplash.com")) return src;
+  return src.replace(/([?&])w=\d+/, "$1w=800").replace(/([?&])q=\d+/, "$1q=70");
+}
+
 const BlogPreview = () => {
   const { title, subtitle, ctaLabel, ctaHref } = site.blogSection;
   const posts = [...blogs]
@@ -38,8 +43,12 @@ const BlogPreview = () => {
               <Link to={`/blogs/${posts[0].slug}`} className="group block">
                 <div className="mb-6 aspect-[16/10] overflow-hidden rounded-lg bg-gradient-to-br from-muted to-secondary">
                   <FallbackImage
-                    src={posts[0].image}
+                    src={previewImage(posts[0].image)}
                     alt={posts[0].title}
+                    width={800}
+                    height={500}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     fallbackClassName="h-full w-full object-contain p-16"
                   />
