@@ -16,6 +16,16 @@ import {
 } from "@/lib/seo";
 import blogsData from "@/data/blogs.json";
 
+interface BlogFaq {
+  question: string;
+  answer: string;
+}
+
+interface BlogLink {
+  href: string;
+  label: string;
+}
+
 interface Blog {
   id: number;
   slug: string;
@@ -27,6 +37,8 @@ interface Blog {
   date: string;
   category: string;
   tags: string[];
+  faqs?: BlogFaq[];
+  related?: BlogLink[];
 }
 
 const BlogPost = () => {
@@ -181,7 +193,23 @@ const BlogPost = () => {
         image={imageUrl}
         type="article"
         keywords={blog.tags.join(", ")}
-        jsonLd={[structuredData, breadcrumbSchema]}
+        jsonLd={[
+          structuredData,
+          breadcrumbSchema,
+          ...(blog.faqs
+            ? [
+                {
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  mainEntity: blog.faqs.map((item) => ({
+                    "@type": "Question",
+                    name: item.question,
+                    acceptedAnswer: { "@type": "Answer", text: item.answer },
+                  })),
+                },
+              ]
+            : []),
+        ]}
       >
         <meta name="author" content={blog.author} />
         <meta property="article:published_time" content={formatDateISO(blog.date)} />
@@ -236,6 +264,37 @@ const BlogPost = () => {
           <div className="max-w-4xl mx-auto prose prose-lg dark:prose-invert prose-headings:font-bold prose-p:text-muted-foreground prose-p:leading-relaxed">
             {formatContent(blog.content)}
           </div>
+
+          {blog.faqs?.length ? (
+            <section className="mx-auto mt-12 max-w-4xl">
+              <h2 className="mb-4 text-3xl font-bold text-foreground">Questions</h2>
+              <div className="divide-y divide-border border-y border-border">
+                {blog.faqs.map((item) => (
+                  <details key={item.question} className="py-5">
+                    <summary className="cursor-pointer text-xl font-semibold text-foreground">
+                      {item.question}
+                    </summary>
+                    <p className="mb-0 mt-3 text-lg leading-relaxed text-muted-foreground">{item.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {blog.related?.length ? (
+            <nav className="mx-auto mt-10 max-w-4xl" aria-label="Related">
+              <h2 className="mb-4 text-2xl font-semibold text-foreground">Related pages</h2>
+              <ul className="space-y-2">
+                {blog.related.map((item) => (
+                  <li key={item.href}>
+                    <Link to={item.href} className="font-semibold text-accent">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ) : null}
 
           <footer className="max-w-4xl mx-auto mt-12 pt-8 border-t">
             <div className="flex flex-wrap items-center gap-2 mb-4">

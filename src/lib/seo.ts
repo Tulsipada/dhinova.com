@@ -42,8 +42,8 @@ export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   url: SITE_URL.endsWith("/") ? SITE_URL : `${SITE_URL}/`,
-  name: SITE_BRAND,
-  alternateName: ["DhiNova", SITE_NAME, SITE_LEGAL_NAME],
+  name: SITE_NAME,
+  alternateName: [SITE_BRAND, "DhiNova", SITE_LEGAL_NAME],
   publisher: {
     "@type": "Organization",
     name: SITE_LEGAL_NAME,

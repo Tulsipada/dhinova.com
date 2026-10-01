@@ -7,7 +7,7 @@ const Faq = () => (
   <PageShell
     title="Frequently Asked Questions"
     eyebrow="FAQ"
-    description="Answers about Dhinova services, timelines, pricing, whitelabel partnerships, and how we deliver software projects."
+    description="Answers about Dhinova services, timelines, pricing, and hiring a freelancer in Kolkata, Mumbai, Delhi, Bangalore, and other Indian cities."
     path="/faq"
     keywords={`dhinova faq, software development questions, project cost, whitelabel development, ${site.keywords}`}
     jsonLd={{

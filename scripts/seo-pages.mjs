@@ -312,7 +312,8 @@ export function getSeoPages() {
     {
       path: "/faq",
       title: `FAQ | Software Development Questions Answered`,
-      description: "Answers about Dhinova services, timelines, pricing, whitelabel partnerships, and how we deliver software projects.",
+      description:
+        "Answers about Dhinova services, timelines, pricing, and hiring a freelancer in Kolkata, Mumbai, Delhi, Bangalore, and other Indian cities.",
       changefreq: "monthly",
       priority: "0.8",
       schemaType: "FAQPage",
@@ -462,6 +463,7 @@ export function getSeoPages() {
       priority: "0.8",
       lastmod: blog.date,
       image: absolute(blog.image === "/logo_bg.png" || !blog.image ? "/logo_bg.png" : blog.image),
+      faq: blog.faqs,
       body: `
         ${navHtml()}
         <main>
@@ -473,6 +475,26 @@ export function getSeoPages() {
             <p>${escapeHtml(blog.author)} · <time datetime="${escapeHtml(blog.date)}">${escapeHtml(blog.date)}</time></p>
             <img src="${escapeHtml(absolute(blog.image || "/dhinova.png"))}" alt="${escapeHtml(blog.title)}" width="1200" height="630" />
             ${markdownishToHtml(blog.content)}
+            ${
+              Array.isArray(blog.faqs)
+                ? `<h2>Questions</h2>${blog.faqs
+                    .map(
+                      (item) =>
+                        `<section><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p></section>`
+                    )
+                    .join("")}`
+                : ""
+            }
+            ${
+              Array.isArray(blog.related)
+                ? `<h2>Related pages</h2><ul>${blog.related
+                    .map(
+                      (item) =>
+                        `<li><a href="${escapeHtml(absolute(item.href))}">${escapeHtml(item.label)}</a></li>`
+                    )
+                    .join("")}</ul>`
+                : ""
+            }
             <p>Tags: ${blog.tags.map((tag) => escapeHtml(tag)).join(", ")}</p>
           </article>
         </main>

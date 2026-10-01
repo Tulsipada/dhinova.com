@@ -145,6 +145,11 @@ const ServicePage = () => {
                 {paragraph}
               </p>
             ))}
+            <p className="mt-4">
+              <Link to="/blogs/top-freelancer-in-kolkata-and-mumbai" className="font-semibold text-accent">
+                Top freelancer in Kolkata, Mumbai, and other Indian cities
+              </Link>
+            </p>
           </section>
         ) : null}
 

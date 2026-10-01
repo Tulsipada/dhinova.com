@@ -64,8 +64,7 @@ function pageSchema(page) {
   const isBlogPost = page.path.startsWith("/blogs/");
 
   if (isBlogPost) {
-    return {
-      "@context": "https://schema.org",
+    const article = {
       "@type": "BlogPosting",
       headline: page.title.replace(/ \| Dhinova Blog$/, ""),
       description: page.description,
@@ -81,6 +80,25 @@ function pageSchema(page) {
         logo: { "@type": "ImageObject", url: `${SITE_URL}/dhinova.png` },
       },
       mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+    };
+
+    if (!Array.isArray(page.faq)) {
+      return { "@context": "https://schema.org", ...article };
+    }
+
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        article,
+        {
+          "@type": "FAQPage",
+          mainEntity: page.faq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
+        },
+      ],
     };
   }
 
