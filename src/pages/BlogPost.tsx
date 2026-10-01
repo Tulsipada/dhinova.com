@@ -13,6 +13,7 @@ import {
   SITE_NAME,
   SITE_URL,
   absoluteImageUrl,
+  absoluteUrl,
 } from "@/lib/seo";
 import blogsData from "@/data/blogs.json";
 
@@ -125,7 +126,7 @@ const BlogPost = () => {
   }
 
   const pagePath = `/blogs/${blog.slug}`;
-  const pageUrl = `${SITE_URL}${pagePath}`;
+  const pageUrl = absoluteUrl(pagePath);
   const imageUrl =
     blog.image === "/logo_bg.png" ? DEFAULT_OG_IMAGE : absoluteImageUrl(blog.image);
 
@@ -173,7 +174,7 @@ const BlogPost = () => {
         "@type": "ListItem",
         position: 2,
         name: "Blog",
-        item: `${SITE_URL}/blogs`,
+        item: absoluteUrl("/blogs"),
       },
       {
         "@type": "ListItem",

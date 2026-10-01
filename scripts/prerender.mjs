@@ -14,7 +14,7 @@ const distDir = path.resolve(ROOT, "dist");
 const templatePath = path.resolve(distDir, "index.html");
 
 function injectMeta(html, page) {
-  const pageUrl = page.path === "/" ? `${SITE_URL}/` : `${SITE_URL}${page.path}`;
+  const pageUrl = absolute(page.path);
   const image = page.image || `${SITE_URL}/logo_bg.png`;
   const title = page.title;
   const description = page.description;
@@ -60,7 +60,7 @@ function injectMeta(html, page) {
 }
 
 function pageSchema(page) {
-  const pageUrl = page.path === "/" ? `${SITE_URL}/` : `${SITE_URL}${page.path}`;
+  const pageUrl = absolute(page.path);
   const isBlogPost = page.path.startsWith("/blogs/");
 
   if (isBlogPost) {

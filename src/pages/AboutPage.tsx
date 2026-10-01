@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
 import site from "@/data/site.json";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, absoluteUrl } from "@/lib/seo";
 
 const AboutPage = () => (
   <PageShell
@@ -16,7 +16,7 @@ const AboutPage = () => (
       "@context": "https://schema.org",
       "@type": "AboutPage",
       name: "About Dhinova",
-      url: `${SITE_URL}/about`,
+      url: absoluteUrl("/about"),
       mainEntity: {
         "@type": "Organization",
         name: site.legalName,

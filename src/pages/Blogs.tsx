@@ -4,7 +4,7 @@ import { ArrowRight, ArrowUpRight, Search } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import FallbackImage from "@/components/FallbackImage";
 import { Button } from "@/components/ui/button";
-import { DEFAULT_OG_IMAGE, SITE_LEGAL_NAME, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { DEFAULT_OG_IMAGE, SITE_LEGAL_NAME, SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/seo";
 import site from "@/data/site.json";
 import blogsData from "@/data/blogs.json";
 
@@ -67,7 +67,7 @@ const Blogs = () => {
     "@type": "Blog",
     name: `${SITE_NAME} Blog`,
     description: pageDescription,
-    url: `${SITE_URL}/blogs`,
+    url: absoluteUrl("/blogs"),
     publisher: {
       "@type": "Organization",
       name: SITE_LEGAL_NAME,
@@ -77,7 +77,7 @@ const Blogs = () => {
       "@type": "BlogPosting",
       headline: blog.title,
       description: blog.excerpt,
-      url: `${SITE_URL}/blogs/${blog.slug}`,
+      url: absoluteUrl(`/blogs/${blog.slug}`),
       datePublished: new Date(blog.date).toISOString(),
       author: {
         "@type": "Organization",

@@ -4,7 +4,7 @@ import PageShell from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
 import careers from "@/data/careers.json";
 import site from "@/data/site.json";
-import { SITE_URL } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/seo";
 
 const Careers = () => (
   <PageShell
@@ -17,7 +17,7 @@ const Careers = () => (
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       name: "Careers at Dhinova",
-      url: `${SITE_URL}/careers`,
+      url: absoluteUrl("/careers"),
     }}
   >
     <div className="mb-10 rounded-3xl border border-border bg-muted/40 p-8">

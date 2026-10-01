@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin, MessageCircle, ArrowRight } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
 import site from "@/data/site.json";
-import { SITE_URL } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/seo";
 
 const ContactPage = () => {
   const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Dhinova, I would like to discuss a project.")}`;
@@ -25,7 +25,7 @@ const ContactPage = () => {
         "@context": "https://schema.org",
         "@type": "ContactPage",
         name: "Contact Us",
-        url: `${SITE_URL}/contact`,
+        url: absoluteUrl("/contact"),
         mainEntity: {
           "@type": "Organization",
           name: site.legalName,

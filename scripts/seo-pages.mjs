@@ -20,7 +20,15 @@ export const escapeHtml = (value = "") =>
 const absolute = (assetPath = "/") => {
   if (!assetPath) return `${SITE_URL}/`;
   if (assetPath.startsWith("http")) return assetPath;
-  return `${SITE_URL}${assetPath.startsWith("/") ? assetPath : `/${assetPath}`}`;
+  const path = assetPath.startsWith("/") ? assetPath : `/${assetPath}`;
+  const hashIndex = path.indexOf("#");
+  const hash = hashIndex >= 0 ? path.slice(hashIndex) : "";
+  const beforeHash = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
+  if (beforeHash === "/" || /\.[a-z0-9]+$/i.test(beforeHash)) {
+    return `${SITE_URL}${beforeHash}${hash}`;
+  }
+  const slashed = beforeHash.endsWith("/") ? beforeHash : `${beforeHash}/`;
+  return `${SITE_URL}${slashed}${hash}`;
 };
 
 const navHtml = () => {
@@ -508,7 +516,7 @@ export function getSeoPages() {
 export function generateSitemapXml(pages = getSeoPages()) {
   const urls = pages
     .map((page) => {
-      const loc = page.path === "/" ? `${SITE_URL}/` : `${SITE_URL}${page.path}`;
+      const loc = absolute(page.path);
       const lastmod = page.lastmod ? `\n    <lastmod>${page.lastmod}</lastmod>` : "";
       return `  <url>\n    <loc>${loc}</loc>${lastmod}\n    <changefreq>${page.changefreq}</changefreq>\n    <priority>${page.priority}</priority>\n  </url>`;
     })

@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
 import site from "@/data/site.json";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, absoluteUrl } from "@/lib/seo";
 
 const benefits = [
   "Silent delivery under your agency brand",
@@ -26,7 +26,7 @@ const Whitelabel = () => (
       name: "Whitelabel Software Development",
       provider: { "@type": "Organization", name: site.legalName, url: SITE_URL },
       areaServed: "Worldwide",
-      url: `${SITE_URL}/whitelabel`,
+      url: absoluteUrl("/whitelabel"),
     }}
   >
     <div className="grid gap-12 lg:grid-cols-2">

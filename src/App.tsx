@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, type ComponentType } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -27,6 +27,11 @@ const ServicePage = lazy(() => import("./pages/ServicePage"));
 
 const queryClient = new QueryClient();
 
+const slashedRoutes = (path: string, Page: ComponentType) => {
+  const paths = path === "/" ? ["/"] : [path, path.endsWith("/") ? path : `${path}/`];
+  return paths.map((routePath) => <Route key={routePath} path={routePath} element={<Page />} />);
+};
+
 const ScrollRestoration = () => {
   const { pathname, search, hash } = useLocation();
 
@@ -54,23 +59,23 @@ const App = () => (
           <ScrollRestoration />
           <Suspense fallback={null}>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/services/:slug" element={<ServicePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/clients" element={<Clients />} />
-            <Route path="/whitelabel" element={<Whitelabel />} />
-            <Route path="/calculator" element={<Calculator />} />
-            <Route path="/requirements" element={<Requirements />} />
-            <Route path="/notifications" element={<Notifications />} />
-            <Route path="/announcements" element={<Announcements />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/faq" element={<Faq />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blogs/:slug" element={<BlogPost />} />
+            {slashedRoutes("/", Index)}
+            {slashedRoutes("/services/:slug", ServicePage)}
+            {slashedRoutes("/about", AboutPage)}
+            {slashedRoutes("/projects", Projects)}
+            {slashedRoutes("/clients", Clients)}
+            {slashedRoutes("/whitelabel", Whitelabel)}
+            {slashedRoutes("/calculator", Calculator)}
+            {slashedRoutes("/requirements", Requirements)}
+            {slashedRoutes("/notifications", Notifications)}
+            {slashedRoutes("/announcements", Announcements)}
+            {slashedRoutes("/contact", ContactPage)}
+            {slashedRoutes("/faq", Faq)}
+            {slashedRoutes("/careers", Careers)}
+            {slashedRoutes("/privacy", Privacy)}
+            {slashedRoutes("/terms", Terms)}
+            {slashedRoutes("/blogs", Blogs)}
+            {slashedRoutes("/blogs/:slug", BlogPost)}
             <Route path="*" element={<NotFound />} />
           </Routes>
           </Suspense>

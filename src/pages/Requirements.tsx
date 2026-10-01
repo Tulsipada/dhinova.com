@@ -4,7 +4,7 @@ import PageShell from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
 import requirements from "@/data/requirements.json";
 import site from "@/data/site.json";
-import { SITE_URL } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/seo";
 
 const categories = [...new Set(requirements.map((item) => item.category))];
 
@@ -19,7 +19,7 @@ const Requirements = () => (
       "@context": "https://schema.org",
       "@type": "WebPage",
       name: "App Requirements",
-      url: `${SITE_URL}/requirements`,
+      url: absoluteUrl("/requirements"),
     }}
   >
     <div className="mb-10 flex flex-wrap items-center justify-between gap-4">

@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
 import site from "@/data/site.json";
-import { SITE_URL } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/seo";
 
 /* Starter Indian baselines  -  typical mid estimate stays ~₹1-2L */
 const projectTypes = [
@@ -61,7 +61,7 @@ const Calculator = () => {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         name: "Dhinova Project Cost Calculator",
-        url: `${SITE_URL}/calculator`,
+        url: absoluteUrl("/calculator"),
         applicationCategory: "BusinessApplication",
         offers: { "@type": "Offer", priceCurrency: "INR" },
       }}

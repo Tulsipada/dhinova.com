@@ -3,7 +3,7 @@ import { Bell, CalendarDays, CheckCircle2, Filter } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import notifications from "@/data/notifications.json";
 import site from "@/data/site.json";
-import { SITE_URL } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/seo";
 
 const priorityStyles: Record<string, string> = {
   High: "border-accent/30 bg-accent/10 text-accent",
@@ -34,7 +34,7 @@ const Notifications = () => {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         name: "Notifications",
-        url: `${SITE_URL}/notifications`,
+        url: absoluteUrl("/notifications"),
       }}
       headerAside={
         <div className="flex items-center gap-3 rounded-2xl border border-border bg-background/80 px-4 py-3 backdrop-blur">

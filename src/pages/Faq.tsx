@@ -1,7 +1,7 @@
 import PageShell from "@/components/PageShell";
 import faq from "@/data/faq.json";
 import site from "@/data/site.json";
-import { SITE_URL } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/seo";
 
 const Faq = () => (
   <PageShell
@@ -18,7 +18,7 @@ const Faq = () => (
         name: item.question,
         acceptedAnswer: { "@type": "Answer", text: item.answer },
       })),
-      url: `${SITE_URL}/faq`,
+      url: absoluteUrl("/faq"),
     }}
   >
     <div className="mx-auto max-w-3xl divide-y divide-border border-y border-border">

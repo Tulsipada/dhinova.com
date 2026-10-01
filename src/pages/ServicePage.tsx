@@ -4,7 +4,7 @@ import PageShell from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
 import services from "@/data/services.json";
 import site from "@/data/site.json";
-import { SITE_LEGAL_NAME, SITE_URL } from "@/lib/seo";
+import { SITE_LEGAL_NAME, SITE_URL, absoluteUrl } from "@/lib/seo";
 
 const ServicePage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -66,7 +66,7 @@ const ServicePage = () => {
             url: SITE_URL,
           },
           areaServed: "Worldwide",
-          url: `${SITE_URL}${pagePath}`,
+          url: absoluteUrl(pagePath),
         },
         ...(faqs
           ? [
@@ -94,7 +94,7 @@ const ServicePage = () => {
               "@type": "ListItem",
               position: 3,
               name: service.title,
-              item: `${SITE_URL}${pagePath}`,
+              item: absoluteUrl(pagePath),
             },
           ],
         },

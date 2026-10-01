@@ -5,7 +5,7 @@ import PageShell from "@/components/PageShell";
 import FallbackImage from "@/components/FallbackImage";
 import projects from "@/data/projects.json";
 import site from "@/data/site.json";
-import { SITE_URL } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/seo";
 
 const Projects = () => {
   const categories = ["All", ...new Set(projects.map((project) => project.category))];
@@ -26,7 +26,7 @@ const Projects = () => {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         name: "Completed Projects",
-        url: `${SITE_URL}/projects`,
+        url: absoluteUrl("/projects"),
         mainEntity: {
           "@type": "ItemList",
           itemListElement: projects.map((project, index) => ({
@@ -34,7 +34,7 @@ const Projects = () => {
             position: index + 1,
             name: project.title,
             description: project.description,
-            url: project.url || `${SITE_URL}/projects`,
+            url: project.url || absoluteUrl("/projects"),
           })),
         },
       }}

@@ -70,7 +70,7 @@ export const servicesSchema = {
         url: SITE_URL,
       },
       areaServed: "Worldwide",
-      url: `${SITE_URL}/services/${service.slug}`,
+      url: absoluteUrl(`/services/${service.slug}`),
     },
   })),
 };
@@ -78,8 +78,19 @@ export const servicesSchema = {
 export function absoluteUrl(path = "/"): string {
   if (path.startsWith("http")) return path;
   const normalized = path.startsWith("/") ? path : `/${path}`;
-  if (normalized === "/") return `${SITE_URL}/`;
-  return `${SITE_URL}${normalized}`;
+  const hashIndex = normalized.indexOf("#");
+  const hash = hashIndex >= 0 ? normalized.slice(hashIndex) : "";
+  const beforeHash = hashIndex >= 0 ? normalized.slice(0, hashIndex) : normalized;
+  const queryIndex = beforeHash.indexOf("?");
+  const query = queryIndex >= 0 ? beforeHash.slice(queryIndex) : "";
+  const pathname = queryIndex >= 0 ? beforeHash.slice(0, queryIndex) : beforeHash;
+
+  if (pathname === "/" || /\.[a-z0-9]+$/i.test(pathname)) {
+    return `${SITE_URL}${pathname}${query}${hash}`;
+  }
+
+  const slashed = pathname.endsWith("/") ? pathname : `${pathname}/`;
+  return `${SITE_URL}${slashed}${query}${hash}`;
 }
 
 export function absoluteImageUrl(image?: string): string {

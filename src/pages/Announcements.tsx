@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import announcements from "@/data/announcements.json";
 import PageShell from "@/components/PageShell";
 import site from "@/data/site.json";
-import { SITE_URL } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/seo";
 
 const Announcements = () => (
   <PageShell
@@ -15,7 +15,7 @@ const Announcements = () => (
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       name: "Announcements",
-      url: `${SITE_URL}/announcements`,
+      url: absoluteUrl("/announcements"),
     }}
   >
     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

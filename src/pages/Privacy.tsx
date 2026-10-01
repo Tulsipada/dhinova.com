@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PageShell from "@/components/PageShell";
 import site from "@/data/site.json";
-import { SITE_URL } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/seo";
 
 const sections = [
   {
@@ -37,7 +37,7 @@ const Privacy = () => (
       "@context": "https://schema.org",
       "@type": "WebPage",
       name: "Privacy Policy",
-      url: `${SITE_URL}/privacy`,
+      url: absoluteUrl("/privacy"),
     }}
   >
     <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-12">

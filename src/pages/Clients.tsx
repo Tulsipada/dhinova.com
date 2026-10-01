@@ -4,7 +4,7 @@ import PageShell from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
 import clients from "@/data/clients.json";
 import site from "@/data/site.json";
-import { SITE_URL } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/seo";
 
 const Clients = () => (
   <PageShell
@@ -17,7 +17,7 @@ const Clients = () => (
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       name: "Happy Clients",
-      url: `${SITE_URL}/clients`,
+      url: absoluteUrl("/clients"),
       mainEntity: {
         "@type": "ItemList",
         itemListElement: clients.map((client, index) => ({
