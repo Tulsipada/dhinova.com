@@ -39,16 +39,16 @@ const Services = () => {
                   </span>
                 </div>
                 <h3 className="mb-3 font-display text-2xl font-bold md:text-3xl">
-                  <Link to={`/services/${service.slug}`} className="hover:text-accent">
+                  <Link to={`/services/${service.slug}/`} className="hover:text-accent">
                     {service.title}
                   </Link>
                 </h3>
                 <p className="max-w-md leading-relaxed text-muted-foreground">{service.description}</p>
                 <Link
-                  to={`/services/${service.slug}`}
+                  to={`/services/${service.slug}/`}
                   className="mt-6 inline-flex items-center text-sm font-semibold text-accent transition-transform group-hover:translate-x-0.5"
                 >
-                  Learn more
+                  Learn more about {service.title}
                   <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Link>
               </article>
