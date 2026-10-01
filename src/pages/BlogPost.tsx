@@ -288,7 +288,7 @@ const BlogPost = () => {
               <ul className="space-y-2">
                 {blog.related.map((item) => (
                   <li key={item.href}>
-                    <Link to={item.href} className="font-semibold text-accent">
+                    <Link to={item.href} className="font-semibold text-accent-ink">
                       {item.label}
                     </Link>
                   </li>
