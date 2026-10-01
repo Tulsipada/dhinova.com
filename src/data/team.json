@@ -19,6 +19,23 @@
   },
   {
     "id": 3,
+    "name": "Rajkumar Halder",
+    "role": "Co-Founder | AI & n8n Workflow Expert",
+    "bio": "Co-founder focused on AI systems and n8n workflow automation that keep client operations running.",
+    "image": "/team/rajkumar.png",
+    "linkedin": "rajkumar-halder-499802266",
+    "github": "Rj8930"
+  },
+  {
+    "id": 4,
+    "name": "Sourav Mandal",
+    "role": "UI/UX | iOS & Frontend Developer",
+    "bio": "Designs product interfaces and builds iOS and frontend experiences that feel clear and usable.",
+    "image": "/team/sourav-image.png",
+    "linkedin": "sourav-mandal-dev"
+  },
+  {
+    "id": 5,
     "name": "Maniruddin Khan",
     "role": "Mobile & Blockchain Engineer",
     "bio": "Engineer building reliable mobile experiences and practical blockchain solutions.",

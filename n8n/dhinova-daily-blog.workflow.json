@@ -1,0 +1,454 @@
+{
+  "name": "Dhinova Daily Blog (Keyword Agent + FreeLLM + Unsplash + GitHub)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "cronExpression", "expression": "0 9 * * *" }]
+        }
+      },
+      "id": "schedule-daily",
+      "name": "Daily 09:00 IST",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const niches = [\n  { pillar: 'why business needs a mobile app', platform: 'mobile', category: 'Mobile Development' },\n  { pillar: 'why restaurants need an ordering app', platform: 'android', category: 'Mobile Development' },\n  { pillar: 'why service businesses need an iPhone app', platform: 'ios', category: 'Mobile Development' },\n  { pillar: 'app vs WhatsApp Business for customer orders', platform: 'mobile', category: 'Mobile Development' },\n  { pillar: 'why clinics need a patient app', platform: 'ios', category: 'Mobile Development' },\n  { pillar: 'why field sales teams need an Android app', platform: 'android', category: 'Mobile Development' },\n  { pillar: 'why schools need a parent communication app', platform: 'mobile', category: 'Mobile Development' },\n  { pillar: 'custom app vs no-code app for growing SMEs', platform: 'mobile', category: 'Mobile Development' },\n  { pillar: 'why ecommerce brands need an iOS shopping app', platform: 'ios', category: 'Mobile Development' },\n  { pillar: 'why local businesses in India need Android apps', platform: 'android', category: 'Mobile Development' },\n  { pillar: 'website vs mobile app which first for startups', platform: 'web', category: 'Web Development' },\n  { pillar: 'why logistics companies need a driver app', platform: 'android', category: 'Mobile Development' },\n];\n\nconst day = new Date().getUTCDate();\nconst niche = niches[day % niches.length];\nconst today = new Date().toISOString().slice(0, 10);\n\nreturn [{ json: { ...niche, today } }];"
+      },
+      "id": "pick-niche",
+      "name": "Pick Business Niche",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/Tulsipada/dhinova.com/contents/src/data/blogs.json",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Accept", "value": "application/vnd.github+json" },
+            { "name": "X-GitHub-Api-Version", "value": "2022-11-28" }
+          ]
+        },
+        "options": { "timeout": 30000 }
+      },
+      "id": "gh-get-blogs-early",
+      "name": "GitHub GET blogs.json",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [440, 300],
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_GITHUB_CRED_ID", "name": "GitHub PAT" }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const niche = $('Pick Business Niche').item.json;\nconst file = $json;\nconst sha = file.sha;\nconst decoded = Buffer.from(file.content.replace(/\\n/g, ''), 'base64').toString('utf8');\nconst blogs = JSON.parse(decoded);\nconst usedSlugs = blogs.map((b) => b.slug);\nconst usedImages = blogs.map((b) => b.image).filter(Boolean);\nconst usedPhotoIds = usedImages.map((u) => String(u).match(/photo-([a-zA-Z0-9_-]+)/)?.[1]).filter(Boolean);\nconst existingTitles = blogs.map((b) => b.title);\nconst existingKeywords = blogs.flatMap((b) => [b.title, ...(b.tags || [])]).join(' | ');\n\nreturn [{\n  json: {\n    ...niche,\n    sha,\n    blogsJson: decoded,\n    usedSlugs,\n    usedImages,\n    usedPhotoIds,\n    existingTitles: existingTitles.slice(-20).join(' | '),\n    existingKeywords: existingKeywords.slice(0, 1500),\n    nextId: Math.max(0, ...blogs.map((b) => Number(b.id) || 0)) + 1,\n  }\n}];"
+      },
+      "id": "load-existing",
+      "name": "Load Existing Blogs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const ctx = $json;\n// Keyword often burns Gemini/auto pools — prefer high-quota GLM/Gemma for the long blog call.\nreturn [{\n  json: {\n    ...ctx,\n    keywordModel: 'auto:fast',\n    keywordModelAlt: 'auto',\n    blogModel: 'glm-4.7-flash',\n    blogModelAlt: 'gemma-4-26b',\n    expandModel: 'glm-4.7-flash',\n  }\n}];"
+      },
+      "id": "auto-pick-models",
+      "name": "Set FreeLLM auto models",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [880, 300],
+      "notes": "Use FreeLLM auto router instead of pinning one model (fixes exhausted single-route 429)."
+    },
+    {
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 20,
+        "unit": "seconds"
+      },
+      "id": "wait-rate",
+      "name": "Wait 20s (rate limit)",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [1100, 300],
+      "webhookId": "dhinova-blog-wait-rate"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://freellmapi.dhinova.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [{ "name": "Content-Type", "value": "application/json" }]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": {{ JSON.stringify($json.keywordModel) }},\n  \"temperature\": 0.4,\n  \"response_format\": { \"type\": \"json_object\" },\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Dhinova's Keyword Research Agent for a Kolkata software company that sells iOS app development, Android app development, and web apps to business clients.\\n\\nGOAL: Find ONE primary keyword + supporting keywords that are:\\n1) Business-related: why an app is needed, ROI, operations, customers, sales — not pure coding tutorials\\n2) Low competition: long-tail (4–8 words), specific industry + intent, India/SME friendly when natural\\n3) Real search phrasing: how a business owner would type into Google (questions and clear phrases)\\n4) Rankable for a new site: avoid ultra-competitive head terms alone (never primary = just 'app development' or 'android app')\\n\\nPREFERRED PATTERNS:\\n- why [business type] needs a [ios/android/mobile] app\\n- [business type] app vs WhatsApp / website\\n- benefits of custom app for [niche] in India\\n- when should [business] build an Android/iOS app\\n- cost signals / checklist / mistakes (long-tail)\\n\\nPLATFORM HINT from input: ios → lean iOS/iPhone; android → Android/Play Store; mobile → cross-platform; web → website vs app.\\n\\nOUTPUT JSON only:\\n{\\n  \\\"primaryKeyword\\\": \\\"exact phrase to rank for\\\",\\n  \\\"secondaryKeywords\\\": [\\\"3-6 related long-tails\\\"],\\n  \\\"searchIntent\\\": \\\"informational|commercial\\\",\\n  \\\"competition\\\": \\\"low|medium\\\",\\n  \\\"whyLowCompetition\\\": \\\"one sentence\\\",\\n  \\\"blogAngle\\\": \\\"one sentence unique angle for clients\\\",\\n  \\\"seed\\\": \\\"working title idea\\\",\\n  \\\"category\\\": \\\"Mobile Development or Web Development\\\",\\n  \\\"tags\\\": [\\\"3-5 tags\\\"],\\n  \\\"unsplashQuery\\\": \\\"3-6 word unique photo scene\\\"\\n}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Niche pillar: {{ $json.pillar }}\\nPlatform focus: {{ $json.platform }}\\nPreferred category: {{ $json.category }}\\nDate: {{ $json.today }}\\n\\nAvoid overlapping these existing titles/keywords:\\n{{ $json.existingTitles }}\\n{{ $json.existingKeywords }}\\n\\nReturn one fresh low-competition business keyword set.\"\n    }\n  ]\n}",
+        "options": { "timeout": 120000 }
+      },
+      "id": "keyword-agent",
+      "name": "Keyword Agent (FreeLLM)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1500, 220],
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_FREELLM_CRED_ID", "name": "FreeLLMAPI" }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 80000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://freellmapi.dhinova.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [{ "name": "Content-Type", "value": "application/json" }]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": {{ JSON.stringify($('Set FreeLLM auto models').item.json.keywordModelAlt) }},\n  \"temperature\": 0.4,\n  \"response_format\": { \"type\": \"json_object\" },\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Dhinova's Keyword Research Agent for a Kolkata software company that sells iOS app development, Android app development, and web apps to business clients.\\n\\nGOAL: Find ONE primary keyword + supporting keywords that are:\\n1) Business-related: why an app is needed, ROI, operations, customers, sales — not pure coding tutorials\\n2) Low competition: long-tail (4–8 words), specific industry + intent, India/SME friendly when natural\\n3) Real search phrasing: how a business owner would type into Google (questions and clear phrases)\\n4) Rankable for a new site: avoid ultra-competitive head terms alone (never primary = just 'app development' or 'android app')\\n\\nPREFERRED PATTERNS:\\n- why [business type] needs a [ios/android/mobile] app\\n- [business type] app vs WhatsApp / website\\n- benefits of custom app for [niche] in India\\n- when should [business] build an Android/iOS app\\n- cost signals / checklist / mistakes (long-tail)\\n\\nPLATFORM HINT from input: ios → lean iOS/iPhone; android → Android/Play Store; mobile → cross-platform; web → website vs app.\\n\\nOUTPUT JSON only:\\n{\\n  \\\"primaryKeyword\\\": \\\"exact phrase to rank for\\\",\\n  \\\"secondaryKeywords\\\": [\\\"3-6 related long-tails\\\"],\\n  \\\"searchIntent\\\": \\\"informational|commercial\\\",\\n  \\\"competition\\\": \\\"low|medium\\\",\\n  \\\"whyLowCompetition\\\": \\\"one sentence\\\",\\n  \\\"blogAngle\\\": \\\"one sentence unique angle for clients\\\",\\n  \\\"seed\\\": \\\"working title idea\\\",\\n  \\\"category\\\": \\\"Mobile Development or Web Development\\\",\\n  \\\"tags\\\": [\\\"3-5 tags\\\"],\\n  \\\"unsplashQuery\\\": \\\"3-6 word unique photo scene\\\"\\n}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Niche pillar: {{ $('Set FreeLLM auto models').item.json.pillar }}\\nPlatform focus: {{ $('Set FreeLLM auto models').item.json.platform }}\\nPreferred category: {{ $('Set FreeLLM auto models').item.json.category }}\\nDate: {{ $('Set FreeLLM auto models').item.json.today }}\\n\\nAvoid overlapping these existing titles/keywords:\\n{{ $('Set FreeLLM auto models').item.json.existingTitles }}\\n{{ $('Set FreeLLM auto models').item.json.existingKeywords }}\\n\\nReturn one fresh low-competition business keyword set.\"\n    }\n  ]\n}",
+        "options": { "timeout": 120000 }
+      },
+      "id": "keyword-agent-fallback",
+      "name": "Keyword Agent Fallback",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1500, 420],
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_FREELLM_CRED_ID", "name": "FreeLLMAPI" }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 80000,
+      "notes": "Uses keywordModelAlt (different provider) when primary is rate-limited."
+    },
+    {
+      "parameters": {
+        "jsCode": "const ctx = $('Set FreeLLM auto models').item.json;\nconst raw = $json.choices?.[0]?.message?.content || '';\nif (!raw) throw new Error('Keyword Agent empty after primary + fallback. Wait ~2 min or Clear cooldowns in FreeLLMUI.');\nlet kw;\ntry {\n  kw = typeof raw === 'string' ? JSON.parse(raw) : raw;\n} catch (e) {\n  const m = String(raw).match(/\\{[\\s\\S]*\\}/);\n  if (!m) throw new Error('Keyword Agent did not return JSON');\n  kw = JSON.parse(m[0]);\n}\n\nconst primaryKeyword = String(kw.primaryKeyword || '').trim().toLowerCase();\nif (!primaryKeyword || primaryKeyword.split(/\\s+/).length < 3) {\n  throw new Error('primaryKeyword must be a long-tail phrase (3+ words): ' + primaryKeyword);\n}\n\nconst bannedHeads = ['app development', 'android app', 'ios app', 'mobile app', 'web development'];\nif (bannedHeads.includes(primaryKeyword)) {\n  throw new Error('primaryKeyword too competitive/generic: ' + primaryKeyword);\n}\n\nconst seed = kw.seed || kw.blogAngle || primaryKeyword;\nconst secondaryKeywords = Array.isArray(kw.secondaryKeywords) ? kw.secondaryKeywords : [];\nconst tags = Array.isArray(kw.tags) && kw.tags.length ? kw.tags : ['Mobile', 'Business', 'Apps'];\nconst usedModel = $json.model || ctx.keywordModel;\n\nreturn [{\n  json: {\n    ...ctx,\n    keywordModel: usedModel,\n    primaryKeyword,\n    secondaryKeywords,\n    searchIntent: kw.searchIntent || 'commercial',\n    competition: kw.competition || 'low',\n    whyLowCompetition: kw.whyLowCompetition || '',\n    blogAngle: kw.blogAngle || '',\n    seed,\n    category: kw.category || ctx.category,\n    tags,\n    unsplashQuery: kw.unsplashQuery || 'small business owner smartphone',\n    query: primaryKeyword,\n  }\n}];"
+      },
+      "id": "parse-keywords",
+      "name": "Parse Keyword Agent",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1760, 300]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.duckduckgo.com/?q={{ encodeURIComponent($json.primaryKeyword) }}&format=json&no_html=1&skip_disambig=1",
+        "options": { "timeout": 20000 }
+      },
+      "id": "ddg-research",
+      "name": "Free Research (DuckDuckGo)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1760, 300],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const topic = $('Parse Keyword Agent').item.json;\nconst ddg = $json || {};\nconst bits = [];\nif (ddg.AbstractText) bits.push(ddg.AbstractText);\nif (Array.isArray(ddg.RelatedTopics)) {\n  for (const t of ddg.RelatedTopics.slice(0, 8)) {\n    if (t.Text) bits.push(t.Text);\n    if (Array.isArray(t.Topics)) {\n      for (const x of t.Topics.slice(0, 3)) if (x.Text) bits.push(x.Text);\n    }\n  }\n}\nconst researchNotes = bits.length\n  ? bits.slice(0, 12).map((b) => '- ' + b).join('\\n')\n  : '- Write from original business/product experience; do not copy web text.';\n\nreturn [{ json: { ...topic, researchNotes } }];"
+      },
+      "id": "pack-research",
+      "name": "Pack Research",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1980, 300]
+    },
+    {
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 180,
+        "unit": "seconds"
+      },
+      "id": "wait-before-blog",
+      "name": "Wait 3m (before blog)",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [2160, 300],
+      "webhookId": "dhinova-blog-wait-before-blog",
+      "notes": "Keyword Agent burns FreeLLM routes — wait before long blog so 429 is less likely."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://freellmapi.dhinova.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [{ "name": "Content-Type", "value": "application/json" }]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": {{ JSON.stringify($json.blogModel) }},\n  \"temperature\": 0.85,\n  \"max_tokens\": 8192,\n  \"response_format\": { \"type\": \"json_object\" },\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You write original long-form blog posts for Dhinova Technology (Kolkata): iOS, Android, and web apps for business clients.\\n\\nVOICE: Calm senior advisor talking to a business owner. Human, concrete, no hype, no fake stats, no copied articles.\\n\\nSEO: Rank for the given primaryKeyword. Use it naturally in title, first 100 words, one H2, and conclusion — never stuff.\\nAlso cover secondaryKeywords lightly.\\n\\nLENGTH: The content field MUST be 1500–2000 words of real paragraphs. Short drafts are rejected. Do not stop early.\\n\\nSTRUCTURE: hook paragraph, then ## sections: Why this matters for the business, What breaks without an app, What a good app should do, Cost and timeline signals, Mistakes to avoid, Questions to ask a vendor, Conclusion.\\n\\nINTERNAL LINKS (3–5, woven into sentences):\\n- [iOS app development](https://dhinova.com/services/ios-app-development)\\n- [Android app development](https://dhinova.com/services/android-app-development)\\n- [mobile app development](https://dhinova.com/services/mobile-app-development)\\n- [web development](https://dhinova.com/services/web-development)\\n- [project calculator](https://dhinova.com/calculator)\\n- [contact Dhinova](https://dhinova.com/contact)\\n\\nMention Dhinova at most twice.\\n\\nOUTPUT JSON: title, excerpt, content, category, tags, unsplashQuery\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"PRIMARY KEYWORD (must target): {{ $json.primaryKeyword }}\\nSECONDARY: {{ $json.secondaryKeywords.join(', ') }}\\nINTENT: {{ $json.searchIntent }}\\nCOMPETITION: {{ $json.competition }} — {{ $json.whyLowCompetition }}\\nANGLE: {{ $json.blogAngle }}\\nWorking title idea: {{ $json.seed }}\\nCategory: {{ $json.category }}\\nTags hint: {{ $json.tags.join(', ') }}\\nDate: {{ $json.today }}\\n\\nResearch notes (rewrite fully, never copy):\\n{{ $json.researchNotes }}\\n\\nAvoid titles like: {{ $json.existingTitles }}\\n\\nWrite a client-useful 1500–2000 word post that a business owner would finish reading.\"\n    }\n  ]\n}",
+        "options": { "timeout": 240000 }
+      },
+      "id": "freellm-generate",
+      "name": "FreeLLMAPI Generate Blog",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2380, 220],
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_FREELLM_CRED_ID", "name": "FreeLLMAPI" }
+      },
+      "retryOnFail": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 180,
+        "unit": "seconds"
+      },
+      "id": "wait-on-429",
+      "name": "Wait 3m (after 429)",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [2380, 520],
+      "webhookId": "dhinova-blog-wait-after-429",
+      "notes": "On Generate Blog 429, cool down before trying a different provider."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://freellmapi.dhinova.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [{ "name": "Content-Type", "value": "application/json" }]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": {{ JSON.stringify($('Pack Research').item.json.blogModelAlt) }},\n  \"temperature\": 0.85,\n  \"max_tokens\": 8192,\n  \"response_format\": { \"type\": \"json_object\" },\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You write original long-form blog posts for Dhinova Technology (Kolkata): iOS, Android, and web apps for business clients.\\n\\nVOICE: Calm senior advisor talking to a business owner. Human, concrete, no hype, no fake stats, no copied articles.\\n\\nSEO: Rank for the given primaryKeyword. Use it naturally in title, first 100 words, one H2, and conclusion — never stuff.\\nAlso cover secondaryKeywords lightly.\\n\\nLENGTH: The content field MUST be 1500–2000 words of real paragraphs. Short drafts are rejected. Do not stop early.\\n\\nSTRUCTURE: hook paragraph, then ## sections: Why this matters for the business, What breaks without an app, What a good app should do, Cost and timeline signals, Mistakes to avoid, Questions to ask a vendor, Conclusion.\\n\\nINTERNAL LINKS (3–5, woven into sentences):\\n- [iOS app development](https://dhinova.com/services/ios-app-development)\\n- [Android app development](https://dhinova.com/services/android-app-development)\\n- [mobile app development](https://dhinova.com/services/mobile-app-development)\\n- [web development](https://dhinova.com/services/web-development)\\n- [project calculator](https://dhinova.com/calculator)\\n- [contact Dhinova](https://dhinova.com/contact)\\n\\nMention Dhinova at most twice.\\n\\nOUTPUT JSON: title, excerpt, content, category, tags, unsplashQuery\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"PRIMARY KEYWORD (must target): {{ $('Pack Research').item.json.primaryKeyword }}\\nSECONDARY: {{ $('Pack Research').item.json.secondaryKeywords.join(', ') }}\\nINTENT: {{ $('Pack Research').item.json.searchIntent }}\\nCOMPETITION: {{ $('Pack Research').item.json.competition }} — {{ $('Pack Research').item.json.whyLowCompetition }}\\nANGLE: {{ $('Pack Research').item.json.blogAngle }}\\nWorking title idea: {{ $('Pack Research').item.json.seed }}\\nCategory: {{ $('Pack Research').item.json.category }}\\nTags hint: {{ $('Pack Research').item.json.tags.join(', ') }}\\nDate: {{ $('Pack Research').item.json.today }}\\n\\nResearch notes (rewrite fully, never copy):\\n{{ $('Pack Research').item.json.researchNotes }}\\n\\nAvoid titles like: {{ $('Pack Research').item.json.existingTitles }}\\n\\nWrite a client-useful 1500–2000 word post that a business owner would finish reading.\"\n    }\n  ]\n}",
+        "options": { "timeout": 240000 }
+      },
+      "id": "freellm-generate-fallback",
+      "name": "Generate Blog Fallback",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2600, 520],
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_FREELLM_CRED_ID", "name": "FreeLLMAPI" }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 180000,
+      "notes": "gemma-4-26b after 3m cooldown — different provider than primary glm."
+    },
+    {
+      "parameters": {
+        "jsCode": "const ctx = $('Pack Research').item.json;\nconst choice = $json.choices?.[0] || {};\nconst finish = choice.finish_reason || '';\nconst raw = choice.message?.content || '';\nif (!raw) throw new Error('Blog empty. Clear FreeLLM cooldowns and re-run Generate Blog.');\nlet parsed;\ntry {\n  parsed = typeof raw === 'string' ? JSON.parse(raw) : raw;\n} catch (e) {\n  const m = String(raw).match(/\\{[\\s\\S]*\\}/);\n  if (!m) throw new Error('Blog JSON parse failed');\n  parsed = JSON.parse(m[0]);\n}\n\nfunction slugify(s) {\n  return String(s).toLowerCase().replace(/[^a-z0-9\\s-]/g, '').trim().replace(/\\s+/g, '-').replace(/-+/g, '-').slice(0, 90);\n}\n\nconst title = (parsed.title || ctx.seed).trim();\nlet slug = slugify(title);\nif (ctx.usedSlugs.includes(slug)) slug = `${slug}-${ctx.today.replace(/-/g, '')}`;\n\nconst content = String(parsed.content || parsed.body || parsed.post || '').trim();\nconst words = content.split(/\\s+/).filter(Boolean).length;\nif (words < 400) {\n  throw new Error(`Draft too thin: ${words} words (model=${$json.model || ctx.blogModel}, finish=${finish}).`);\n}\n\nreturn [{\n  json: {\n    ...ctx,\n    blogModel: $json.model || ctx.blogModel,\n    title,\n    slug,\n    excerpt: parsed.excerpt || title,\n    content,\n    category: parsed.category || ctx.category,\n    tags: Array.isArray(parsed.tags) && parsed.tags.length ? parsed.tags : ctx.tags,\n    unsplashQuery: parsed.unsplashQuery || ctx.unsplashQuery,\n    wordCount: words,\n    needsExpand: words < 1200,\n    author: 'Dhinova Team',\n    date: ctx.today,\n  }\n}];"
+      },
+      "id": "parse-blog",
+      "name": "Parse Draft",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2620, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.needsExpand }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "if-expand",
+      "name": "Needs Expand?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [2800, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://freellmapi.dhinova.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [{ "name": "Content-Type", "value": "application/json" }]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": {{ JSON.stringify($json.expandModel || 'gemini-2.5-flash') }},\n  \"temperature\": 0.7,\n  \"max_tokens\": 8192,\n  \"response_format\": { \"type\": \"json_object\" },\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You expand short blog drafts into full 1500–2000 word articles for Dhinova Technology.\\nKeep the same title/angle/primaryKeyword.\\nAdd concrete sections, examples, checklists, and vendor questions.\\nPreserve and add internal markdown links to dhinova.com services (at least 3).\\nReturn JSON: title, excerpt, content, category, tags, unsplashQuery.\\ncontent MUST be 1500–2000 words.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"PRIMARY KEYWORD: {{ $json.primaryKeyword }}\\nCurrent word count: {{ $json.wordCount }}\\nTitle: {{ $json.title }}\\n\\nDraft to expand:\\n{{ $json.content }}\\n\\nReturn a full 1500–2000 word JSON blog. Do not summarize — expand.\"\n    }\n  ]\n}",
+        "options": { "timeout": 240000 }
+      },
+      "id": "expand-blog",
+      "name": "Expand Short Blog",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [3020, 200],
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_FREELLM_CRED_ID", "name": "FreeLLMAPI" }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 60000
+    },
+    {
+      "parameters": {
+        "jsCode": "const ctx = $('Parse Draft').item.json;\nconst raw = $json.choices?.[0]?.message?.content || '';\nlet parsed;\ntry {\n  parsed = typeof raw === 'string' ? JSON.parse(raw) : raw;\n} catch (e) {\n  const m = String(raw).match(/\\{[\\s\\S]*\\}/);\n  if (!m) throw new Error('Expand JSON parse failed');\n  parsed = JSON.parse(m[0]);\n}\nconst content = String(parsed.content || '').trim();\nconst words = content.split(/\\s+/).filter(Boolean).length;\nif (words < 1200) throw new Error(`Expand still short: ${words} words (model=${$json.model || ctx.expandModel})`);\nconst linkCount = (content.match(/https:\\/\\/dhinova\\.com\\//g) || []).length;\nif (linkCount < 3) throw new Error(`Need 3+ internal links after expand, found ${linkCount}`);\nreturn [{\n  json: {\n    ...ctx,\n    blogModel: ($json.model || ctx.blogModel) + '+expand',\n    title: (parsed.title || ctx.title).trim(),\n    excerpt: parsed.excerpt || ctx.excerpt,\n    content,\n    category: parsed.category || ctx.category,\n    tags: Array.isArray(parsed.tags) && parsed.tags.length ? parsed.tags : ctx.tags,\n    unsplashQuery: parsed.unsplashQuery || ctx.unsplashQuery,\n    wordCount: words,\n    needsExpand: false,\n  }\n}];"
+      },
+      "id": "parse-expand",
+      "name": "Parse Expanded",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3240, 200]
+    },
+    {
+      "parameters": {
+        "jsCode": "const blog = $json;\nif (blog.needsExpand) throw new Error('Blog still marked needsExpand');\nconst words = blog.wordCount || String(blog.content || '').split(/\\s+/).filter(Boolean).length;\nif (words < 1200) throw new Error(`Final gate: too short (${words})`);\nconst linkCount = (String(blog.content).match(/https:\\/\\/dhinova\\.com\\//g) || []).length;\nif (linkCount < 3) throw new Error(`Final gate: need 3+ links, found ${linkCount}`);\nconst hay = (blog.title + ' ' + String(blog.content).slice(0, 800)).toLowerCase();\nconst tokens = String(blog.primaryKeyword || '').toLowerCase().split(/\\s+/).filter((w) => w.length > 3);\nconst hit = tokens.filter((t) => hay.includes(t)).length;\nif (tokens.length && hit < Math.ceil(tokens.length * 0.6)) {\n  throw new Error('Final gate: primary keyword weak in title/intro');\n}\nreturn [{ json: { ...blog, wordCount: words, needsExpand: false } }];"
+      },
+      "id": "final-gate",
+      "name": "Final Quality Gate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3460, 300]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.unsplash.com/search/photos",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "query", "value": "={{ $json.unsplashQuery }}" },
+            { "name": "per_page", "value": "15" },
+            { "name": "orientation", "value": "landscape" },
+            { "name": "content_filter", "value": "high" }
+          ]
+        },
+        "options": { "timeout": 30000 }
+      },
+      "id": "unsplash",
+      "name": "Unsplash Search (15)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [3680, 300],
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_UNSPLASH_CRED_ID", "name": "Unsplash" }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const blog = $('Final Quality Gate').item.json;\nconst used = new Set(blog.usedPhotoIds || []);\nconst results = Array.isArray($json.results) ? $json.results : [];\n\nlet chosen = null;\nfor (const photo of results) {\n  const id = photo?.id;\n  if (!id) continue;\n  if (used.has(id)) continue;\n  if ((blog.usedImages || []).some((u) => String(u).includes(id))) continue;\n  chosen = photo;\n  break;\n}\nif (!chosen?.urls?.regular) throw new Error('No unused Unsplash image');\n\nreturn [{ json: { ...blog, image: `${chosen.urls.regular}&w=1600&q=85`, unsplashId: chosen.id } }];"
+      },
+      "id": "attach-image",
+      "name": "Pick Unused Image",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3900, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const blog = $json;\nconst blogs = JSON.parse(blog.blogsJson);\nif (blogs.some((b) => b.slug === blog.slug)) throw new Error('Slug exists: ' + blog.slug);\nif (blogs.some((b) => String(b.image || '').includes(blog.unsplashId))) throw new Error('Image used: ' + blog.unsplashId);\n\nconst post = {\n  id: blog.nextId,\n  slug: blog.slug,\n  title: blog.title,\n  excerpt: blog.excerpt,\n  content: blog.content,\n  image: blog.image,\n  author: blog.author,\n  date: blog.date,\n  category: blog.category,\n  tags: blog.tags,\n  primaryKeyword: blog.primaryKeyword,\n  secondaryKeywords: blog.secondaryKeywords,\n};\n\nblogs.push(post);\nconst body = JSON.stringify(blogs, null, 2) + '\\n';\n\nreturn [{\n  json: {\n    sha: blog.sha,\n    content: Buffer.from(body, 'utf8').toString('base64'),\n    message: `content: add blog ${post.slug} [${blog.primaryKeyword}]`,\n    slug: post.slug,\n    title: post.title,\n    primaryKeyword: blog.primaryKeyword,\n    keywordModel: blog.keywordModel,\n    blogModel: blog.blogModel,\n    wordCount: blog.wordCount,\n    path: `/blogs/${post.slug}`,\n  }\n}];"
+      },
+      "id": "merge-blogs",
+      "name": "Merge Into blogs.json",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [4120, 300]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://api.github.com/repos/Tulsipada/dhinova.com/contents/src/data/blogs.json",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Accept", "value": "application/vnd.github+json" },
+            { "name": "X-GitHub-Api-Version", "value": "2022-11-28" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\": {{ JSON.stringify($json.message) }},\n  \"content\": {{ JSON.stringify($json.content) }},\n  \"sha\": {{ JSON.stringify($json.sha) }},\n  \"branch\": \"main\"\n}",
+        "options": { "timeout": 60000 }
+      },
+      "id": "gh-put-blogs",
+      "name": "GitHub PUT blogs.json",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [4340, 300],
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_GITHUB_CRED_ID", "name": "GitHub PAT" }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const m = $('Merge Into blogs.json').item.json;\nreturn [{ json: { ok: true, title: m.title, primaryKeyword: m.primaryKeyword, keywordModel: m.keywordModel, blogModel: m.blogModel, wordCount: m.wordCount, url: 'https://dhinova.com' + m.path } }];"
+      },
+      "id": "done",
+      "name": "Done",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [4560, 300]
+    }
+  ],
+  "connections": {
+    "Daily 09:00 IST": { "main": [[{ "node": "Pick Business Niche", "type": "main", "index": 0 }]] },
+    "Pick Business Niche": { "main": [[{ "node": "GitHub GET blogs.json", "type": "main", "index": 0 }]] },
+    "GitHub GET blogs.json": { "main": [[{ "node": "Load Existing Blogs", "type": "main", "index": 0 }]] },
+    "Load Existing Blogs": { "main": [[{ "node": "Set FreeLLM auto models", "type": "main", "index": 0 }]] },
+    "Set FreeLLM auto models": { "main": [[{ "node": "Wait 20s (rate limit)", "type": "main", "index": 0 }]] },
+    "Wait 20s (rate limit)": { "main": [[{ "node": "Keyword Agent (FreeLLM)", "type": "main", "index": 0 }]] },
+    "Keyword Agent (FreeLLM)": {
+      "main": [[{ "node": "Parse Keyword Agent", "type": "main", "index": 0 }]],
+      "error": [[{ "node": "Keyword Agent Fallback", "type": "main", "index": 0 }]]
+    },
+    "Keyword Agent Fallback": { "main": [[{ "node": "Parse Keyword Agent", "type": "main", "index": 0 }]] },
+    "Parse Keyword Agent": { "main": [[{ "node": "Free Research (DuckDuckGo)", "type": "main", "index": 0 }]] },
+    "Free Research (DuckDuckGo)": { "main": [[{ "node": "Pack Research", "type": "main", "index": 0 }]] },
+    "Pack Research": { "main": [[{ "node": "Wait 3m (before blog)", "type": "main", "index": 0 }]] },
+    "Wait 3m (before blog)": { "main": [[{ "node": "FreeLLMAPI Generate Blog", "type": "main", "index": 0 }]] },
+    "FreeLLMAPI Generate Blog": {
+      "main": [[{ "node": "Parse Draft", "type": "main", "index": 0 }]],
+      "error": [[{ "node": "Wait 3m (after 429)", "type": "main", "index": 0 }]]
+    },
+    "Wait 3m (after 429)": { "main": [[{ "node": "Generate Blog Fallback", "type": "main", "index": 0 }]] },
+    "Generate Blog Fallback": { "main": [[{ "node": "Parse Draft", "type": "main", "index": 0 }]] },
+    "Parse Draft": { "main": [[{ "node": "Needs Expand?", "type": "main", "index": 0 }]] },
+    "Needs Expand?": {
+      "main": [
+        [{ "node": "Expand Short Blog", "type": "main", "index": 0 }],
+        [{ "node": "Final Quality Gate", "type": "main", "index": 0 }]
+      ]
+    },
+    "Expand Short Blog": { "main": [[{ "node": "Parse Expanded", "type": "main", "index": 0 }]] },
+    "Parse Expanded": { "main": [[{ "node": "Final Quality Gate", "type": "main", "index": 0 }]] },
+    "Final Quality Gate": { "main": [[{ "node": "Unsplash Search (15)", "type": "main", "index": 0 }]] },
+    "Unsplash Search (15)": { "main": [[{ "node": "Pick Unused Image", "type": "main", "index": 0 }]] },
+    "Pick Unused Image": { "main": [[{ "node": "Merge Into blogs.json", "type": "main", "index": 0 }]] },
+    "Merge Into blogs.json": { "main": [[{ "node": "GitHub PUT blogs.json", "type": "main", "index": 0 }]] },
+    "GitHub PUT blogs.json": { "main": [[{ "node": "Done", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1", "timezone": "Asia/Kolkata" },
+  "staticData": null,
+  "meta": { "templateCredsSetupCompleted": false },
+  "pinData": {},
+  "tags": [{ "name": "dhinova" }, { "name": "seo-blog" }, { "name": "keyword-agent" }]
+}
