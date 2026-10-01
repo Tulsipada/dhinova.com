@@ -42,6 +42,7 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          ink: "hsl(var(--accent-ink))",
         },
         nova: {
           DEFAULT: "hsl(var(--nova))",

@@ -34,7 +34,7 @@ const Services = () => {
                   <span className="font-display text-sm font-semibold text-muted-foreground transition-colors group-hover:text-accent">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent-ink transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
                     <Icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
                   </span>
                 </div>
@@ -46,7 +46,7 @@ const Services = () => {
                 <p className="max-w-md leading-relaxed text-muted-foreground">{service.description}</p>
                 <Link
                   to={`/services/${service.slug}/`}
-                  className="mt-6 inline-flex items-center text-sm font-semibold text-accent transition-transform group-hover:translate-x-0.5"
+                  className="mt-6 inline-flex items-center text-sm font-semibold text-accent-ink transition-transform group-hover:translate-x-0.5"
                 >
                   Learn more about {service.title}
                   <ArrowRight className="ml-1.5 h-4 w-4" />

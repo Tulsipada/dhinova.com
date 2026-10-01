@@ -25,6 +25,7 @@
 
     --accent: 199 100% 42%;
     --accent-foreground: 0 0% 100%;
+    --accent-ink: 199 100% 32%;
 
     --nova: 262 72% 48%;
     --nova-foreground: 0 0% 100%;
@@ -117,7 +118,7 @@
   }
 
   .section-eyebrow {
-    @apply mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-accent;
+    @apply mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-accent-ink;
   }
 
   .section-title {
