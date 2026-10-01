@@ -40,7 +40,7 @@ const ContactPage = () => {
             const Icon = item.icon;
             const body = (
               <div className="flex items-start gap-4 rounded-2xl border border-border p-6">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/15 text-accent">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/15 text-accent-ink">
                   <Icon className="h-5 w-5" />
                 </div>
                 <div>
@@ -67,7 +67,7 @@ const ContactPage = () => {
             Email us a short brief, or use the project calculator for a quick estimate before we talk.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button asChild size="lg" className="w-full rounded-full bg-accent text-accent-foreground hover:bg-accent/90 sm:w-auto">
+            <Button asChild size="lg" className="w-full rounded-full bg-accent-ink text-white hover:brightness-95 sm:w-auto">
               <a href={`mailto:${site.email}`}>
                 Email {site.email}
                 <ArrowRight className="ml-2 h-4 w-4" />

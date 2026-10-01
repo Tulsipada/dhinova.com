@@ -163,7 +163,7 @@ const Calculator = () => {
             Indicative Indian market pricing in INR (excl. 18% GST). Final quote depends on scope,
             integrations, design depth, and compliance needs.
           </p>
-          <Button asChild size="lg" className="mt-8 rounded-full bg-accent text-accent-foreground hover:bg-accent/90">
+          <Button asChild size="lg" className="mt-8 rounded-full bg-accent-ink text-white hover:brightness-95">
             <Link to="/contact">
               Get a precise quote
               <ArrowRight className="ml-2 h-4 w-4" />

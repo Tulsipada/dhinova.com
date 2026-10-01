@@ -34,7 +34,7 @@ const Services = () => {
                   <span className="font-display text-sm font-semibold text-muted-foreground transition-colors group-hover:text-accent">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent-ink transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent-ink transition-colors group-hover:bg-accent-ink group-hover:text-white">
                     <Icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
                   </span>
                 </div>

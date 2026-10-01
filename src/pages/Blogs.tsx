@@ -317,7 +317,7 @@ const Blogs = () => {
               <Button
                 asChild
                 size="lg"
-                className="shrink-0 rounded-full bg-accent text-accent-foreground hover:bg-accent/90"
+                className="shrink-0 rounded-full bg-accent-ink text-white hover:brightness-95"
               >
                 <Link to="/contact">
                   Talk to us

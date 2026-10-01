@@ -20,11 +20,11 @@ const Testimonials = () => {
                 “{item.quote}”
               </p>
               <footer className="flex items-center gap-3">
-                <Avatar className="h-11 w-11 bg-accent/10 text-accent">
+                <Avatar className="h-11 w-11">
                   {item.avatar && item.avatar !== "/logo_bg.png" ? (
                     <AvatarImage src={item.avatar} alt={item.name} />
                   ) : null}
-                  <AvatarFallback>
+                  <AvatarFallback className="bg-[hsl(199_60%_94%)] text-sm font-semibold text-[hsl(199_100%_26%)]">
                     {item.name
                       .split(" ")
                       .map((namePart) => namePart[0])
