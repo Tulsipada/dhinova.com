@@ -5,13 +5,32 @@
     "slug": "web-development",
     "title": "Web Development",
     "description": "Fast, responsive web apps with React and modern APIs  -  built for clarity, performance, and growth.",
-    "longDescription": "Dhinova designs and builds production-ready web applications for startups and growing companies. We ship marketing sites, customer portals, admin dashboards, and full SaaS products with clean architecture, measurable performance, and SEO-ready foundations.",
-    "keywords": "web development company India, React development, custom web applications, SaaS development Kolkata",
+    "longDescription": "Dhinova designs and builds production-ready web applications for startups and growing companies. We ship marketing sites, customer portals, admin dashboards, and full SaaS products with clean architecture, measurable performance, and SEO-ready foundations. Hire a web freelancer from the same team when you want one person to own the site.",
+    "keywords": "web development company India, React development, custom web applications, SaaS development Kolkata, web freelancer, website freelancer",
+    "hire": {
+      "id": "web-freelancer",
+      "heading": "Hire a web freelancer",
+      "paragraphs": [
+        "Need a web freelancer for a marketing site, customer portal, or a first SaaS release? Dhinova assigns one website freelancer who stays on your React build from the first page through launch.",
+        "You still get the same reviews, performance checks, and SEO foundations as a full web project, with direct updates instead of a large-agency handoff."
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Can I hire a web freelancer at Dhinova?",
+        "answer": "Yes. A web freelancer at Dhinova is a dedicated engineer for your website or web app. You get React and TypeScript delivery, a clear scope, and a launch plan without switching vendors mid-project."
+      },
+      {
+        "question": "What does a website freelancer from Dhinova build?",
+        "answer": "A website freelancer here can ship a marketing site, a logged-in portal, or an admin dashboard, including auth, payments, and the technical SEO basics needed to publish."
+      }
+    ],
     "benefits": [
       "React and TypeScript codebases that stay maintainable as your product grows",
       "Responsive UI built for conversion, accessibility, and Core Web Vitals",
       "API integrations, auth, payments, and admin tooling when you need them",
-      "Technical SEO basics: metadata, sitemaps, structured data, and fast delivery"
+      "Technical SEO basics: metadata, sitemaps, structured data, and fast delivery",
+      "A website freelancer when you want one dedicated person on the first launch"
     ],
     "outcomes": [
       "Launch-ready MVPs in weeks, not open-ended cycles",
@@ -25,13 +44,32 @@
     "slug": "ios-app-development",
     "title": "iOS App Development",
     "description": "Custom iPhone and iPad apps built for App Store quality, performance, and long-term maintainability.",
-    "longDescription": "Looking for an iOS app development company in India? Dhinova designs and builds iPhone and iPad applications with polished UX, secure APIs, and App Store submission support. We ship with React Native or native-focused workflows depending on your product requirements, timeline, and team constraints.",
-    "keywords": "iOS app development, iOS app development company India, iPhone app developers Kolkata, hire iOS developers, App Store app development",
+    "longDescription": "Looking for an iOS app development company in India? Dhinova designs and builds iPhone and iPad applications with polished UX, secure APIs, and App Store submission support. We ship with React Native or native-focused workflows depending on your product requirements, timeline, and team constraints. Hire an iOS freelancer from the same team when you want one dedicated person on the App Store build.",
+    "keywords": "iOS app development, iOS app development company India, iPhone app developers Kolkata, hire iOS developers, App Store app development, ios freelancer, freelancer ios app developer",
+    "hire": {
+      "id": "ios-freelancer",
+      "heading": "Hire an iOS freelancer",
+      "paragraphs": [
+        "If you want an iOS freelancer for an iPhone or iPad app, Dhinova assigns one engineer who designs, builds, and helps you submit to the App Store.",
+        "A freelancer iOS app developer here uses the same TestFlight builds, privacy labels, and release checklist as our iOS team, with direct progress updates."
+      ]
+    },
+    "faqs": [
+      {
+        "question": "How do I hire an iOS freelancer from Dhinova?",
+        "answer": "Share the app idea, must-have screens, and timeline. We match you with an iOS freelancer, confirm scope, and start TestFlight builds so you can review the product before App Store submission."
+      },
+      {
+        "question": "What does a freelancer iOS app developer deliver?",
+        "answer": "A freelancer iOS app developer at Dhinova delivers the iPhone or iPad flows you scoped, secure API and payment integrations when needed, and support through App Store review."
+      }
+    ],
     "benefits": [
       "iPhone and iPad product flows designed for clarity and retention",
       "Secure auth, payments, and API integrations for production use",
       "App Store guidelines, privacy labels, and submission support",
-      "Performance tuning for smooth scrolling, startup, and battery impact"
+      "Performance tuning for smooth scrolling, startup, and battery impact",
+      "An iOS freelancer when you want one person owning the App Store release"
     ],
     "outcomes": [
       "A store-ready iOS build with a clear QA checklist",
@@ -45,13 +83,32 @@
     "slug": "android-app-development",
     "title": "Android App Development",
     "description": "Custom Android apps for phones and tablets  -  Play Store ready, scalable, and built for real devices.",
-    "longDescription": "Need Android app development for your product? Dhinova builds Android applications that perform across device tiers, with clean architecture, Play Store release support, and integrations for notifications, maps, payments, and analytics. We use React Native for cross-platform speed or Android-focused delivery when your roadmap needs it.",
-    "keywords": "Android app development, Android app development company India, hire Android developers Kolkata, Play Store app development, Android application development",
+    "longDescription": "Need Android app development for your product? Dhinova builds Android applications that perform across device tiers, with clean architecture, Play Store release support, and integrations for notifications, maps, payments, and analytics. We use React Native for cross-platform speed or Android-focused delivery when your roadmap needs it. Hire an Android freelancer from the same team when you want one dedicated person on the Play Store build.",
+    "keywords": "Android app development, Android app development company India, hire Android developers Kolkata, Play Store app development, Android application development, android freelancer, freelancer android app developer",
+    "hire": {
+      "id": "android-freelancer",
+      "heading": "Hire an Android freelancer",
+      "paragraphs": [
+        "Need an Android freelancer for phones and tablets? You get one developer for the Play Store build, notifications, and the device range your users actually own.",
+        "A freelancer Android app developer ships the scoped features with signing and staged rollouts, so a first version can go live without waiting on a large team."
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Can I hire an Android freelancer at Dhinova?",
+        "answer": "Yes. An Android freelancer at Dhinova is a dedicated developer for your Play Store app. You agree the features, then review builds before a staged release."
+      },
+      {
+        "question": "What does a freelancer Android app developer handle?",
+        "answer": "A freelancer Android app developer here handles the app flows, Play Console signing, and integrations such as notifications, maps, payments, or analytics that are in scope."
+      }
+    ],
     "benefits": [
       "Android UX patterns that feel native on phones and tablets",
       "Play Console setup support, signing, and staged rollouts",
       "Offline-friendly features for field and consumer apps",
-      "Device fragmentation testing on mid-range and flagship hardware"
+      "Device fragmentation testing on mid-range and flagship hardware",
+      "An Android freelancer when you want one developer on the Play Store release"
     ],
     "outcomes": [
       "A Play Store-ready Android release candidate",

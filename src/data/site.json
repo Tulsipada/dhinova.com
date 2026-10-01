@@ -39,9 +39,12 @@
     ],
     "services": [
       { "label": "iOS App Development", "href": "/services/ios-app-development" },
+      { "label": "iOS Freelancer", "href": "/services/ios-app-development#ios-freelancer" },
       { "label": "Android App Development", "href": "/services/android-app-development" },
+      { "label": "Android Freelancer", "href": "/services/android-app-development#android-freelancer" },
       { "label": "Mobile Apps", "href": "/services/mobile-app-development" },
       { "label": "Web Development", "href": "/services/web-development" },
+      { "label": "Web Freelancer", "href": "/services/web-development#web-freelancer" },
       { "label": "AI Solutions", "href": "/services/ai-solutions" },
       { "label": "Contact", "href": "/contact" }
     ],

@@ -37,6 +37,8 @@ const ServicePage = () => {
   }
 
   const pagePath = `/services/${service.slug}`;
+  const hire = "hire" in service ? service.hire : undefined;
+  const faqs = "faqs" in service ? service.faqs : undefined;
   const mobileCluster = ["ios", "android", "mobile", "web"];
   const related = (
     mobileCluster.includes(service.id)
@@ -66,6 +68,22 @@ const ServicePage = () => {
           areaServed: "Worldwide",
           url: `${SITE_URL}${pagePath}`,
         },
+        ...(faqs
+          ? [
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: faqs.map((item) => ({
+                  "@type": "Question",
+                  name: item.question,
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: item.answer,
+                  },
+                })),
+              },
+            ]
+          : []),
         {
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
@@ -118,6 +136,33 @@ const ServicePage = () => {
             </ul>
           </section>
         </div>
+
+        {hire ? (
+          <section id={hire.id} className="mt-14 scroll-mt-28">
+            <h2 className="font-display text-2xl font-bold">{hire.heading}</h2>
+            {hire.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
+                {paragraph}
+              </p>
+            ))}
+          </section>
+        ) : null}
+
+        {faqs ? (
+          <section className="mt-14">
+            <h2 className="font-display text-2xl font-bold">Common questions</h2>
+            <div className="mt-5 divide-y divide-border border-y border-border">
+              {faqs.map((item) => (
+                <details key={item.question} className="group py-5">
+                  <summary className="cursor-pointer font-display text-lg font-semibold">
+                    {item.question}
+                  </summary>
+                  <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <section className="mt-14 rounded-2xl border border-border bg-muted/40 p-8">
           <h2 className="font-display text-2xl font-bold">Ready to start?</h2>

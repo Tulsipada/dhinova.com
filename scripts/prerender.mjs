@@ -98,8 +98,7 @@ function pageSchema(page) {
   }
 
   if (page.schemaType === "Service" && page.service) {
-    return {
-      "@context": "https://schema.org",
+    const serviceSchema = {
       "@type": "Service",
       name: page.service.title,
       description: page.service.longDescription,
@@ -111,6 +110,25 @@ function pageSchema(page) {
       },
       areaServed: "Worldwide",
       url: pageUrl,
+    };
+
+    if (!Array.isArray(page.service.faqs)) {
+      return { "@context": "https://schema.org", ...serviceSchema };
+    }
+
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        serviceSchema,
+        {
+          "@type": "FAQPage",
+          mainEntity: page.service.faqs.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
+        },
+      ],
     };
   }
 

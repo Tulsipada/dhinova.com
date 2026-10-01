@@ -430,6 +430,23 @@ export function getSeoPages() {
           <ul>${service.benefits.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
           <h2>Outcomes</h2>
           <ul>${service.outcomes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+          ${
+            service.hire
+              ? `<h2 id="${escapeHtml(service.hire.id)}">${escapeHtml(service.hire.heading)}</h2>${service.hire.paragraphs
+                  .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
+                  .join("")}`
+              : ""
+          }
+          ${
+            Array.isArray(service.faqs)
+              ? service.faqs
+                  .map(
+                    (item) =>
+                      `<section><h2>${escapeHtml(item.question)}</h2><p>${escapeHtml(item.answer)}</p></section>`
+                  )
+                  .join("")
+              : ""
+          }
           <p><a href="${escapeHtml(absolute("/contact"))}">Start a project</a> · <a href="${escapeHtml(absolute("/calculator"))}">Estimate cost</a></p>
         </main>
       `,
