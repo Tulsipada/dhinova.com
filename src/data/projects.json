@@ -1,54 +1,34 @@
 [
   {
     "id": 1,
-    "title": "Dhinova Website",
-    "summary": "Company website showcasing services, team, and technology insights.",
-    "description": "A modern marketing site for Dhinova Technology with SEO-ready pages, blog, and contact flows.",
-    "image": "/dhinova.png",
+    "title": "GreenKabadi",
+    "summary": "Doorstep scrap pickup website for Siliguri, with published rates, a booking path, and search-ready local pages.",
+    "description": "GreenKabadi (greenkabadi.in) lets homes, shops, and institutions in Siliguri sell scrap from their doorstep. The site shows today's rates, explains verified weighing and digital receipts, and points visitors to book a pickup.",
+    "image": "/projects/greenkabadi.png",
+    "imageAlt": "GreenKabadi homepage with the headline Sell your scrap, material types for metal, electronics, paper and plastic, and a Book a Pickup button",
     "category": "Web Development",
-    "status": "Completed",
+    "status": "Live",
     "year": "2026",
-    "client": "Dhinova",
-    "technologies": ["React", "TypeScript", "Tailwind CSS"],
-    "url": "https://dhinova.com"
-  },
-  {
-    "id": 2,
-    "title": "FinEdge Dashboard",
-    "summary": "Secure analytics dashboard for a fintech startup.",
-    "description": "Built a responsive web dashboard for financial reporting, role-based access, and real-time KPI tracking.",
-    "image": "/dhinova.png",
-    "category": "Web Development",
-    "status": "Completed",
-    "year": "2025",
-    "client": "FinEdge",
-    "technologies": ["React", "Node.js", "PostgreSQL"],
-    "url": ""
-  },
-  {
-    "id": 3,
-    "title": "Routely Mobile App",
-    "summary": "Cross-platform logistics app for field teams.",
-    "description": "React Native app with live tracking, offline sync, and push notifications for delivery operations.",
-    "image": "/dhinova.png",
-    "category": "Mobile Apps",
-    "status": "Completed",
-    "year": "2025",
-    "client": "Routely",
-    "technologies": ["React Native", "Firebase", "Maps"],
-    "url": ""
-  },
-  {
-    "id": 4,
-    "title": "NovaOps AI Assistant",
-    "summary": "AI support assistant embedded in an operations platform.",
-    "description": "Production AI features for ticket deflection, knowledge search, and guided workflows.",
-    "image": "/dhinova.png",
-    "category": "AI Solutions",
-    "status": "Completed",
-    "year": "2024",
-    "client": "NovaOps",
-    "technologies": ["OpenAI", "Python", "React"],
-    "url": ""
+    "client": "GreenKabadi",
+    "location": "Siliguri, West Bengal, India",
+    "url": "https://greenkabadi.in/",
+    "technologies": ["Vike", "Server-rendered HTML", "JSON-LD", "Open Graph"],
+    "highlights": [
+      "Homepage for doorstep pickup of metal, electronics, paper, and plastic",
+      "Today's indicative per-kg rates for iron, aluminium, e-waste, paper, and plastic",
+      "How-it-works path: book, collect, weigh, and pay with a digital receipt",
+      "Business and institutional pickup pages for shops, offices, apartments, and healthcare",
+      "In-page language switcher for English, Hindi, Bengali, and Nepali",
+      "App section with a Google Play badge and an App Store coming-soon state",
+      "Dedicated pages for rates, materials, areas, FAQ, about, contact, privacy, terms, and account deletion"
+    ],
+    "seo": [
+      "Prerendered HTML so the headline, rates, and FAQ are in the first response",
+      "Unique title and meta description, canonical URL, and index,follow robots rules",
+      "Open Graph and Twitter cards with a 1200 by 630 image and alt text",
+      "FAQPage, LocalBusiness, and WebSite structured data for Siliguri",
+      "hreflang for English and x-default, plus geo.region IN-WB",
+      "Descriptive image alt text and a crawlable footer to every public page"
+    ]
   }
 ]

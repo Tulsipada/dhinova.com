@@ -10,6 +10,7 @@ type PageShellProps = {
   path: string;
   eyebrow?: string;
   keywords?: string;
+  image?: string;
   noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   headerAside?: ReactNode;
@@ -23,6 +24,7 @@ const PageShell = ({
   path,
   eyebrow,
   keywords,
+  image,
   noindex = false,
   jsonLd,
   headerAside,
@@ -35,6 +37,7 @@ const PageShell = ({
       description={description}
       path={path}
       keywords={keywords}
+      image={image}
       noindex={noindex}
       jsonLd={jsonLd}
     />

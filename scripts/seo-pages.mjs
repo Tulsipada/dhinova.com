@@ -162,27 +162,35 @@ export function getSeoPages() {
     },
     {
       path: "/projects",
-      title: `Completed Projects | ${site.name}`,
-      description: "Selected products and digital platforms delivered by Dhinova  -  from MVPs to production systems.",
+      title: `GreenKabadi Case Study | ${site.name}`,
+      description:
+        "GreenKabadi is a Siliguri doorstep scrap pickup website with published rates, four languages, and local business markup.",
       changefreq: "weekly",
       priority: "0.9",
       body: `
         ${navHtml()}
         <main>
-          <h1>Completed Projects</h1>
-          <p>Selected products and digital platforms delivered by Dhinova.</p>
+          <h1>GreenKabadi Case Study</h1>
+          <p>GreenKabadi is a Siliguri doorstep scrap pickup website with published rates, four languages, and local business markup.</p>
           <ul>${projects
             .map(
               (project) => `
                 <li>
                   <h2>${escapeHtml(project.title)}</h2>
-                  <p>${escapeHtml(project.category)} · ${escapeHtml(project.year)} · ${escapeHtml(project.status)}</p>
+                  <img src="${escapeHtml(absolute(project.image))}" alt="${escapeHtml(project.imageAlt || project.title)}" />
+                  <p>${escapeHtml(project.category)} · ${escapeHtml(project.year)} · ${escapeHtml(project.status)} · ${escapeHtml(project.location || "")}</p>
+                  <p>${escapeHtml(project.summary || "")}</p>
                   <p>${escapeHtml(project.description)}</p>
+                  <h3>What shipped</h3>
+                  <ul>${(project.highlights || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+                  <h3>Search setup</h3>
+                  <ul>${(project.seo || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
                   <p>${escapeHtml(project.technologies.join(", "))}</p>
-                  ${project.url ? `<p><a href="${escapeHtml(project.url)}">View project</a></p>` : ""}
+                  ${project.url ? `<p><a href="${escapeHtml(project.url)}">View live site</a></p>` : ""}
                 </li>`
             )
             .join("")}</ul>
+          <p><a href="${escapeHtml(absolute("/services/web-development"))}">Web development</a> · <a href="${escapeHtml(absolute("/services/seo-growth"))}">SEO</a> · <a href="${escapeHtml(absolute("/contact"))}">Start a similar project</a></p>
         </main>
       `,
     },
