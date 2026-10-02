@@ -31,6 +31,7 @@ const Terms = () => (
     title="Terms of Service"
     eyebrow="Legal"
     description="Terms governing use of the Dhinova website and engagement for software services."
+    metaDescription="Terms governing use of the Dhinova website and software service engagements, including project scope, intellectual property, site content, and liability."
     path="/terms"
     keywords="dhinova terms of service, website terms"
     jsonLd={{

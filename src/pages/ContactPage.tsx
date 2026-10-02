@@ -64,7 +64,19 @@ const ContactPage = () => {
         <div className="rounded-3xl bg-primary p-8 text-primary-foreground md:p-10">
           <h2 className="font-display text-3xl font-bold">Ready to start?</h2>
           <p className="mt-4 text-primary-foreground/70">
-            Email us a short brief, or use the project calculator for a quick estimate before we talk.
+            Email us a short brief, or use the project calculator for a quick estimate before we talk. Prepare details with the{" "}
+            <Link to="/requirements/" className="font-semibold text-primary-foreground underline-offset-4 hover:underline">
+              app requirements
+            </Link>{" "}
+            checklist. What you send is covered by our{" "}
+            <Link to="/privacy/" className="font-semibold text-primary-foreground underline-offset-4 hover:underline">
+              privacy policy
+            </Link>{" "}
+            and{" "}
+            <Link to="/terms/" className="font-semibold text-primary-foreground underline-offset-4 hover:underline">
+              terms of service
+            </Link>
+            .
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button asChild size="lg" className="w-full rounded-full bg-accent-ink text-white hover:brightness-95 sm:w-auto">

@@ -7,6 +7,7 @@ import { SITE_NAME } from "@/lib/seo";
 type PageShellProps = {
   title: string;
   description: string;
+  metaDescription?: string;
   path: string;
   eyebrow?: string;
   keywords?: string;
@@ -21,6 +22,7 @@ type PageShellProps = {
 const PageShell = ({
   title,
   description,
+  metaDescription,
   path,
   eyebrow,
   keywords,
@@ -34,7 +36,7 @@ const PageShell = ({
   <>
     <Seo
       title={`${title} | ${SITE_NAME}`}
-      description={description}
+      description={metaDescription || description}
       path={path}
       keywords={keywords}
       image={image}

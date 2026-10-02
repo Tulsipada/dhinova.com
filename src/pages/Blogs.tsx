@@ -61,12 +61,13 @@ const Blogs = () => {
 
   const [featured, ...rest] = visible;
   const pageDescription = site.blogSection.subtitle;
+  const metaDescription = site.blogSection.metaDescription;
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Blog",
     name: `${SITE_NAME} Blog`,
-    description: pageDescription,
+    description: metaDescription,
     url: absoluteUrl("/blogs"),
     publisher: {
       "@type": "Organization",
@@ -92,6 +93,7 @@ const Blogs = () => {
       title={site.blogSection.title}
       eyebrow="Insights"
       description={pageDescription}
+      metaDescription={metaDescription}
       path="/blogs"
       keywords={`software blog, react tutorials, ai development india, ${site.keywords}`}
       jsonLd={structuredData}

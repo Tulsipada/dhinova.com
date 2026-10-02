@@ -9,6 +9,7 @@ const Announcements = () => (
     title="Announcements"
     eyebrow="Newsroom"
     description="Company news, service launches, hiring updates, and milestones from Dhinova Technology."
+    metaDescription="Company news from Dhinova Technology: service launches, hiring updates, product milestones, and other announcements from the software studio."
     path="/announcements"
     keywords={`dhinova announcements, company news, software studio updates, ${site.keywords}`}
     jsonLd={{

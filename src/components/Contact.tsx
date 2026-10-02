@@ -26,6 +26,17 @@ const Contact = () => {
               Tell us what you are building
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Gather a brief with the{" "}
+              <Link to="/requirements/" className="font-semibold text-foreground underline-offset-4 hover:underline">
+                app requirements
+              </Link>{" "}
+              checklist, or read the latest{" "}
+              <Link to="/announcements/" className="font-semibold text-foreground underline-offset-4 hover:underline">
+                announcements
+              </Link>
+              .
+            </p>
             <div className="rounded-2xl bg-primary p-6 text-primary-foreground md:p-8">
               <div className="flex items-start justify-between gap-4">
                 <div>

@@ -6,6 +6,7 @@
     "title": "Web Development",
     "description": "Fast, responsive web apps with React and modern APIs  -  built for clarity, performance, and growth.",
     "longDescription": "Dhinova designs and builds production-ready web applications for startups and growing companies. We ship marketing sites, customer portals, admin dashboards, and full SaaS products with clean architecture, measurable performance, and SEO-ready foundations. Hire a web freelancer from the same team when you want one person to own the site.",
+    "metaDescription": "Dhinova builds marketing sites, customer portals, dashboards, and SaaS products with React, fast pages, and SEO-ready structure.",
     "keywords": "web development company India, React development, custom web applications, SaaS development Kolkata, web freelancer, website freelancer",
     "hire": {
       "id": "web-freelancer",
@@ -45,6 +46,7 @@
     "title": "iOS App Development",
     "description": "Custom iPhone and iPad apps built for App Store quality, performance, and long-term maintainability.",
     "longDescription": "Looking for an iOS app development company in India? Dhinova designs and builds iPhone and iPad applications with polished UX, secure APIs, and App Store submission support. We ship with React Native or native-focused workflows depending on your product requirements, timeline, and team constraints. Hire an iOS freelancer from the same team when you want one dedicated person on the App Store build.",
+    "metaDescription": "Dhinova builds iPhone and iPad apps with polished UX, secure APIs, App Store submission, and React Native or native workflows.",
     "keywords": "iOS app development, iOS app development company India, iPhone app developers Kolkata, hire iOS developers, App Store app development, ios freelancer, freelancer ios app developer",
     "hire": {
       "id": "ios-freelancer",
@@ -84,6 +86,7 @@
     "title": "Android App Development",
     "description": "Custom Android apps for phones and tablets  -  Play Store ready, scalable, and built for real devices.",
     "longDescription": "Need Android app development for your product? Dhinova builds Android applications that perform across device tiers, with clean architecture, Play Store release support, and integrations for notifications, maps, payments, and analytics. We use React Native for cross-platform speed or Android-focused delivery when your roadmap needs it. Hire an Android freelancer from the same team when you want one dedicated person on the Play Store build.",
+    "metaDescription": "Dhinova builds Android apps for real devices, with Play Store release support, notifications, maps, payments, and analytics.",
     "keywords": "Android app development, Android app development company India, hire Android developers Kolkata, Play Store app development, Android application development, android freelancer, freelancer android app developer",
     "hire": {
       "id": "android-freelancer",
@@ -123,6 +126,7 @@
     "title": "Mobile App Development",
     "description": "iOS and Android apps with React Native  -  native feel, shared codebase, store-ready delivery.",
     "longDescription": "Dhinova builds production mobile apps for iOS and Android. Choose React Native for speed across both platforms, or go deeper on platform-specific work. We handle onboarding, offline sync, push notifications, and App Store / Play Store release support.",
+    "metaDescription": "Dhinova builds iOS and Android apps with React Native, offline sync, push notifications, and App Store and Play Store release.",
     "keywords": "mobile app development company India, iOS and Android app development Kolkata, React Native developers, hire mobile app developers",
     "benefits": [
       "Dedicated paths for iOS app development and Android app development",
@@ -143,6 +147,7 @@
     "title": "Blockchain & Crypto",
     "description": "Secure smart contracts, wallets, and decentralized product features for real-world use cases.",
     "longDescription": "Dhinova helps teams add blockchain where it creates clear product value  -  wallets, smart contracts, minting flows, and on-chain verification  -  without forcing hype into the roadmap. We prioritize security reviews, clear UX, and integration with your existing web or mobile product.",
+    "metaDescription": "Dhinova adds wallets, smart contracts, and on-chain flows to web and mobile products, with security reviews and clear UX.",
     "keywords": "blockchain development India, smart contract development, Web3 wallet integration, crypto product engineering",
     "benefits": [
       "Smart contract design with audit-minded patterns",
@@ -163,6 +168,7 @@
     "title": "AI Solutions",
     "description": "Practical AI features  -  assistants, automation, and insights  -  integrated into your workflows.",
     "longDescription": "We integrate practical AI into products and internal tools: assistants, document workflows, classification, and automation that save time. Every build starts from a measurable use case, clean data boundaries, and human-in-the-loop controls where decisions matter.",
+    "metaDescription": "Dhinova adds assistants, document workflows, and automation to products, starting from a measurable use case and human review.",
     "keywords": "AI development company India, LLM product features, business automation AI, AI assistants for SaaS",
     "benefits": [
       "LLM features embedded in your existing app, not bolted-on demos",
@@ -183,6 +189,7 @@
     "title": "SEO & Growth",
     "description": "Technical SEO, content strategy, and search optimization that help your product reach the right audience and grow sustainably.",
     "longDescription": "Search growth works when technical foundations, content, and measurement move together. Dhinova audits crawlability, Core Web Vitals, structured data, and content gaps, then helps you ship pages that earn indexing and convert the traffic you win.",
+    "metaDescription": "Dhinova improves crawlability, Core Web Vitals, structured data, and content so product pages get indexed and convert.",
     "keywords": "technical SEO India, SEO for SaaS, content strategy, search growth agency Kolkata",
     "benefits": [
       "Technical audits covering sitemap, robots, indexation, and page speed",
@@ -203,6 +210,7 @@
     "title": "UI/UX Design",
     "description": "Clear, conversion-focused interfaces and product experiences designed around real users, business goals, and scalable systems.",
     "longDescription": "Our product design work connects brand, usability, and engineering constraints. We map flows, design interfaces, and hand off systems that developers can implement without guesswork  -  so the shipped product feels intentional, not improvised.",
+    "metaDescription": "Dhinova maps user flows, designs interfaces, and hands off design systems that developers can build without guesswork.",
     "keywords": "UI UX design India, product design studio, conversion-focused interface design, design systems",
     "benefits": [
       "User flows and wireframes before heavy visual investment",

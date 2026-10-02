@@ -161,7 +161,11 @@ const Calculator = () => {
           </p>
           <p className="mt-6 text-sm text-primary-foreground/60">
             Indicative Indian market pricing in INR (excl. 18% GST). Final quote depends on scope,
-            integrations, design depth, and compliance needs.
+            integrations, design depth, and compliance needs. Gather that scope with the{" "}
+            <Link to="/requirements/" className="font-semibold text-primary-foreground underline-offset-4 hover:underline">
+              app requirements
+            </Link>{" "}
+            checklist.
           </p>
           <Button asChild size="lg" className="mt-8 rounded-full bg-accent-ink text-white hover:brightness-95">
             <Link to="/contact/">

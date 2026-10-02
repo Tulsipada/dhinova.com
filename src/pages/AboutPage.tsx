@@ -10,6 +10,7 @@ const AboutPage = () => (
     title="About Dhinova"
     eyebrow="Company"
     description={site.about.paragraphs[0]}
+    metaDescription={site.about.metaDescription}
     path="/about"
     keywords={`about dhinova, Dhinova Technology Kolkata, software development company India, ${site.keywords}`}
     jsonLd={{
@@ -41,6 +42,9 @@ const AboutPage = () => (
           </Button>
           <Button asChild variant="outline" className="rounded-full">
             <Link to="/contact/">Contact us</Link>
+          </Button>
+          <Button asChild variant="outline" className="rounded-full">
+            <Link to="/announcements/">Announcements</Link>
           </Button>
         </div>
       </div>

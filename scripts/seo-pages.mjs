@@ -46,9 +46,16 @@ const navHtml = () => {
     { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },
   ];
+  const footerLinks = [
+    ...site.footerLinks.company,
+    ...site.footerLinks.services,
+    ...site.footerLinks.legal,
+  ];
   return `<nav aria-label="Primary">${links
     .map((item) => `<a href="${escapeHtml(absolute(item.href))}">${escapeHtml(item.label)}</a>`)
-    .join(" · ")}</nav><p>${escapeHtml(site.legalName)}  -  ${escapeHtml(site.tagline)}</p>`;
+    .join(" · ")}</nav><p>${escapeHtml(site.legalName)}  -  ${escapeHtml(site.tagline)}</p><footer><nav aria-label="Footer">${footerLinks
+    .map((item) => `<a href="${escapeHtml(absolute(item.href))}">${escapeHtml(item.label)}</a>`)
+    .join(" · ")}</nav></footer>`;
 };
 
 const markdownishToHtml = (content = "") =>
@@ -133,13 +140,14 @@ export function getSeoPages() {
           <h2>${escapeHtml(site.contact.title)}</h2>
           <p>${escapeHtml(site.contact.subtitle)}</p>
           <p>Email: <a href="mailto:${escapeHtml(site.email)}">${escapeHtml(site.email)}</a> · Phone: <a href="tel:${escapeHtml(site.phone.replace(/\s/g, ""))}">${escapeHtml(site.phone)}</a> · ${escapeHtml(site.location)}</p>
+          <p>Company news is on <a href="${escapeHtml(absolute("/announcements"))}">announcements</a>. Start a project with the <a href="${escapeHtml(absolute("/requirements"))}">app requirements</a> checklist. Read the <a href="${escapeHtml(absolute("/privacy"))}">privacy policy</a> and <a href="${escapeHtml(absolute("/terms"))}">terms of service</a>.</p>
         </main>
       `,
     },
     {
       path: "/about",
       title: `About Dhinova | Software Company in India`,
-      description: site.about.paragraphs[0],
+      description: site.about.metaDescription || site.about.paragraphs[0],
       changefreq: "monthly",
       priority: "0.9",
       body: `
@@ -156,7 +164,7 @@ export function getSeoPages() {
                 `<li><h3>${escapeHtml(member.name)}</h3><p>${escapeHtml(member.role)}</p><p>${escapeHtml(member.bio)}</p></li>`
             )
             .join("")}</ul>
-          <p><a href="${escapeHtml(absolute("/contact"))}">Contact Dhinova</a> · <a href="${escapeHtml(absolute("/projects"))}">See projects</a></p>
+          <p><a href="${escapeHtml(absolute("/contact"))}">Contact Dhinova</a> · <a href="${escapeHtml(absolute("/projects"))}">See projects</a> · <a href="${escapeHtml(absolute("/announcements"))}">Announcements</a></p>
         </main>
       `,
     },
@@ -253,7 +261,7 @@ export function getSeoPages() {
         <main>
           <h1>Project Cost Calculator</h1>
           <p>Estimate ballpark pricing for web, mobile, AI, blockchain, and whitelabel engagements.</p>
-          <p>Use the interactive calculator on this page, then <a href="${escapeHtml(absolute("/contact"))}">contact us</a> for a precise proposal.</p>
+          <p>Use the interactive calculator on this page, then <a href="${escapeHtml(absolute("/contact"))}">contact us</a> for a precise proposal. Gather scope first with the <a href="${escapeHtml(absolute("/requirements"))}">app requirements</a> checklist.</p>
           <ul>
             <li>Web Application</li>
             <li>Mobile App</li>
@@ -275,7 +283,7 @@ export function getSeoPages() {
         ${navHtml()}
         <main>
           <h1>App Requirements</h1>
-          <p>Checklist for product, design, technical, delivery, and compliance details.</p>
+          <p>Checklist for product, design, technical, delivery, and compliance details. Share this brief when you <a href="${escapeHtml(absolute("/contact"))}">contact us</a>.</p>
           <ul>${requirements
             .map(
               (item) =>
@@ -288,7 +296,8 @@ export function getSeoPages() {
     {
       path: "/announcements",
       title: `Announcements | ${site.name}`,
-      description: "Company news, service launches, hiring updates, and milestones from Dhinova Technology.",
+      description:
+        "Company news from Dhinova Technology: service launches, hiring updates, product milestones, and other announcements from the software studio.",
       changefreq: "weekly",
       priority: "0.6",
       body: `
@@ -322,6 +331,7 @@ export function getSeoPages() {
             <li>Location: ${escapeHtml(site.location)}</li>
           </ul>
           <p>Looking for a specific capability? Explore <a href="${escapeHtml(absolute("/services/web-development"))}">web development</a>, <a href="${escapeHtml(absolute("/services/mobile-app-development"))}">mobile apps</a>, or <a href="${escapeHtml(absolute("/services/ai-solutions"))}">AI solutions</a>.</p>
+          <p>Prepare your brief with the <a href="${escapeHtml(absolute("/requirements"))}">app requirements</a> checklist. Details you send are covered by our <a href="${escapeHtml(absolute("/privacy"))}">privacy policy</a> and <a href="${escapeHtml(absolute("/terms"))}">terms of service</a>.</p>
         </main>
       `,
     },
@@ -382,13 +392,15 @@ export function getSeoPages() {
           <p>When you contact us, we may collect your name, email, phone number, company details, and project information you voluntarily share.</p>
           <p>We use contact details to respond to inquiries, prepare proposals, deliver services, and improve our website experience.</p>
           <p>We do not sell personal information. For privacy questions, email <a href="mailto:${escapeHtml(site.email)}">${escapeHtml(site.email)}</a>.</p>
+          <p><a href="${escapeHtml(absolute("/terms"))}">Terms of Service</a></p>
         </main>
       `,
     },
     {
       path: "/terms",
       title: `Terms of Service | ${site.name}`,
-      description: "Terms governing use of the Dhinova website and engagement for software services.",
+      description:
+        "Terms governing use of the Dhinova website and software service engagements, including project scope, intellectual property, site content, and liability.",
       changefreq: "yearly",
       priority: "0.4",
       body: `
@@ -398,13 +410,14 @@ export function getSeoPages() {
           <p>Dhinova provides software design and development services. Project scope, timelines, and fees are defined in written proposals or agreements.</p>
           <p>Content on this website is for general information. Estimates and examples are illustrative and not contractual offers.</p>
           <p>Questions: <a href="mailto:${escapeHtml(site.email)}">${escapeHtml(site.email)}</a></p>
+          <p><a href="${escapeHtml(absolute("/privacy"))}">Privacy Policy</a></p>
         </main>
       `,
     },
     {
       path: "/blogs",
       title: `${site.blogSection.title} | ${site.name}`,
-      description: site.blogSection.subtitle,
+      description: site.blogSection.metaDescription || site.blogSection.subtitle,
       changefreq: "weekly",
       priority: "0.9",
       body: `
@@ -431,7 +444,7 @@ export function getSeoPages() {
     pages.push({
       path: `/services/${service.slug}`,
       title: `${service.title} | ${site.name}`,
-      description: service.longDescription,
+      description: service.metaDescription || service.longDescription,
       changefreq: "monthly",
       priority: "0.9",
       schemaType: "Service",
