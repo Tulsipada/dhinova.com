@@ -28,7 +28,7 @@ const ServicePage = () => {
               View services
             </Button>
             <Button asChild className="rounded-full">
-              <Link to="/contact">Contact us</Link>
+              <Link to="/contact/">Contact us</Link>
             </Button>
           </div>
         </div>
@@ -146,7 +146,7 @@ const ServicePage = () => {
               </p>
             ))}
             <p className="mt-4">
-              <Link to="/blogs/top-freelancer-in-kolkata-and-mumbai" className="font-semibold text-accent">
+              <Link to="/blogs/top-freelancer-in-kolkata-and-mumbai/" className="font-semibold text-accent">
                 Top freelancer in Kolkata, Mumbai, and other Indian cities
               </Link>
             </p>
@@ -177,13 +177,13 @@ const ServicePage = () => {
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild className="rounded-full">
-              <Link to="/contact">
+              <Link to="/contact/">
                 Start a project
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button asChild variant="outline" className="rounded-full">
-              <Link to="/calculator">Estimate cost</Link>
+              <Link to="/calculator/">Estimate cost</Link>
             </Button>
           </div>
         </section>
@@ -194,7 +194,7 @@ const ServicePage = () => {
             {related.map((item) => (
               <li key={item.id}>
                 <Link
-                  to={`/services/${item.slug}`}
+                  to={`/services/${item.slug}/`}
                   className="group flex items-center justify-between gap-4 py-5 transition-colors hover:text-accent"
                 >
                   <span>

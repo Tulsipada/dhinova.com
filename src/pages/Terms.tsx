@@ -45,7 +45,7 @@ const Terms = () => (
         <div className="border-b border-border pb-5">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Legal centre</p>
           <div className="mt-4 flex gap-2 text-sm">
-            <Link to="/privacy" className="rounded-full border border-border px-3 py-1.5 text-muted-foreground transition-colors hover:border-accent hover:text-foreground">Privacy</Link>
+            <Link to="/privacy/" className="rounded-full border border-border px-3 py-1.5 text-muted-foreground transition-colors hover:border-accent hover:text-foreground">Privacy</Link>
             <span className="rounded-full bg-primary px-3 py-1.5 font-medium text-primary-foreground">Terms</span>
           </div>
         </div>

@@ -21,43 +21,43 @@
   "keywords": "iOS app development, Android app development, mobile app development company India, iPhone app developers Kolkata, Android app developers, web development company Kolkata, Dhinova Technology",
   "nav": [
     { "label": "Services", "href": "#services" },
-    { "label": "Projects", "href": "/projects" },
-    { "label": "Whitelabel", "href": "/whitelabel" },
-    { "label": "Calculator", "href": "/calculator" },
-    { "label": "About", "href": "/about" },
-    { "label": "Blog", "href": "/blogs" },
-    { "label": "Contact", "href": "/contact" }
+    { "label": "Projects", "href": "/projects/" },
+    { "label": "Whitelabel", "href": "/whitelabel/" },
+    { "label": "Calculator", "href": "/calculator/" },
+    { "label": "About", "href": "/about/" },
+    { "label": "Blog", "href": "/blogs/" },
+    { "label": "Contact", "href": "/contact/" }
   ],
   "footerLinks": {
     "company": [
-      { "label": "About", "href": "/about" },
-      { "label": "Projects", "href": "/projects" },
-      { "label": "Happy Clients", "href": "/clients" },
-      { "label": "Announcements", "href": "/announcements" },
-      { "label": "Careers", "href": "/careers" },
-      { "label": "Blog", "href": "/blogs" }
+      { "label": "About", "href": "/about/" },
+      { "label": "Projects", "href": "/projects/" },
+      { "label": "Happy Clients", "href": "/clients/" },
+      { "label": "Announcements", "href": "/announcements/" },
+      { "label": "Careers", "href": "/careers/" },
+      { "label": "Blog", "href": "/blogs/" }
     ],
     "services": [
-      { "label": "iOS App Development", "href": "/services/ios-app-development" },
-      { "label": "iOS Freelancer", "href": "/services/ios-app-development#ios-freelancer" },
-      { "label": "Android App Development", "href": "/services/android-app-development" },
-      { "label": "Android Freelancer", "href": "/services/android-app-development#android-freelancer" },
-      { "label": "Mobile Apps", "href": "/services/mobile-app-development" },
-      { "label": "Web Development", "href": "/services/web-development" },
-      { "label": "Web Freelancer", "href": "/services/web-development#web-freelancer" },
-      { "label": "AI Solutions", "href": "/services/ai-solutions" },
-      { "label": "Contact", "href": "/contact" }
+      { "label": "iOS App Development", "href": "/services/ios-app-development/" },
+      { "label": "iOS Freelancer", "href": "/services/ios-app-development/#ios-freelancer" },
+      { "label": "Android App Development", "href": "/services/android-app-development/" },
+      { "label": "Android Freelancer", "href": "/services/android-app-development/#android-freelancer" },
+      { "label": "Mobile Apps", "href": "/services/mobile-app-development/" },
+      { "label": "Web Development", "href": "/services/web-development/" },
+      { "label": "Web Freelancer", "href": "/services/web-development/#web-freelancer" },
+      { "label": "AI Solutions", "href": "/services/ai-solutions/" },
+      { "label": "Contact", "href": "/contact/" }
     ],
     "legal": [
-      { "label": "Privacy Policy", "href": "/privacy" },
-      { "label": "Terms of Service", "href": "/terms" }
+      { "label": "Privacy Policy", "href": "/privacy/" },
+      { "label": "Terms of Service", "href": "/terms/" }
     ]
   },
   "hero": {
     "brand": "Dhinova",
     "headline": "iOS, Android & web apps that ship",
     "subheadline": "Kolkata-based product engineering for App Store, Play Store, and modern websites  -  with AI and blockchain when the roadmap needs it.",
-    "primaryCta": { "label": "Start a project", "href": "/contact" },
+    "primaryCta": { "label": "Start a project", "href": "/contact/" },
     "secondaryCta": { "label": "Explore services", "href": "#services" }
   },
   "offer": {
@@ -67,7 +67,7 @@
     "title": "Build more. Spend less.",
     "description": "Get 50% off all services when you start a new project with Dhinova.",
     "ctaLabel": "Claim the offer",
-    "ctaHref": "/contact",
+    "ctaHref": "/contact/",
     "validUntil": "While offer availability lasts"
   },
   "servicesSection": {

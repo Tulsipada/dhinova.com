@@ -40,7 +40,7 @@ const BlogPreview = () => {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           {posts[0] ? (
             <article className="lg:col-span-7">
-              <Link to={`/blogs/${posts[0].slug}`} className="group block">
+              <Link to={`/blogs/${posts[0].slug}/`} className="group block">
                 <div className="mb-6 aspect-[16/10] overflow-hidden rounded-lg bg-gradient-to-br from-muted to-secondary">
                   <FallbackImage
                     src={previewImage(posts[0].image)}
@@ -72,7 +72,7 @@ const BlogPreview = () => {
             </p>
             {posts.slice(1).map((post) => (
               <article key={post.id} className="border-b border-border pb-8 last:border-0 last:pb-0">
-                <Link to={`/blogs/${post.slug}`} className="group block">
+                <Link to={`/blogs/${post.slug}/`} className="group block">
                   <p className="mb-2 text-xs font-semibold text-accent">{post.category}</p>
                   <h3 className="mb-2 font-display text-xl font-bold transition-colors group-hover:text-accent">
                     {post.title}

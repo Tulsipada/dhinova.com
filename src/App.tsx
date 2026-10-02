@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -32,6 +32,14 @@ const slashedRoutes = (path: string, Page: ComponentType) => {
   return paths.map((routePath) => <Route key={routePath} path={routePath} element={<Page />} />);
 };
 
+const TrailingSlashRedirect = () => {
+  const { pathname, search, hash } = useLocation();
+  if (pathname !== "/" && !pathname.endsWith("/") && !/\.[a-z0-9]+$/i.test(pathname)) {
+    return <Navigate to={`${pathname}/${search}${hash}`} replace />;
+  }
+  return null;
+};
+
 const ScrollRestoration = () => {
   const { pathname, search, hash } = useLocation();
 
@@ -56,6 +64,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <TrailingSlashRedirect />
           <ScrollRestoration />
           <Suspense fallback={null}>
           <Routes>

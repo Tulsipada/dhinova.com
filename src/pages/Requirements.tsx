@@ -25,7 +25,7 @@ const Requirements = () => (
     <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
       <p className="text-muted-foreground">{requirements.length} checklist items across {categories.length} areas</p>
       <Button asChild className="rounded-full">
-        <Link to="/contact">
+        <Link to="/contact/">
           Submit your brief
           <ArrowRight className="ml-1 h-4 w-4" />
         </Link>

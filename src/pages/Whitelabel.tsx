@@ -53,7 +53,7 @@ const Whitelabel = () => (
           branded delivery workflow.
         </p>
         <Button asChild size="lg" className="mt-8 rounded-full">
-          <Link to="/contact">
+          <Link to="/contact/">
             Talk partnership
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>

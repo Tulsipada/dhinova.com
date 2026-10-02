@@ -27,7 +27,9 @@ const Navbar = () => {
                 key={item.label}
                 to={item.href}
                 className={`text-[0.68rem] font-semibold uppercase tracking-[0.14em] transition-colors ${
-                  location.pathname === item.href || location.pathname.startsWith(`${item.href}/`)
+                  location.pathname === item.href ||
+                  `${location.pathname}/` === item.href ||
+                  (item.href.endsWith("/") && location.pathname.startsWith(item.href))
                     ? "text-white"
                     : "text-white/60 hover:text-white"
                 }`}
@@ -45,7 +47,7 @@ const Navbar = () => {
             )
           )}
           <Button asChild variant="hero" size="sm" className="rounded-full px-5">
-            <Link to="/contact">{site.hero.primaryCta.label}</Link>
+            <Link to="/contact/">{site.hero.primaryCta.label}</Link>
           </Button>
         </nav>
 
@@ -83,7 +85,7 @@ const Navbar = () => {
             )
           )}
           <Button asChild variant="hero" size="sm" className="mt-2 w-full rounded-full">
-            <Link to="/contact" onClick={() => setOpen(false)}>
+            <Link to="/contact/" onClick={() => setOpen(false)}>
               {site.hero.primaryCta.label}
             </Link>
           </Button>

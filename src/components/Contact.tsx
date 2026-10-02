@@ -20,7 +20,7 @@ const Contact = () => {
           <div className="space-y-8">
             <SectionHeading eyebrow="Contact" title={contact.title} description={contact.subtitle} className="mb-10" />
             <Link
-              to="/contact"
+              to="/contact/"
               className="group inline-flex items-center gap-2 text-sm font-semibold text-accent-ink transition-colors hover:text-foreground"
             >
               Tell us what you are building
@@ -38,7 +38,7 @@ const Contact = () => {
                 Share your goals, timeline, and constraints. We will help you shape the next practical step.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-accent-ink px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 hover:brightness-95">
+                <Link to="/contact/" className="inline-flex items-center gap-2 rounded-full bg-accent-ink px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 hover:brightness-95">
                   Start a project <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/25 px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:border-accent hover:text-accent">

@@ -312,7 +312,7 @@ const BlogPost = () => {
           </footer>
 
           <div className="max-w-4xl mx-auto mt-8">
-            <Link to="/blogs">
+            <Link to="/blogs/">
               <Button variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 View All Blogs

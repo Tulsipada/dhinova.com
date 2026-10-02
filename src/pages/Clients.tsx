@@ -32,7 +32,7 @@ const Clients = () => (
     <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
       <p className="text-muted-foreground">{clients.length} client partnerships featured</p>
       <Button asChild variant="outline" className="rounded-full">
-        <Link to="/projects">
+        <Link to="/projects/">
           View completed projects
           <ArrowRight className="ml-2 h-4 w-4" />
         </Link>

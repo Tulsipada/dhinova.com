@@ -46,7 +46,7 @@ const Privacy = () => (
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Legal centre</p>
           <div className="mt-4 flex gap-2 text-sm">
             <span className="rounded-full bg-primary px-3 py-1.5 font-medium text-primary-foreground">Privacy</span>
-            <Link to="/terms" className="rounded-full border border-border px-3 py-1.5 text-muted-foreground transition-colors hover:border-accent hover:text-foreground">Terms</Link>
+            <Link to="/terms/" className="rounded-full border border-border px-3 py-1.5 text-muted-foreground transition-colors hover:border-accent hover:text-foreground">Terms</Link>
           </div>
         </div>
         <nav className="mt-5 space-y-2" aria-label="Privacy policy sections">

@@ -53,7 +53,7 @@ const Careers = () => (
 
     <p className="mt-10 text-muted-foreground">
       Don’t see a fit?{" "}
-      <Link to="/contact" className="font-semibold text-foreground underline-offset-4 hover:underline">
+      <Link to="/contact/"> className="font-semibold text-foreground underline-offset-4 hover:underline">
         Send an open application
       </Link>
       .

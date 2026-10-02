@@ -68,7 +68,7 @@ const Hero = () => {
             </p>
             <div className="animate-rise-delay-2 mt-7 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center">
               <Button asChild variant="hero" size="lg" className="group h-11 rounded-full px-7 sm:h-12 sm:px-8">
-                <Link to={hero.primaryCta.href.startsWith("/") ? hero.primaryCta.href : "/contact"}>
+                <Link to={hero.primaryCta.href.startsWith("/") ? hero.primaryCta.href : "/contact/"}>
                   {hero.primaryCta.label}
                   <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>

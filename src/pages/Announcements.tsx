@@ -40,7 +40,7 @@ const Announcements = () => (
 
     <p className="mt-12 text-muted-foreground">
       Looking for roles?{" "}
-      <Link to="/careers" className="font-semibold text-foreground underline-offset-4 hover:underline">
+      <Link to="/careers/"> className="font-semibold text-foreground underline-offset-4 hover:underline">
         Visit Careers
       </Link>
       .

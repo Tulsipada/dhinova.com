@@ -137,13 +137,13 @@ const Projects = () => {
             View live site <ArrowUpRight className="h-4 w-4" />
           </a>
           <Link
-            to="/services/web-development"
+            to="/services/web-development/"
             className="inline-flex items-center gap-2 border-b border-foreground pb-1 text-sm font-semibold hover:border-accent hover:text-accent"
           >
             Web development <ArrowUpRight className="h-4 w-4" />
           </Link>
           <Link
-            to="/contact"
+            to="/contact/"
             className="inline-flex items-center gap-2 border-b border-foreground pb-1 text-sm font-semibold hover:border-accent hover:text-accent"
           >
             Start a similar project <ArrowUpRight className="h-4 w-4" />

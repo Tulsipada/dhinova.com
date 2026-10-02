@@ -80,7 +80,7 @@ const ContactPage = () => {
               </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="w-full rounded-full border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 sm:w-auto">
-              <Link to="/calculator">Project calculator</Link>
+              <Link to="/calculator/">Project calculator</Link>
             </Button>
           </div>
         </div>

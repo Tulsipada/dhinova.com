@@ -190,7 +190,7 @@ const Blogs = () => {
           {featured ? (
             <article className="animate-rise mb-12 md:mb-16">
               <Link
-                to={`/blogs/${featured.slug}`}
+                to={`/blogs/${featured.slug}/`}
                 className="group grid overflow-hidden rounded-[1.75rem] border border-border bg-muted/30 transition-colors hover:border-accent/40 lg:grid-cols-12"
               >
                 <div
@@ -245,7 +245,7 @@ const Blogs = () => {
                   style={{ animationDelay: `${Math.min(index, 5) * 0.06}s` }}
                 >
                   <Link
-                    to={`/blogs/${blog.slug}`}
+                    to={`/blogs/${blog.slug}/`}
                     className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-background transition-all hover:-translate-y-0.5 hover:border-accent/35 hover:shadow-[0_18px_40px_-28px_rgba(15,23,42,0.35)]"
                   >
                     <div
@@ -319,7 +319,7 @@ const Blogs = () => {
                 size="lg"
                 className="shrink-0 rounded-full bg-accent-ink text-white hover:brightness-95"
               >
-                <Link to="/contact">
+                <Link to="/contact/">
                   Talk to us
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

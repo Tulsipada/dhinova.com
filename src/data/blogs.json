@@ -430,23 +430,23 @@
         "label": "AI features inside the product"
       },
       {
-        "href": "/services/ios-app-development#ios-freelancer",
+        "href": "/services/ios-app-development/#ios-freelancer",
         "label": "Hire an iOS freelancer"
       },
       {
-        "href": "/services/android-app-development#android-freelancer",
+        "href": "/services/android-app-development/#android-freelancer",
         "label": "Hire an Android freelancer"
       },
       {
-        "href": "/services/web-development#web-freelancer",
+        "href": "/services/web-development/#web-freelancer",
         "label": "Hire a web freelancer"
       },
       {
-        "href": "/faq",
+        "href": "/faq/",
         "label": "Freelancer questions"
       },
       {
-        "href": "/contact",
+        "href": "/contact/",
         "label": "Start a project"
       }
     ]

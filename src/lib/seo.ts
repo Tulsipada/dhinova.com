@@ -75,8 +75,35 @@ export const servicesSchema = {
   })),
 };
 
+export function withTrailingSlash(path: string): string {
+  if (!path.startsWith("/") || path.startsWith("//")) return path;
+  const hashIndex = path.indexOf("#");
+  const hash = hashIndex >= 0 ? path.slice(hashIndex) : "";
+  const beforeHash = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
+  const queryIndex = beforeHash.indexOf("?");
+  const query = queryIndex >= 0 ? beforeHash.slice(queryIndex) : "";
+  const pathname = queryIndex >= 0 ? beforeHash.slice(0, queryIndex) : beforeHash;
+
+  if (pathname === "/" || pathname === "" || /\.[a-z0-9]+$/i.test(pathname)) {
+    return `${pathname}${query}${hash}`;
+  }
+
+  const slashed = pathname.endsWith("/") ? pathname : `${pathname}/`;
+  return `${slashed}${query}${hash}`;
+}
+
 export function absoluteUrl(path = "/"): string {
-  if (path.startsWith("http")) return path;
+  if (path.startsWith("http")) {
+    try {
+      const url = new URL(path);
+      if (url.origin === new URL(SITE_URL).origin) {
+        return `${url.origin}${withTrailingSlash(url.pathname)}${url.search}${url.hash}`;
+      }
+    } catch {
+      return path;
+    }
+    return path;
+  }
   const normalized = path.startsWith("/") ? path : `/${path}`;
   const hashIndex = normalized.indexOf("#");
   const hash = hashIndex >= 0 ? normalized.slice(hashIndex) : "";
@@ -85,12 +112,7 @@ export function absoluteUrl(path = "/"): string {
   const query = queryIndex >= 0 ? beforeHash.slice(queryIndex) : "";
   const pathname = queryIndex >= 0 ? beforeHash.slice(0, queryIndex) : beforeHash;
 
-  if (pathname === "/" || /\.[a-z0-9]+$/i.test(pathname)) {
-    return `${SITE_URL}${pathname}${query}${hash}`;
-  }
-
-  const slashed = pathname.endsWith("/") ? pathname : `${pathname}/`;
-  return `${SITE_URL}${slashed}${query}${hash}`;
+  return `${SITE_URL}${withTrailingSlash(`${pathname}${query}${hash}`)}`;
 }
 
 export function absoluteImageUrl(image?: string): string {

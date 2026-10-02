@@ -34,13 +34,13 @@ const AboutPage = () => (
         ))}
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild className="rounded-full">
-            <Link to="/projects">
+            <Link to="/projects/">
               See our work
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
           <Button asChild variant="outline" className="rounded-full">
-            <Link to="/contact">Contact us</Link>
+            <Link to="/contact/">Contact us</Link>
           </Button>
         </div>
       </div>

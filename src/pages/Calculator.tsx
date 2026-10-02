@@ -164,7 +164,7 @@ const Calculator = () => {
             integrations, design depth, and compliance needs.
           </p>
           <Button asChild size="lg" className="mt-8 rounded-full bg-accent-ink text-white hover:brightness-95">
-            <Link to="/contact">
+            <Link to="/contact/">
               Get a precise quote
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
