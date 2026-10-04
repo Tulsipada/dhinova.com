@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dhinova studio</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #172033;
+        --muted: #5c6b80;
+        --line: #d9e0ea;
+        --paper: #f6f4ef;
+        --card: #fffdf9;
+        --accent: #0e7490;
+        --danger: #9f1239;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+        padding: 18px 24px;
+        border-bottom: 1px solid var(--line);
+        background: var(--card);
+      }
+      header p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+      main {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        min-height: calc(100vh - 78px);
+      }
+      aside {
+        border-right: 1px solid var(--line);
+        padding: 16px;
+        background: #fbfaf7;
+      }
+      aside button, .toolbar button, .save, .ghost {
+        border: 1px solid var(--line);
+        background: white;
+        color: var(--ink);
+        border-radius: 999px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font: inherit;
+      }
+      aside button { width: 100%; margin-bottom: 12px; }
+      .post-list { display: flex; flex-direction: column; gap: 6px; }
+      .post-list button {
+        width: 100%;
+        text-align: left;
+        border-radius: 12px;
+        background: transparent;
+      }
+      .post-list button.active { border-color: var(--accent); color: var(--accent); }
+      .post-list small { display: block; color: var(--muted); }
+      form { padding: 24px; max-width: 860px; }
+      label { display: block; font-size: 13px; color: var(--muted); margin: 14px 0 6px; }
+      input, textarea, select {
+        width: 100%;
+        border: 1px solid var(--line);
+        background: white;
+        border-radius: 12px;
+        padding: 10px 12px;
+        font: inherit;
+        color: var(--ink);
+      }
+      .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background: var(--paper);
+        padding: 8px 0;
+      }
+      .toolbar button strong { font-weight: 700; }
+      .toolbar button em { font-style: italic; }
+      #editor {
+        min-height: 320px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: white;
+        padding: 18px 20px;
+        outline: none;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 18px;
+        line-height: 1.6;
+      }
+      #editor:focus { border-color: var(--accent); }
+      #editor h2, #editor h3 { font-family: "Segoe UI", sans-serif; line-height: 1.25; }
+      #editor img { max-width: 100%; border-radius: 12px; }
+      .panel {
+        display: none;
+        gap: 8px;
+        margin-top: 8px;
+        align-items: center;
+      }
+      .panel.open { display: flex; }
+      .panel input { flex: 1; }
+      .repeater { display: flex; flex-direction: column; gap: 8px; }
+      .pair { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; }
+      .actions { display: flex; gap: 12px; align-items: center; margin-top: 18px; }
+      .save { background: var(--ink); color: white; border-color: var(--ink); padding: 10px 18px; }
+      #status { color: var(--muted); }
+      #status.error { color: var(--danger); }
+      @media (max-width: 800px) {
+        main { grid-template-columns: 1fr; }
+        .row, .pair, .panel.open { grid-template-columns: 1fr; display: grid; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <strong>Dhinova studio</strong>
+        <p>Local only. Save writes the blog JSON. Push main to publish.</p>
+      </div>
+    </header>
+    <main>
+      <aside>
+        <button type="button" id="new-post">New article</button>
+        <div class="post-list" id="post-list"></div>
+      </aside>
+      <form id="form">
+        <label for="title">Title</label>
+        <input id="title" name="title" required placeholder="Article title" />
+        <label for="excerpt">Excerpt</label>
+        <textarea id="excerpt" name="excerpt" rows="3" required placeholder="The search snippet and the intro under the title"></textarea>
+        <div class="row">
+          <div>
+            <label for="category">Category</label>
+            <input id="category" name="category" placeholder="Hiring" />
+          </div>
+          <div>
+            <label for="tags">Tags</label>
+            <input id="tags" name="tags" placeholder="Comma separated" />
+          </div>
+        </div>
+        <label for="image">Cover image URL</label>
+        <input id="image" name="image" placeholder="https://..." />
+
+        <label>Article</label>
+        <div class="toolbar" id="toolbar">
+          <button type="button" data-cmd="formatBlock" data-value="p">Text</button>
+          <button type="button" data-cmd="formatBlock" data-value="h2">H2</button>
+          <button type="button" data-cmd="formatBlock" data-value="h3">H3</button>
+          <button type="button" data-cmd="bold"><strong>B</strong></button>
+          <button type="button" data-cmd="italic"><em>I</em></button>
+          <button type="button" data-cmd="insertUnorderedList">List</button>
+          <button type="button" data-cmd="insertOrderedList">1.</button>
+          <button type="button" id="link-btn">Link</button>
+          <button type="button" id="image-btn">Image</button>
+        </div>
+        <div class="panel" id="link-panel">
+          <input id="link-url" placeholder="/contact/ or https://..." />
+          <button type="button" class="ghost" id="link-apply">Add link</button>
+        </div>
+        <div class="panel" id="image-panel">
+          <input id="image-url" placeholder="https://image..." />
+          <input id="image-alt" placeholder="Alt text" />
+          <button type="button" class="ghost" id="image-apply">Add image</button>
+        </div>
+        <div id="editor" contenteditable="true" role="textbox" aria-label="Article body"></div>
+
+        <label>Questions</label>
+        <div class="repeater" id="faqs"></div>
+        <button type="button" class="ghost" id="add-faq">Add question</button>
+
+        <label>Related links</label>
+        <div class="repeater" id="related"></div>
+        <button type="button" class="ghost" id="add-related">Add related link</button>
+
+        <label for="link-from">Also link this article from</label>
+        <select id="link-from">
+          <option value="">Do not add a link on another post</option>
+        </select>
+
+        <div class="actions">
+          <button class="save" type="submit">Save article</button>
+          <span id="status"></span>
+        </div>
+      </form>
+    </main>
+    <script>
+      const form = document.querySelector("#form");
+      const editor = document.querySelector("#editor");
+      const status = document.querySelector("#status");
+      const postList = document.querySelector("#post-list");
+      const linkFrom = document.querySelector("#link-from");
+      let posts = [];
+      let originalSlug = "";
+      let savedRange = null;
+
+      const escapeHtml = (value) =>
+        String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+
+      const plainToHtml = (content) => {
+        const parts = String(content || "").split("\n");
+        const html = [];
+        let list = [];
+        let listTag = "ul";
+        const flush = () => {
+          if (!list.length) return;
+          html.push(`<${listTag}>${list.join("")}</${listTag}>`);
+          list = [];
+        };
+        for (const line of parts) {
+          const bullet = line.match(/^- (.*)$/);
+          const numbered = line.match(/^\d+\. (.*)$/);
+          if (bullet || numbered) {
+            const nextTag = bullet ? "ul" : "ol";
+            if (list.length && listTag !== nextTag) flush();
+            listTag = nextTag;
+            list.push(`<li>${escapeHtml((bullet || numbered)[1])}</li>`);
+            continue;
+          }
+          flush();
+          if (!line.trim()) continue;
+          if (line.startsWith("### ")) html.push(`<h3>${escapeHtml(line.slice(4))}</h3>`);
+          else if (line.startsWith("## ")) html.push(`<h2>${escapeHtml(line.slice(3))}</h2>`);
+          else html.push(`<p>${escapeHtml(line)}</p>`);
+        }
+        flush();
+        return html.join("");
+      };
+
+      const isHtml = (content) => /<\/?(?:p|h2|h3|ul|ol|li|strong|em|a|img)\b/i.test(content || "");
+
+      const saveSelection = () => {
+        const selection = getSelection();
+        if (selection && selection.rangeCount && editor.contains(selection.anchorNode)) {
+          savedRange = selection.getRangeAt(0);
+        }
+      };
+
+      const restoreSelection = () => {
+        editor.focus();
+        if (!savedRange) return;
+        const selection = getSelection();
+        selection.removeAllRanges();
+        selection.addRange(savedRange);
+      };
+
+      const remember = (event) => {
+        event.preventDefault();
+        saveSelection();
+      };
+
+      document.querySelectorAll("#toolbar button").forEach((button) => {
+        button.addEventListener("mousedown", remember);
+      });
+
+      document.execCommand("defaultParagraphSeparator", false, "p");
+      document.execCommand("styleWithCSS", false, false);
+
+      document.querySelectorAll("[data-cmd]").forEach((button) => {
+        button.addEventListener("click", () => {
+          restoreSelection();
+          document.execCommand(button.dataset.cmd, false, button.dataset.value || null);
+          editor.focus();
+        });
+      });
+
+      const togglePanel = (id) => {
+        saveSelection();
+        document.querySelector(id).classList.toggle("open");
+      };
+      document.querySelector("#link-btn").addEventListener("click", () => togglePanel("#link-panel"));
+      document.querySelector("#image-btn").addEventListener("click", () => togglePanel("#image-panel"));
+
+      document.querySelector("#link-apply").addEventListener("click", () => {
+        const href = document.querySelector("#link-url").value.trim();
+        if (!href) return;
+        restoreSelection();
+        document.execCommand("createLink", false, href);
+        document.querySelector("#link-panel").classList.remove("open");
+        document.querySelector("#link-url").value = "";
+      });
+
+      document.querySelector("#image-apply").addEventListener("click", () => {
+        const src = document.querySelector("#image-url").value.trim();
+        const alt = document.querySelector("#image-alt").value.trim();
+        if (!src) return;
+        restoreSelection();
+        document.execCommand("insertHTML", false, `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}">`);
+        document.querySelector("#image-panel").classList.remove("open");
+        document.querySelector("#image-url").value = "";
+        document.querySelector("#image-alt").value = "";
+      });
+
+      const pair = (container, values, placeholders) => {
+        const row = document.createElement("div");
+        row.className = "pair";
+        const first = document.createElement("input");
+        const second = document.createElement("input");
+        const remove = document.createElement("button");
+        first.placeholder = placeholders[0];
+        second.placeholder = placeholders[1];
+        first.value = values[0] || "";
+        second.value = values[1] || "";
+        remove.type = "button";
+        remove.className = "ghost";
+        remove.textContent = "Remove";
+        remove.addEventListener("click", () => row.remove());
+        row.append(first, second, remove);
+        container.append(row);
+      };
+
+      const readPairs = (container) =>
+        [...container.querySelectorAll(".pair")].map((row) => {
+          const [first, second] = row.querySelectorAll("input");
+          return [first.value.trim(), second.value.trim()];
+        });
+
+      const fillPairs = (container, rows, placeholders) => {
+        container.innerHTML = "";
+        rows.forEach((row) => pair(container, row, placeholders));
+      };
+
+      document.querySelector("#add-faq").addEventListener("click", () => {
+        pair(document.querySelector("#faqs"), ["", ""], ["Question", "Answer"]);
+      });
+      document.querySelector("#add-related").addEventListener("click", () => {
+        pair(document.querySelector("#related"), ["", ""], ["/contact/", "Link label"]);
+      });
+
+      const blank = () => {
+        originalSlug = "";
+        form.reset();
+        editor.innerHTML = "<p><br></p>";
+        fillPairs(document.querySelector("#faqs"), [], ["Question", "Answer"]);
+        fillPairs(document.querySelector("#related"), [], ["/contact/", "Link label"]);
+        linkFrom.value = "";
+        status.textContent = "";
+        [...postList.querySelectorAll("button")].forEach((button) => button.classList.remove("active"));
+      };
+
+      const loadPost = (post) => {
+        originalSlug = post.slug;
+        form.title.value = post.title || "";
+        form.excerpt.value = post.excerpt || "";
+        form.category.value = post.category || "";
+        form.tags.value = (post.tags || []).join(", ");
+        form.image.value = post.image || "";
+        editor.innerHTML = isHtml(post.content) ? post.content : plainToHtml(post.content);
+        fillPairs(
+          document.querySelector("#faqs"),
+          (post.faqs || []).map((item) => [item.question, item.answer]),
+          ["Question", "Answer"],
+        );
+        fillPairs(
+          document.querySelector("#related"),
+          (post.related || []).map((item) => [item.href, item.label]),
+          ["/contact/", "Link label"],
+        );
+        linkFrom.value = "";
+        status.textContent = `Editing ${post.slug}`;
+        status.classList.remove("error");
+        [...postList.querySelectorAll("button")].forEach((button) => {
+          button.classList.toggle("active", button.dataset.slug === post.slug);
+        });
+      };
+
+      const renderList = () => {
+        postList.innerHTML = "";
+        linkFrom.innerHTML = `<option value="">Do not add a link on another post</option>`;
+        posts.forEach((post) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.dataset.slug = post.slug;
+          button.innerHTML = `${escapeHtml(post.title)}<small>${escapeHtml(post.date)}</small>`;
+          button.addEventListener("click", () => loadPost(post));
+          postList.append(button);
+          const option = document.createElement("option");
+          option.value = post.slug;
+          option.textContent = post.title;
+          linkFrom.append(option);
+        });
+      };
+
+      const refresh = async () => {
+        const response = await fetch("/api/posts");
+        const data = await response.json();
+        posts = data.posts || [];
+        renderList();
+      };
+
+      document.querySelector("#new-post").addEventListener("click", blank);
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        status.classList.remove("error");
+        status.textContent = "Saving...";
+        const faqs = readPairs(document.querySelector("#faqs"))
+          .filter(([question, answer]) => question && answer)
+          .map(([question, answer]) => ({ question, answer }));
+        const related = readPairs(document.querySelector("#related"))
+          .filter(([href, label]) => href && label)
+          .map(([href, label]) => ({ href, label }));
+        const response = await fetch("/api/posts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            originalSlug,
+            title: form.title.value,
+            excerpt: form.excerpt.value,
+            category: form.category.value,
+            tags: form.tags.value,
+            image: form.image.value,
+            content: editor.innerHTML,
+            faqs,
+            related,
+            linkFromSlug: linkFrom.value,
+          }),
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          status.textContent = data.error || "Could not save.";
+          status.classList.add("error");
+          return;
+        }
+        originalSlug = data.post.slug;
+        status.textContent = data.updated
+          ? `Updated. Push main to publish /blogs/${data.post.slug}/`
+          : `Saved. Push main to publish /blogs/${data.post.slug}/`;
+        await refresh();
+        [...postList.querySelectorAll("button")].forEach((button) => {
+          button.classList.toggle("active", button.dataset.slug === data.post.slug);
+        });
+      });
+
+      blank();
+      refresh();
+    </script>
+  </body>
+</html>

@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { isHtmlPost, sanitizeBlogHtml } from "../src/lib/blogHtml.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -78,6 +79,14 @@ const markdownishToHtml = (content = "") =>
     .filter(Boolean)
     .join("\n")
     .replace(/(?:<li>[\s\S]*?<\/li>\n?)+/g, (block) => `<ul>${block}</ul>`);
+
+const renderBlogBody = (content = "") => {
+  if (!isHtmlPost(content)) return markdownishToHtml(content);
+  return sanitizeBlogHtml(content).replace(
+    /href="(\/[^"]*)"/g,
+    (_, href) => `href="${escapeHtml(absolute(href))}"`,
+  );
+};
 
 export function getSeoPages() {
   const site = readJson("src/data/site.json");
@@ -503,7 +512,7 @@ export function getSeoPages() {
             <p>${escapeHtml(blog.excerpt)}</p>
             <p>${escapeHtml(blog.author)} · <time datetime="${escapeHtml(blog.date)}">${escapeHtml(blog.date)}</time></p>
             <img src="${escapeHtml(absolute(blog.image || "/dhinova.png"))}" alt="${escapeHtml(blog.title)}" width="1200" height="630" />
-            ${markdownishToHtml(blog.content)}
+            ${renderBlogBody(blog.content)}
             ${
               Array.isArray(blog.faqs)
                 ? `<h2>Questions</h2>${blog.faqs

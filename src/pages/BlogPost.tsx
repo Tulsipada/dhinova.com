@@ -16,6 +16,7 @@ import {
   absoluteUrl,
 } from "@/lib/seo";
 import blogsData from "@/data/blogs.json";
+import { isHtmlPost, sanitizeBlogHtml } from "@/lib/blogHtml.mjs";
 
 interface BlogFaq {
   question: string;
@@ -276,9 +277,23 @@ const BlogPost = () => {
             />
           </div>
 
-          <div className="max-w-4xl mx-auto prose prose-lg dark:prose-invert prose-headings:font-bold prose-p:text-muted-foreground prose-p:leading-relaxed">
-            {formatContent(blog.content)}
-          </div>
+          {isHtmlPost(blog.content) ? (
+            <div
+              className="max-w-4xl mx-auto prose prose-lg dark:prose-invert prose-headings:font-bold prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:font-semibold prose-a:text-accent-ink [&_img]:my-6 [&_img]:max-w-full [&_img]:rounded-lg"
+              onClick={(event) => {
+                const anchor = (event.target as HTMLElement).closest("a");
+                const href = anchor?.getAttribute("href") || "";
+                if (!href.startsWith("/") || href.startsWith("//")) return;
+                event.preventDefault();
+                navigate(href);
+              }}
+              dangerouslySetInnerHTML={{ __html: sanitizeBlogHtml(blog.content) }}
+            />
+          ) : (
+            <div className="max-w-4xl mx-auto prose prose-lg dark:prose-invert prose-headings:font-bold prose-p:text-muted-foreground prose-p:leading-relaxed">
+              {formatContent(blog.content)}
+            </div>
+          )}
 
           {blog.faqs?.length ? (
             <section className="mx-auto mt-12 max-w-4xl">
