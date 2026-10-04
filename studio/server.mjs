@@ -4,10 +4,12 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
 import { sanitizeBlogHtml } from "../src/lib/blogHtml.mjs";
+import { writeSitemap } from "../scripts/seo-pages.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const BLOGS_PATH = path.resolve(ROOT, "src/data/blogs.json");
+const SITEMAP_PATH = path.resolve(ROOT, "public/sitemap.xml");
 const PAGE = path.resolve(__dirname, "index.html");
 const HOST = "127.0.0.1";
 const PORT = 4317;
@@ -15,8 +17,24 @@ const AUTHOR = "Dhinova Team";
 
 const readPosts = () => JSON.parse(readFileSync(BLOGS_PATH, "utf8"));
 
+const byLatest = (a, b) => {
+  const byDate = String(b.date).localeCompare(String(a.date));
+  if (byDate) return byDate;
+  return (Number(b.id) || 0) - (Number(a.id) || 0);
+};
+
 const writePosts = (posts) => {
   writeFileSync(BLOGS_PATH, `${JSON.stringify(posts, null, 2)}\n`, "utf8");
+  writeSitemap(SITEMAP_PATH);
+};
+
+const dropLinksTo = (posts, slug) => {
+  const href = `/blogs/${slug}/`;
+  for (const post of posts) {
+    if (!Array.isArray(post.related)) continue;
+    post.related = post.related.filter((item) => item.href !== href);
+    if (!post.related.length) delete post.related;
+  }
 };
 
 const today = () => {
@@ -172,7 +190,7 @@ const server = createServer(async (req, res) => {
   }
 
   if (req.method === "GET" && url.pathname === "/api/posts") {
-    send(res, 200, { posts: readPosts() });
+    send(res, 200, { posts: readPosts().sort(byLatest) });
     return;
   }
 
@@ -190,9 +208,29 @@ const server = createServer(async (req, res) => {
         : [...posts, result.post];
       if (body.linkFromSlug) linkFrom(next, String(body.linkFromSlug), result.post);
       writePosts(next);
-      send(res, 200, { post: result.post, updated: result.existing });
+      send(res, 200, { post: result.post, updated: result.existing, sitemap: "/sitemap.xml" });
     } catch {
       send(res, 400, { error: "Could not save that article." });
+    }
+    return;
+  }
+
+  if (req.method === "DELETE" && url.pathname === "/api/posts") {
+    try {
+      const body = JSON.parse(await readBody(req));
+      const slug = String(body.slug || "");
+      const posts = readPosts();
+      const existing = posts.find((post) => post.slug === slug);
+      if (!existing) {
+        send(res, 404, { error: "That article is not in the file." });
+        return;
+      }
+      const next = posts.filter((post) => post.slug !== slug);
+      dropLinksTo(next, slug);
+      writePosts(next);
+      send(res, 200, { deleted: slug });
+    } catch {
+      send(res, 400, { error: "Could not delete that article." });
     }
     return;
   }

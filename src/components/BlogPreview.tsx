@@ -14,7 +14,11 @@ function previewImage(src: string) {
 const BlogPreview = () => {
   const { title, subtitle, ctaLabel, ctaHref } = site.blogSection;
   const posts = [...blogs]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => {
+      const byDate = new Date(b.date).getTime() - new Date(a.date).getTime();
+      if (byDate) return byDate;
+      return b.id - a.id;
+    })
     .slice(0, 3);
 
   const formatDate = (dateString: string) =>

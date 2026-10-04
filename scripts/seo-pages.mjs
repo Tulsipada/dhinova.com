@@ -93,7 +93,11 @@ export function getSeoPages() {
   const services = readJson("src/data/services.json");
   const projects = readJson("src/data/projects.json");
   const clients = readJson("src/data/clients.json");
-  const blogs = readJson("src/data/blogs.json");
+  const blogs = readJson("src/data/blogs.json").sort((a, b) => {
+    const byDate = String(b.date).localeCompare(String(a.date));
+    if (byDate) return byDate;
+    return (Number(b.id) || 0) - (Number(a.id) || 0);
+  });
   const faq = readJson("src/data/faq.json");
   const careers = readJson("src/data/careers.json");
   const team = readJson("src/data/team.json");

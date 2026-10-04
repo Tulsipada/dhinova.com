@@ -32,9 +32,11 @@ const categoryTone: Record<string, string> = {
 const Blogs = () => {
   const blogs = useMemo(
     () =>
-      [...blogsData].sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-      ) as Blog[],
+      [...blogsData].sort((a, b) => {
+        const byDate = new Date(b.date).getTime() - new Date(a.date).getTime();
+        if (byDate) return byDate;
+        return b.id - a.id;
+      }) as Blog[],
     []
   );
 
