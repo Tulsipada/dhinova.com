@@ -73,7 +73,7 @@ const markdownishToHtml = (content = "") =>
       if (trimmed.startsWith("- ")) {
         return `<li>${escapeHtml(trimmed.slice(2))}</li>`;
       }
-      return `<p>${escapeHtml(trimmed)}</p>`;
+      return `<p>${escapeHtml(trimmed).replaceAll("dhinova.com", `<a href="${SITE_URL}/">dhinova.com</a>`)}</p>`;
     })
     .filter(Boolean)
     .join("\n")
@@ -509,7 +509,7 @@ export function getSeoPages() {
                 ? `<h2>Questions</h2>${blog.faqs
                     .map(
                       (item) =>
-                        `<section><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p></section>`
+                        `<section><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer).replaceAll("dhinova.com", `<a href="${SITE_URL}/">dhinova.com</a>`)}</p></section>`
                     )
                     .join("")}`
                 : ""

@@ -69,6 +69,20 @@ const BlogPost = () => {
     return new Date(dateString).toISOString();
   };
 
+  const withSiteLink = (text: string) => {
+    const parts = text.split(/(dhinova\.com)/g);
+    if (parts.length === 1) return text;
+    return parts.map((part, index) =>
+      part === "dhinova.com" ? (
+        <Link key={index} to="/" className="font-semibold text-accent-ink underline-offset-4 hover:underline">
+          dhinova.com
+        </Link>
+      ) : (
+        part
+      )
+    );
+  };
+
   const formatContent = (content: string) => {
     return content.split("\n").map((line, index) => {
       if (line.startsWith("## ")) {
@@ -88,7 +102,7 @@ const BlogPost = () => {
       } else {
         return (
           <p key={index} className="mb-4 text-lg leading-relaxed text-muted-foreground">
-            {line}
+            {withSiteLink(line)}
           </p>
         );
       }
@@ -275,7 +289,7 @@ const BlogPost = () => {
                     <summary className="cursor-pointer text-xl font-semibold text-foreground">
                       {item.question}
                     </summary>
-                    <p className="mb-0 mt-3 text-lg leading-relaxed text-muted-foreground">{item.answer}</p>
+                    <p className="mb-0 mt-3 text-lg leading-relaxed text-muted-foreground">{withSiteLink(item.answer)}</p>
                   </details>
                 ))}
               </div>
