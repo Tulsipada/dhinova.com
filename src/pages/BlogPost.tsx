@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import FallbackImage from "@/components/FallbackImage";
+import PageLoader from "@/components/PageLoader";
 import {
   DEFAULT_OG_IMAGE,
   SITE_LEGAL_NAME,
@@ -111,11 +112,7 @@ const BlogPost = () => {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <p className="text-muted-foreground">Loading...</p>
-      </div>
-    );
+    return <PageLoader />;
   }
 
   if (!blog) {

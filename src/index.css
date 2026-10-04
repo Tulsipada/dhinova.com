@@ -151,6 +151,10 @@
   .animate-soft-pulse {
     animation: soft-pulse 6s ease-in-out infinite;
   }
+
+  .animate-logo-breathe {
+    animation: logo-breathe 1.2s ease-in-out infinite;
+  }
 }
 
 @keyframes rise {
@@ -181,5 +185,24 @@
   }
   50% {
     opacity: 0.75;
+  }
+}
+
+@keyframes logo-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-logo-breathe {
+    animation: none;
+    opacity: 1;
   }
 }

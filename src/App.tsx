@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
+import PageLoader from "./components/PageLoader";
 
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Blogs = lazy(() => import("./pages/Blogs"));
@@ -66,7 +67,7 @@ const App = () => (
         <BrowserRouter>
           <TrailingSlashRedirect />
           <ScrollRestoration />
-          <Suspense fallback={null}>
+          <Suspense fallback={<PageLoader />}>
           <Routes>
             {slashedRoutes("/", Index)}
             {slashedRoutes("/services/:slug", ServicePage)}
