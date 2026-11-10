@@ -88,6 +88,13 @@ const renderBlogBody = (content = "") => {
   );
 };
 
+// Keep titles under ~60 chars so Google doesn't truncate them in results.
+export const blogMetaTitle = (blog, siteName = "Dhinova") => {
+  if (blog.metaTitle) return blog.metaTitle;
+  const withBrand = `${blog.title} | ${siteName}`;
+  return withBrand.length <= 60 ? withBrand : blog.title;
+};
+
 export function getSeoPages() {
   const site = readJson("src/data/site.json");
   const services = readJson("src/data/services.json");
@@ -264,7 +271,7 @@ export function getSeoPages() {
     },
     {
       path: "/calculator",
-      title: `Project Cost Calculator | ${site.name}`,
+      title: `App & Website Development Cost Calculator (India) | ${site.name}`,
       description:
         "Get a quick ballpark for your web, mobile, AI, or blockchain project. Final quotes are tailored after a short discovery call.",
       changefreq: "monthly",
@@ -456,7 +463,7 @@ export function getSeoPages() {
   for (const service of services) {
     pages.push({
       path: `/services/${service.slug}`,
-      title: `${service.title} | ${site.name}`,
+      title: service.metaTitle || `${service.title} | ${site.name}`,
       description: service.metaDescription || service.longDescription,
       changefreq: "monthly",
       priority: "0.9",
@@ -499,7 +506,8 @@ export function getSeoPages() {
   for (const blog of blogs) {
     pages.push({
       path: `/blogs/${blog.slug}`,
-      title: `${blog.title} | ${site.name} Blog`,
+      title: blogMetaTitle(blog, site.name),
+      headline: blog.title,
       description: blog.excerpt,
       changefreq: "monthly",
       priority: "0.8",

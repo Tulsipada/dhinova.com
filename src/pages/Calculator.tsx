@@ -53,6 +53,7 @@ const Calculator = () => {
   return (
     <PageShell
       title="Project Cost Calculator"
+      metaTitle="App & Website Development Cost Calculator (India) | Dhinova"
       eyebrow="Estimate"
       description="Get a quick ballpark for your web, mobile, AI, or blockchain project. Final quotes are tailored after a short discovery call."
       path="/calculator"
@@ -63,7 +64,7 @@ const Calculator = () => {
         name: "Dhinova Project Cost Calculator",
         url: absoluteUrl("/calculator"),
         applicationCategory: "BusinessApplication",
-        offers: { "@type": "Offer", priceCurrency: "INR" },
+        offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
       }}
     >
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">

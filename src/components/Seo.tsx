@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { Helmet } from "react-helmet-async";
 import {
   DEFAULT_OG_IMAGE,
-  SITE_BRAND,
   SITE_NAME,
   absoluteUrl,
 } from "@/lib/seo";
@@ -15,6 +14,7 @@ type SeoProps = {
   type?: "website" | "article";
   keywords?: string;
   noindex?: boolean;
+  imageAlt?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   children?: ReactNode;
 };
@@ -27,6 +27,7 @@ const Seo = ({
   type = "website",
   keywords,
   noindex = false,
+  imageAlt,
   jsonLd,
   children,
 }: SeoProps) => {
@@ -54,7 +55,7 @@ const Seo = ({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageUrl} />
-      <meta property="og:image:alt" content={`${SITE_BRAND} preview image`} />
+      <meta property="og:image:alt" content={imageAlt || title} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="en_IN" />
 
@@ -63,7 +64,7 @@ const Seo = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
-      <meta name="twitter:image:alt" content={`${SITE_BRAND} preview image`} />
+      <meta name="twitter:image:alt" content={imageAlt || title} />
 
       {schemas.map((schema, index) => (
         <script

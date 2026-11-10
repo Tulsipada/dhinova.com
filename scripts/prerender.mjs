@@ -43,6 +43,8 @@ function injectMeta(html, page) {
   replaceMeta("name", "twitter:title", title);
   replaceMeta("name", "twitter:description", description);
   replaceMeta("name", "twitter:image", image);
+  replaceMeta("property", "og:image:alt", page.imageAlt || page.headline || title);
+  replaceMeta("name", "twitter:image:alt", page.imageAlt || page.headline || title);
 
   if (/<link[^>]+rel=["']canonical["'][^>]*>/i.test(next)) {
     next = next.replace(
@@ -66,7 +68,7 @@ function pageSchema(page) {
   if (isBlogPost) {
     const article = {
       "@type": "BlogPosting",
-      headline: page.title.replace(/ \| Dhinova Blog$/, ""),
+      headline: page.headline || page.title,
       description: page.description,
       url: pageUrl,
       image: page.image,

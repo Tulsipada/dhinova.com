@@ -44,6 +44,13 @@ interface Blog {
   related?: BlogLink[];
 }
 
+// Keep titles under ~60 chars so Google doesn't truncate them in results.
+const blogMetaTitle = (blog: { title: string; metaTitle?: string }) => {
+  if (blog.metaTitle) return blog.metaTitle;
+  const withBrand = `${blog.title} | ${SITE_NAME}`;
+  return withBrand.length <= 60 ? withBrand : blog.title;
+};
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -130,7 +137,7 @@ const BlogPost = () => {
             <p className="text-muted-foreground mb-6">
               The blog post you're looking for doesn't exist.
             </p>
-            <Button onClick={() => navigate("/blogs")}>Back to Blogs</Button>
+            <Button onClick={() => navigate("/blogs/")}>Back to Blogs</Button>
           </div>
         </div>
       </>
@@ -200,7 +207,7 @@ const BlogPost = () => {
   return (
     <>
       <Seo
-        title={`${blog.title} | ${SITE_NAME} Blog`}
+        title={blogMetaTitle(blog)}
         description={blog.excerpt}
         path={pagePath}
         image={imageUrl}
@@ -236,7 +243,7 @@ const BlogPost = () => {
       <div className="min-h-screen bg-background">
         <Navbar />
         <div className="container px-4 pt-24">
-          <Button variant="ghost" onClick={() => navigate("/blogs")} className="mb-4">
+          <Button variant="ghost" onClick={() => navigate("/blogs/")} className="mb-4">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Blogs
           </Button>

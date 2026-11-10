@@ -8,6 +8,7 @@ type PageShellProps = {
   title: string;
   description: string;
   metaDescription?: string;
+  metaTitle?: string;
   path: string;
   eyebrow?: string;
   keywords?: string;
@@ -23,6 +24,7 @@ const PageShell = ({
   title,
   description,
   metaDescription,
+  metaTitle,
   path,
   eyebrow,
   keywords,
@@ -35,7 +37,7 @@ const PageShell = ({
 }: PageShellProps) => (
   <>
     <Seo
-      title={`${title} | ${SITE_NAME}`}
+      title={metaTitle || `${title} | ${SITE_NAME}`}
       description={metaDescription || description}
       path={path}
       keywords={keywords}

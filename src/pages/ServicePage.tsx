@@ -52,6 +52,7 @@ const ServicePage = () => {
       eyebrow="Services"
       description={service.longDescription}
       metaDescription={service.metaDescription}
+      metaTitle={service.metaTitle}
       path={pagePath}
       keywords={service.keywords}
       jsonLd={[
