@@ -2,6 +2,20 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { isHtmlPost, sanitizeBlogHtml } from "../src/lib/blogHtml.mjs";
+import {
+  CITY_HUB,
+  CITY_HUB_PATH,
+  KOLKATA_LINK,
+  REGION_ORDER,
+  affordableNote,
+  cityHeading,
+  cityMetaDescription,
+  cityMetaTitle,
+  cityPath,
+  cityPricingLinks,
+  cityServiceLinks,
+  remoteSteps,
+} from "../src/lib/cities.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -111,6 +125,7 @@ export function getSeoPages() {
   const testimonials = readJson("src/data/testimonials.json");
   const requirements = readJson("src/data/requirements.json");
   const announcements = readJson("src/data/announcements.json");
+  const cities = readJson("src/data/cities.json");
 
   const pages = [
     {
@@ -498,6 +513,76 @@ export function getSeoPages() {
               : ""
           }
           <p><a href="${escapeHtml(absolute("/contact"))}">Start a project</a> · <a href="${escapeHtml(absolute("/calculator"))}">Estimate cost</a></p>
+        </main>
+      `,
+    });
+  }
+
+  const link = (href, label) => `<a href="${escapeHtml(absolute(href))}">${escapeHtml(label)}</a>`;
+
+  pages.push({
+    path: CITY_HUB_PATH,
+    title: CITY_HUB.metaTitle,
+    description: CITY_HUB.metaDescription,
+    changefreq: "monthly",
+    priority: "0.8",
+    schemaType: "CityHub",
+    cities,
+    body: `
+      ${navHtml()}
+      <main>
+        <h1>${escapeHtml(CITY_HUB.title)}</h1>
+        <p>${escapeHtml(CITY_HUB.intro)}</p>
+        ${REGION_ORDER.map((region) => {
+          const items = cities.filter((city) => city.region === region);
+          const kolkata = region === "East" ? [`<li>${link(KOLKATA_LINK.href, `Freelancer in ${KOLKATA_LINK.name}`)} - ${escapeHtml(KOLKATA_LINK.state)}</li>`] : [];
+          if (!items.length && !kolkata.length) return "";
+          return `<h2>${escapeHtml(region)} India</h2><ul>${[
+            ...kolkata,
+            ...items.map((city) => `<li>${link(cityPath(city), `Freelancer in ${city.name}`)} - ${escapeHtml(city.state)}</li>`),
+          ].join("")}</ul>`;
+        }).join("")}
+        <p>${link("/contact", "Get a quote")}</p>
+      </main>
+    `,
+  });
+
+  for (const city of cities) {
+    const nearby = city.nearby.map((slug) => cities.find((item) => item.slug === slug)).filter(Boolean);
+    pages.push({
+      path: cityPath(city),
+      title: cityMetaTitle(city),
+      description: cityMetaDescription(city),
+      changefreq: "monthly",
+      priority: "0.8",
+      schemaType: "City",
+      city,
+      body: `
+        ${navHtml()}
+        <main>
+          <p>${link(CITY_HUB_PATH, "All cities")}</p>
+          <p>${escapeHtml(city.state)} · ${escapeHtml(city.kind)}</p>
+          <h1>${escapeHtml(cityHeading(city))}</h1>
+          <p>${escapeHtml(city.intro)}</p>
+          <p>${escapeHtml(city.localNote)}</p>
+          <h2>Who we build for in ${escapeHtml(city.shortName)}</h2>
+          <ul>${city.industries.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+          <h2>Common first projects</h2>
+          <ul>${city.ideas.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+          <h2>What "low cost" means here</h2>
+          <p>${escapeHtml(affordableNote(city))}</p>
+          <p>Languages we can build in for ${escapeHtml(city.shortName)}: ${escapeHtml(city.languages.join(", "))}.</p>
+          <ul>${cityPricingLinks.map((item) => `<li>${link(item.href, item.label)}</li>`).join("")}</ul>
+          <h2>How we work with ${escapeHtml(city.shortName)} clients from Kolkata</h2>
+          <ol>${remoteSteps(city).map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
+          <h2>Questions from ${escapeHtml(city.shortName)} businesses</h2>
+          ${city.faqs.map((item) => `<section><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p></section>`).join("")}
+          <h2>Start your ${escapeHtml(city.shortName)} project</h2>
+          <p>${link("/contact", "Get a quote")} · ${link("/calculator", "Estimate cost")}</p>
+          <h2>Services</h2>
+          <ul>${cityServiceLinks.map((item) => `<li>${link(item.href, item.label)}</li>`).join("")}</ul>
+          <h2>Nearby cities</h2>
+          <ul>${nearby.map((item) => `<li>${link(cityPath(item), `Freelancer in ${item.name}`)}</li>`).join("")}<li>${link(CITY_HUB_PATH, "All cities")}</li></ul>
         </main>
       `,
     });

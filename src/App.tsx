@@ -25,6 +25,8 @@ const Requirements = lazy(() => import("./pages/Requirements"));
 const Notifications = lazy(() => import("./pages/Notifications"));
 const Announcements = lazy(() => import("./pages/Announcements"));
 const ServicePage = lazy(() => import("./pages/ServicePage"));
+const CityHub = lazy(() => import("./pages/CityHub"));
+const CityPage = lazy(() => import("./pages/CityPage"));
 
 const queryClient = new QueryClient();
 
@@ -86,6 +88,8 @@ const App = () => (
             {slashedRoutes("/terms", Terms)}
             {slashedRoutes("/blogs", Blogs)}
             {slashedRoutes("/blogs/:slug", BlogPost)}
+            {slashedRoutes("/freelancer", CityHub)}
+            {slashedRoutes("/freelancer/:city", CityPage)}
             <Route path="*" element={<NotFound />} />
           </Routes>
           </Suspense>

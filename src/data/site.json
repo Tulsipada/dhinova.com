@@ -50,6 +50,7 @@
       { "label": "UI/UX Design", "href": "/services/ui-ux-design/" },
       { "label": "SEO & Growth", "href": "/services/seo-growth/" },
       { "label": "Blockchain", "href": "/services/blockchain-development/" },
+      { "label": "Freelancer by City", "href": "/freelancer/" },
       { "label": "Contact", "href": "/contact/" }
     ],
     "legal": [

@@ -441,6 +441,14 @@
     ],
     "related": [
       {
+        "href": "/freelancer/mumbai/",
+        "label": "Affordable freelancer in Mumbai"
+      },
+      {
+        "href": "/freelancer/",
+        "label": "Freelancer in every state capital"
+      },
+      {
         "href": "/blogs/affordable-freelancer-in-kolkata/",
         "label": "Affordable freelancer in Kolkata"
       },
@@ -537,6 +545,10 @@
       "freelancer company in Kolkata"
     ],
     "related": [
+      {
+        "href": "/freelancer/",
+        "label": "Freelancer in other Indian cities"
+      },
       {
         "href": "/calculator/",
         "label": "Project cost calculator"

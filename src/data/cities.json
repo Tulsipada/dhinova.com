@@ -1,0 +1,1293 @@
+[
+  {
+    "slug": "delhi",
+    "name": "Delhi",
+    "shortName": "Delhi",
+    "state": "Delhi NCR",
+    "region": "North",
+    "kind": "National capital",
+    "languages": [
+      "Hindi",
+      "English",
+      "Punjabi"
+    ],
+    "intro": "Delhi businesses compete in crowded markets - Karol Bagh traders, Laxmi Nagar coaching institutes, South Delhi clinics, and NCR startups all fighting for the same Google results. Agency quotes in the capital often assume a big team and a long retainer. Most small businesses here need something narrower: a fast website that ranks for their area, or a simple app that takes bookings.",
+    "industries": [
+      "Coaching and test-prep institutes",
+      "Clinics, diagnostic labs, and dental practices",
+      "Wholesale and retail traders",
+      "CA, legal, and consulting firms",
+      "NCR startups in Gurugram and Noida"
+    ],
+    "ideas": [
+      "A coaching institute website with course pages, batch timings, and an enquiry form that lands on WhatsApp",
+      "A clinic site with doctor profiles, appointment booking, and a Google Maps listing for each branch",
+      "A wholesale catalogue web app where retailers browse stock and send bulk orders"
+    ],
+    "localNote": "Delhi searches are hyper-local: people type the colony or market name. We structure pages so each branch or locality you serve has its own crawlable section, in Hindi and English if your customers search both.",
+    "faqs": [
+      {
+        "question": "Can you build a Hindi and English website for a Delhi business?",
+        "answer": "Yes. We can add a Hindi version alongside English, with proper Devanagari fonts and separate pages Google can index, so you show up for searches in both languages."
+      },
+      {
+        "question": "Do Delhi NCR startups hire you for MVPs?",
+        "answer": "Yes. Startups in Gurugram and Noida often hire us for a first web or mobile version with one core flow. We agree the scope in writing, share demo builds every milestone, and work fully over video calls."
+      }
+    ],
+    "nearby": [
+      "chandigarh",
+      "jaipur",
+      "lucknow",
+      "dehradun"
+    ]
+  },
+  {
+    "slug": "mumbai",
+    "name": "Mumbai",
+    "shortName": "Mumbai",
+    "state": "Maharashtra",
+    "region": "West",
+    "kind": "State capital and metro",
+    "languages": [
+      "Marathi",
+      "Hindi",
+      "English",
+      "Gujarati"
+    ],
+    "intro": "Mumbai has India's most expensive agency rates, which is exactly why many founders, D2C brands, and small firms here look for a freelancer instead. You still need professional work - Mumbai customers judge a brand by its website in seconds - but you do not need a fifteen-person team to launch a first version.",
+    "industries": [
+      "D2C and e-commerce brands",
+      "Real estate developers and brokers",
+      "Film, media, and creative studios",
+      "Financial advisors and fintech startups",
+      "Logistics and import-export firms"
+    ],
+    "ideas": [
+      "A D2C storefront with Razorpay checkout, product pages that load fast on 4G, and order tracking",
+      "A real estate project site with floor plans, location maps, and lead capture that feeds a CRM",
+      "A portfolio site for a production house or creative studio with video showcases"
+    ],
+    "localNote": "Mumbai buyers often expect payment, CRM, and WhatsApp integrations from day one. We scope these as separate milestones so you can launch the core site first and add integrations without rebuilding.",
+    "faqs": [
+      {
+        "question": "Why hire a Kolkata-based freelancer for a Mumbai project?",
+        "answer": "Lower overheads mean lower quotes for the same React, iOS, and Android work. Everything runs on video calls, shared demo links, and milestone payments, so location does not slow the project down."
+      },
+      {
+        "question": "Can you build a Marathi or Gujarati version of my site?",
+        "answer": "Yes. We can add Marathi, Hindi, or Gujarati pages with correct fonts and separate URLs, so customers who search in their own language can find you."
+      }
+    ],
+    "nearby": [
+      "pune",
+      "ahmedabad",
+      "panaji",
+      "bhopal"
+    ]
+  },
+  {
+    "slug": "bengaluru",
+    "name": "Bengaluru",
+    "shortName": "Bengaluru",
+    "state": "Karnataka",
+    "region": "South",
+    "kind": "State capital and metro",
+    "languages": [
+      "Kannada",
+      "English",
+      "Hindi"
+    ],
+    "intro": "Bengaluru is India's startup capital, and developer salaries here reflect it. Early-stage founders often need a working MVP before they can justify a full-time hire. We build that first version - a SaaS dashboard, a mobile app, or an investor-ready landing page - at freelancer pricing, with code your future team can take over.",
+    "industries": [
+      "SaaS and B2B startups",
+      "Ed-tech and upskilling platforms",
+      "D2C brands and cloud kitchens",
+      "IT services firms needing whitelabel help",
+      "Health-tech and fitness apps"
+    ],
+    "ideas": [
+      "A SaaS MVP with login, a dashboard, and Stripe or Razorpay subscriptions",
+      "A React Native app for a fitness or wellness startup, shipped to both stores",
+      "An investor-ready landing page with waitlist signup and analytics"
+    ],
+    "localNote": "Bengaluru founders usually care about code quality and handover. We use mainstream stacks - React, Node, React Native, Swift, Kotlin - write a short README for every repo, and hand over full source control access.",
+    "faqs": [
+      {
+        "question": "Will my in-house team be able to maintain the code later?",
+        "answer": "Yes. We build on widely used stacks, keep the code in your GitHub organisation from day one, and document setup and deployment so a Bengaluru hire can pick it up quickly."
+      },
+      {
+        "question": "Can you work as whitelabel developers for a Bengaluru agency?",
+        "answer": "Yes. We take on whitelabel web and app work for agencies, under your brand, with NDAs and your project management tools."
+      }
+    ],
+    "nearby": [
+      "chennai",
+      "hyderabad",
+      "thiruvananthapuram",
+      "puducherry"
+    ]
+  },
+  {
+    "slug": "chennai",
+    "name": "Chennai",
+    "shortName": "Chennai",
+    "state": "Tamil Nadu",
+    "region": "South",
+    "kind": "State capital and metro",
+    "languages": [
+      "Tamil",
+      "English"
+    ],
+    "intro": "Chennai's economy runs on manufacturing, healthcare, and a fast-growing SaaS scene along OMR. Many of these businesses still run on an outdated website or a spreadsheet process that should be a simple web app. We build that upgrade at a price a small or mid-sized Chennai firm can approve without a board meeting.",
+    "industries": [
+      "Auto and engineering suppliers",
+      "Hospitals, clinics, and diagnostic centres",
+      "SaaS companies on OMR",
+      "Textile and garment exporters",
+      "Schools and coaching centres"
+    ],
+    "ideas": [
+      "A B2B product catalogue for an engineering supplier with RFQ forms",
+      "A hospital site with department pages, doctor schedules, and appointment requests",
+      "An internal web app that replaces spreadsheets for order or inventory tracking"
+    ],
+    "localNote": "Many Chennai customers search in Tamil or Tanglish. A Tamil version of your key pages, with proper Unicode text rather than images, helps you show up in those searches.",
+    "faqs": [
+      {
+        "question": "Can you build a Tamil-language website?",
+        "answer": "Yes. We add Tamil pages with proper Unicode fonts and separate URLs, so Google can index them and customers can read them on any phone."
+      },
+      {
+        "question": "Can you build internal tools for a Chennai manufacturer?",
+        "answer": "Yes. Order tracking, inventory, and dealer portals are common first projects. We start with one workflow, ship it, and extend it once your team uses it daily."
+      }
+    ],
+    "nearby": [
+      "bengaluru",
+      "puducherry",
+      "hyderabad",
+      "vijayawada"
+    ]
+  },
+  {
+    "slug": "hyderabad",
+    "name": "Hyderabad",
+    "shortName": "Hyderabad",
+    "state": "Telangana",
+    "region": "South",
+    "kind": "State capital and metro",
+    "languages": [
+      "Telugu",
+      "Urdu",
+      "Hindi",
+      "English"
+    ],
+    "intro": "Hyderabad mixes HITEC City tech companies with pharma, real estate, and one of India's busiest restaurant scenes. Small businesses here are often priced out by agencies that mainly serve large IT clients. We offer the same build quality at freelancer rates, scoped to what you need right now.",
+    "industries": [
+      "Pharma and biotech suppliers",
+      "Real estate and construction",
+      "Restaurants, cloud kitchens, and caterers",
+      "IT startups in HITEC City and Gachibowli",
+      "Education and overseas-study consultants"
+    ],
+    "ideas": [
+      "A restaurant site with menu, table reservations, and links to delivery apps",
+      "A real estate listing site with project pages and lead capture",
+      "A booking app for a study-abroad consultancy with document upload"
+    ],
+    "localNote": "Hyderabad customers search in Telugu, Urdu, Hindi, and English. We can add language versions for the pages that matter most, rather than translating the whole site at once.",
+    "faqs": [
+      {
+        "question": "Can you add Telugu or Urdu pages to my website?",
+        "answer": "Yes. We support Telugu and Urdu, including right-to-left layout for Urdu, with separate indexable pages for each language."
+      },
+      {
+        "question": "Do you build apps for Hyderabad restaurants?",
+        "answer": "Yes. A website with menu, reservations, and WhatsApp ordering is a common first project. A full ordering app with payments can follow as a second milestone."
+      }
+    ],
+    "nearby": [
+      "vijayawada",
+      "bengaluru",
+      "chennai",
+      "raipur"
+    ]
+  },
+  {
+    "slug": "pune",
+    "name": "Pune",
+    "shortName": "Pune",
+    "state": "Maharashtra",
+    "region": "West",
+    "kind": "Metro",
+    "languages": [
+      "Marathi",
+      "Hindi",
+      "English"
+    ],
+    "intro": "Pune is a city of engineers, students, and manufacturers - Hinjewadi IT parks, Chakan auto suppliers, and dozens of colleges. Many Pune businesses know exactly what they want built but cannot justify agency pricing for a first version. We build it lean and hand it over clean.",
+    "industries": [
+      "Auto component and manufacturing firms",
+      "IT startups in Hinjewadi and Kharadi",
+      "Colleges, institutes, and hostels",
+      "Clinics and wellness centres",
+      "Real estate and co-living"
+    ],
+    "ideas": [
+      "A college or institute site with admissions enquiry and course pages",
+      "A dealer portal for a manufacturer to share price lists and take orders",
+      "A co-living or PG booking site with room availability"
+    ],
+    "localNote": "Pune's student and working-professional audience browses almost entirely on mobile. We test every page on mid-range Android phones and keep pages light enough to load quickly on campus Wi-Fi.",
+    "faqs": [
+      {
+        "question": "Can you build an admissions website for a Pune institute?",
+        "answer": "Yes. Course pages, fee details, an enquiry form, and a simple admin to update notices are a typical first milestone."
+      },
+      {
+        "question": "Is a Kolkata freelancer practical for a Pune project?",
+        "answer": "Yes. We run the whole project on video calls and shared demo links, and you approve each milestone before paying for the next."
+      }
+    ],
+    "nearby": [
+      "mumbai",
+      "ahmedabad",
+      "panaji",
+      "hyderabad"
+    ]
+  },
+  {
+    "slug": "ahmedabad",
+    "name": "Ahmedabad and Gandhinagar",
+    "shortName": "Ahmedabad",
+    "state": "Gujarat",
+    "region": "West",
+    "kind": "State capital region and metro",
+    "languages": [
+      "Gujarati",
+      "Hindi",
+      "English"
+    ],
+    "intro": "Gujarat runs on trade, and Ahmedabad businesses are famously cost-conscious - which is a good fit for a freelancer. Textile mills, chemical traders, jewellers, and GIFT City startups all need a credible online presence, but they want a clear price and clear value before they commit.",
+    "industries": [
+      "Textile and garment manufacturers",
+      "Chemical and pharma traders",
+      "Jewellery and diamond businesses",
+      "GIFT City fintech startups",
+      "Wholesale and distribution firms"
+    ],
+    "ideas": [
+      "A B2B catalogue site for a textile or chemical trader with enquiry forms per product",
+      "A jewellery showcase with product galleries and WhatsApp enquiry",
+      "A distributor order app that replaces phone-and-paper orders"
+    ],
+    "localNote": "Many Gujarat buyers prefer a Gujarati interface and WhatsApp for follow-up. We can add Gujarati pages and wire enquiry forms straight into WhatsApp Business.",
+    "faqs": [
+      {
+        "question": "Can you build a Gujarati website?",
+        "answer": "Yes. We add Gujarati pages with proper fonts and separate URLs so customers can find and read them easily."
+      },
+      {
+        "question": "Do you work with GIFT City startups?",
+        "answer": "Yes. We build MVPs, dashboards, and landing pages for early-stage fintech and service startups, with full source code handover."
+      }
+    ],
+    "nearby": [
+      "mumbai",
+      "jaipur",
+      "pune",
+      "bhopal"
+    ]
+  },
+  {
+    "slug": "jaipur",
+    "name": "Jaipur",
+    "shortName": "Jaipur",
+    "state": "Rajasthan",
+    "region": "North",
+    "kind": "State capital",
+    "languages": [
+      "Hindi",
+      "Rajasthani",
+      "English"
+    ],
+    "intro": "Jaipur's businesses sell to the world - heritage hotels to foreign tourists, gem and jewellery houses to global buyers, and block-print textile makers to export markets. A website here often has to work for a domestic and an international audience at the same time, without an agency's price tag.",
+    "industries": [
+      "Heritage hotels, havelis, and homestays",
+      "Gems and jewellery exporters",
+      "Handicraft and block-print textile makers",
+      "Tour operators and travel agents",
+      "Coaching and education"
+    ],
+    "ideas": [
+      "A heritage hotel site with room galleries, direct booking enquiries, and reviews",
+      "An export catalogue for a jewellery or textile house with international enquiry forms",
+      "A tour operator site with itinerary pages and WhatsApp booking"
+    ],
+    "localNote": "Jaipur tourism sites need to rank for international searches as well as Indian ones. We set up English pages, fast image galleries, and clear contact options for overseas visitors, plus Hindi pages if you sell locally.",
+    "faqs": [
+      {
+        "question": "Can you help my Jaipur hotel get direct bookings?",
+        "answer": "Yes. A fast site with room pages, photos, and a direct enquiry or booking form helps you rely less on OTA commissions. We can add a payment gateway as a second milestone."
+      },
+      {
+        "question": "Can you build an export catalogue for international buyers?",
+        "answer": "Yes. Product galleries, specifications, and enquiry forms that work for overseas buyers are a common first project for Jaipur exporters."
+      }
+    ],
+    "nearby": [
+      "delhi",
+      "ahmedabad",
+      "bhopal",
+      "chandigarh"
+    ]
+  },
+  {
+    "slug": "lucknow",
+    "name": "Lucknow",
+    "shortName": "Lucknow",
+    "state": "Uttar Pradesh",
+    "region": "North",
+    "kind": "State capital",
+    "languages": [
+      "Hindi",
+      "Urdu",
+      "English"
+    ],
+    "intro": "Lucknow is growing fast as a business city - chikankari brands selling online, famous food outlets opening new branches, and hospitals and schools serving all of central UP. Many of these businesses are online for the first time and need a partner who explains things simply and quotes honestly.",
+    "industries": [
+      "Chikankari and ethnic-wear brands",
+      "Restaurants and sweet shops",
+      "Hospitals and clinics",
+      "Schools and coaching institutes",
+      "Real estate developers"
+    ],
+    "ideas": [
+      "A chikankari online store with product photos, sizes, and Razorpay checkout",
+      "A restaurant or sweet shop site with branch locations and order links",
+      "A school website with notices, admissions enquiries, and a gallery"
+    ],
+    "localNote": "Lucknow customers search in Hindi more than many metros. Hindi product and service pages - in proper Devanagari text, not images - can bring in traffic your competitors miss.",
+    "faqs": [
+      {
+        "question": "Can you build an online store for a Lucknow chikankari brand?",
+        "answer": "Yes. Product pages, size guides, cart, and Razorpay or UPI checkout are a typical first milestone. Shipping integrations can follow."
+      },
+      {
+        "question": "Will my website be in Hindi?",
+        "answer": "If you want it to be. We can build Hindi and English versions, each indexable by Google."
+      }
+    ],
+    "nearby": [
+      "delhi",
+      "patna",
+      "dehradun",
+      "bhopal"
+    ]
+  },
+  {
+    "slug": "patna",
+    "name": "Patna",
+    "shortName": "Patna",
+    "state": "Bihar",
+    "region": "East",
+    "kind": "State capital",
+    "languages": [
+      "Hindi",
+      "Bhojpuri",
+      "Maithili",
+      "English"
+    ],
+    "intro": "Patna is one of India's biggest coaching hubs, and its hospitals, retailers, and builders serve all of Bihar. Businesses here often get quoted metro prices by out-of-state agencies. As an eastern India team based in Kolkata, we understand the market and price for it.",
+    "industries": [
+      "Coaching and competitive-exam institutes",
+      "Hospitals and nursing homes",
+      "Retail and wholesale traders",
+      "Builders and real estate",
+      "Schools"
+    ],
+    "ideas": [
+      "A coaching institute site with course pages, results, and online admission forms",
+      "A test-series web app where students take mock tests and see scores",
+      "A hospital site with departments, doctors, and appointment requests"
+    ],
+    "localNote": "Students in Bihar use low-cost Android phones on patchy mobile data. We keep pages and apps light, so they load properly outside the city as well.",
+    "faqs": [
+      {
+        "question": "Can you build an online test platform for a Patna coaching institute?",
+        "answer": "Yes. A mock-test web app with question banks, timers, and score reports is a common project. We start with one test type and add more once students use it."
+      },
+      {
+        "question": "Can you visit Patna for meetings?",
+        "answer": "We work remotely from Kolkata through video calls and WhatsApp, which keeps costs low for you. Every milestone includes a live demo you can open on your own phone."
+      }
+    ],
+    "nearby": [
+      "ranchi",
+      "lucknow",
+      "guwahati",
+      "bhubaneswar"
+    ]
+  },
+  {
+    "slug": "ranchi",
+    "name": "Ranchi",
+    "shortName": "Ranchi",
+    "state": "Jharkhand",
+    "region": "East",
+    "kind": "State capital",
+    "languages": [
+      "Hindi",
+      "Nagpuri",
+      "English"
+    ],
+    "intro": "Ranchi's economy is tied to mining and heavy industry, with a growing base of schools, hospitals, and retailers serving the region. Many local firms still rely on word of mouth and a Facebook page. A proper website or business app is often the next step, and it does not need a big-city budget.",
+    "industries": [
+      "Mining and industrial suppliers",
+      "Schools and coaching centres",
+      "Hospitals and clinics",
+      "Retail and FMCG distributors",
+      "Transport and logistics"
+    ],
+    "ideas": [
+      "A company profile site for an industrial supplier with product and certification pages",
+      "A school site with notices, fee information, and an admissions enquiry form",
+      "A distributor app to take retailer orders on the move"
+    ],
+    "localNote": "Industrial buyers in Jharkhand often check a supplier's website before they call. A clear site with products, certifications, and contact details builds trust quickly.",
+    "faqs": [
+      {
+        "question": "Do you work with industrial firms in Ranchi?",
+        "answer": "Yes. Company profile sites, product catalogues, and simple order or dispatch tracking tools are common first projects."
+      },
+      {
+        "question": "How do we work if you are in Kolkata?",
+        "answer": "Over video calls, WhatsApp, and shared demo links. Kolkata and Ranchi are close, and we work the same hours as you."
+      }
+    ],
+    "nearby": [
+      "patna",
+      "bhubaneswar",
+      "raipur",
+      "guwahati"
+    ]
+  },
+  {
+    "slug": "bhubaneswar",
+    "name": "Bhubaneswar",
+    "shortName": "Bhubaneswar",
+    "state": "Odisha",
+    "region": "East",
+    "kind": "State capital",
+    "languages": [
+      "Odia",
+      "Hindi",
+      "English"
+    ],
+    "intro": "Bhubaneswar has grown into an IT and education hub, and it is the gateway for tourists heading to Puri and Konark. Startups at Infocity, colleges, hotels, and handloom sellers all need a strong online presence. As a neighbouring eastern India team, we know the market and keep pricing grounded.",
+    "industries": [
+      "IT startups and Infocity firms",
+      "Colleges and universities",
+      "Hotels and Puri/Konark tour operators",
+      "Odisha handloom and handicraft sellers",
+      "Hospitals and clinics"
+    ],
+    "ideas": [
+      "A tour operator site with Puri, Konark, and Chilika itineraries and booking enquiries",
+      "An online store for Sambalpuri and other Odisha handloom products",
+      "A college site with programme pages and admission enquiries"
+    ],
+    "localNote": "Odia-language pages are rare online, which makes them easier to rank. A few well-written Odia pages can help local customers find you before competitors catch up.",
+    "faqs": [
+      {
+        "question": "Can you build an Odia-language website?",
+        "answer": "Yes. We add Odia pages with proper Unicode fonts and separate URLs so they are readable on phones and indexable by Google."
+      },
+      {
+        "question": "Can you build an online store for Odisha handloom?",
+        "answer": "Yes. Product pages with good photos, fabric details, and UPI or Razorpay checkout are a typical first milestone."
+      }
+    ],
+    "nearby": [
+      "ranchi",
+      "raipur",
+      "patna",
+      "vijayawada"
+    ]
+  },
+  {
+    "slug": "guwahati",
+    "name": "Guwahati (Dispur)",
+    "shortName": "Guwahati",
+    "state": "Assam",
+    "region": "Northeast",
+    "kind": "State capital",
+    "languages": [
+      "Assamese",
+      "Bengali",
+      "Hindi",
+      "English"
+    ],
+    "intro": "Guwahati is the commercial gateway to the Northeast - tea businesses, wholesalers supplying the region, hospitals, and travel agents running tours across seven states. Kolkata is the nearest metro, and we already work with businesses across eastern India.",
+    "industries": [
+      "Tea gardens and tea brands",
+      "Wholesale traders supplying the Northeast",
+      "Travel agents and tour operators",
+      "Hospitals and clinics",
+      "Schools and coaching"
+    ],
+    "ideas": [
+      "An online store for an Assam tea brand with shipping across India",
+      "A Northeast tour operator site with itineraries for Meghalaya, Arunachal, and Sikkim",
+      "A wholesaler order app for retailers across Assam"
+    ],
+    "localNote": "Assam tea and Northeast tourism are searched nationally and internationally. We structure your site so it ranks beyond Guwahati, with Assamese pages for local customers if you need them.",
+    "faqs": [
+      {
+        "question": "Can you build an online store for Assam tea?",
+        "answer": "Yes. Product pages, grades, pack sizes, cart, and Razorpay or UPI checkout are a typical first milestone. Shipping and subscription orders can follow."
+      },
+      {
+        "question": "Can you add Assamese pages to my site?",
+        "answer": "Yes. We add Assamese pages with proper fonts and separate URLs that Google can index."
+      }
+    ],
+    "nearby": [
+      "shillong",
+      "itanagar",
+      "agartala",
+      "gangtok"
+    ]
+  },
+  {
+    "slug": "raipur",
+    "name": "Raipur",
+    "shortName": "Raipur",
+    "state": "Chhattisgarh",
+    "region": "Central",
+    "kind": "State capital",
+    "languages": [
+      "Hindi",
+      "Chhattisgarhi",
+      "English"
+    ],
+    "intro": "Raipur is a steel, power, and rice-milling hub, with a growing base of hospitals, schools, and retailers serving Chhattisgarh. Many companies here have strong offline reputations but weak websites. A clean, fast site or a simple internal app is often all they need to catch up.",
+    "industries": [
+      "Steel and sponge iron plants",
+      "Rice mills and agro-processors",
+      "Hospitals and clinics",
+      "Schools and colleges",
+      "Building material dealers"
+    ],
+    "ideas": [
+      "A corporate site for a steel or power company with products and certifications",
+      "A dispatch and order tracking web app for a rice mill or distributor",
+      "A hospital site with departments and appointment requests"
+    ],
+    "localNote": "Industrial buyers and tender committees check websites for credibility. A clear corporate site with products, capacity, and certifications helps more than a flashy design.",
+    "faqs": [
+      {
+        "question": "Can you build internal tools for a Raipur manufacturer?",
+        "answer": "Yes. Order, dispatch, and stock tracking apps are common first projects. We start with one workflow and add more once your team uses it."
+      },
+      {
+        "question": "Do you build Hindi websites?",
+        "answer": "Yes. We can build Hindi and English versions of your site, each indexable by Google."
+      }
+    ],
+    "nearby": [
+      "bhubaneswar",
+      "ranchi",
+      "bhopal",
+      "hyderabad"
+    ]
+  },
+  {
+    "slug": "bhopal",
+    "name": "Bhopal",
+    "shortName": "Bhopal",
+    "state": "Madhya Pradesh",
+    "region": "Central",
+    "kind": "State capital",
+    "languages": [
+      "Hindi",
+      "Urdu",
+      "English"
+    ],
+    "intro": "Bhopal combines a large education sector, government offices, healthcare, and growing tourism around its lakes. Many local businesses are building their first serious website. We offer a clear, fixed-milestone process at a price that fits a central Indian city, not a metro.",
+    "industries": [
+      "Colleges, schools, and coaching",
+      "Hospitals and clinics",
+      "Hotels and lake-side tourism",
+      "Government suppliers and contractors",
+      "Retail and real estate"
+    ],
+    "ideas": [
+      "A college or coaching site with courses, results, and admission enquiries",
+      "A hotel or resort site with rooms, galleries, and booking enquiries",
+      "A company profile site for a government supplier with past work and certifications"
+    ],
+    "localNote": "Bhopal searches mix Hindi and English. We can create Hindi versions of your key pages so you reach customers who search in Hindi.",
+    "faqs": [
+      {
+        "question": "Can you build a website for a Bhopal college?",
+        "answer": "Yes. Programme pages, faculty, notices, admissions enquiries, and a simple admin panel are a typical first milestone."
+      },
+      {
+        "question": "How do I know the work is progressing?",
+        "answer": "Every milestone ends with a live demo link you can open on your phone. You approve it before the next milestone starts."
+      }
+    ],
+    "nearby": [
+      "raipur",
+      "jaipur",
+      "lucknow",
+      "ahmedabad"
+    ]
+  },
+  {
+    "slug": "chandigarh",
+    "name": "Chandigarh",
+    "shortName": "Chandigarh",
+    "state": "Punjab and Haryana",
+    "region": "North",
+    "kind": "Joint state capital",
+    "languages": [
+      "Punjabi",
+      "Hindi",
+      "English"
+    ],
+    "intro": "Chandigarh, Mohali, and Panchkula form one of India's most competitive local markets for immigration consultants, IELTS centres, real estate, and healthcare. Mohali's IT sector is growing too. Businesses here need websites that rank in a crowded market, without paying agency retainers.",
+    "industries": [
+      "Immigration and study-abroad consultants",
+      "IELTS and PTE coaching centres",
+      "Real estate in Mohali and Zirakpur",
+      "Hospitals and clinics",
+      "IT startups in Mohali"
+    ],
+    "ideas": [
+      "An immigration consultancy site with country pages, eligibility forms, and document checklists",
+      "An IELTS centre site with batch timings, mock-test booking, and student results",
+      "A real estate project site with floor plans and lead capture"
+    ],
+    "localNote": "Tricity immigration and coaching searches are very competitive. Separate, useful pages for each country or course help you rank better than one generic services page.",
+    "faqs": [
+      {
+        "question": "Can you build a website for an immigration consultant?",
+        "answer": "Yes. Country and visa pages, eligibility forms, and WhatsApp enquiries are a typical first milestone. A client document portal can follow."
+      },
+      {
+        "question": "Can you add Punjabi pages?",
+        "answer": "Yes. We support Punjabi in Gurmukhi script with proper fonts and separate indexable pages."
+      }
+    ],
+    "nearby": [
+      "shimla",
+      "delhi",
+      "dehradun",
+      "srinagar"
+    ]
+  },
+  {
+    "slug": "shimla",
+    "name": "Shimla",
+    "shortName": "Shimla",
+    "state": "Himachal Pradesh",
+    "region": "North",
+    "kind": "State capital",
+    "languages": [
+      "Hindi",
+      "Pahari",
+      "English"
+    ],
+    "intro": "Shimla's economy runs on tourism and apples. Hotels, homestays, taxi operators, and orchard owners all compete for visitors who book online, often weeks in advance. A fast website with direct booking enquiries can reduce your dependence on OTA commissions.",
+    "industries": [
+      "Hotels, homestays, and cottages",
+      "Taxi and tour operators",
+      "Apple orchards and fruit producers",
+      "Adventure activity providers",
+      "Local handicraft sellers"
+    ],
+    "ideas": [
+      "A homestay or hotel site with rooms, photos, and direct booking enquiries",
+      "A taxi and tour operator site with packages for Kufri, Manali, and Spiti",
+      "An online store for Himachali apples, jams, or handicrafts"
+    ],
+    "localNote": "Hill-station visitors browse on mobile, often on weak networks. We keep image galleries compressed and pages light so your site loads properly even in the hills.",
+    "faqs": [
+      {
+        "question": "Can a website help my Shimla homestay get direct bookings?",
+        "answer": "Yes. A fast site with good photos, clear prices, and a direct WhatsApp or booking form helps guests book you directly instead of through an OTA."
+      },
+      {
+        "question": "Can you sell my orchard's apples online?",
+        "answer": "Yes. A small store with seasonal products, pre-orders, and UPI checkout is a practical first milestone."
+      }
+    ],
+    "nearby": [
+      "chandigarh",
+      "dehradun",
+      "srinagar",
+      "delhi"
+    ]
+  },
+  {
+    "slug": "dehradun",
+    "name": "Dehradun",
+    "shortName": "Dehradun",
+    "state": "Uttarakhand",
+    "region": "North",
+    "kind": "State capital",
+    "languages": [
+      "Hindi",
+      "Garhwali",
+      "Kumaoni",
+      "English"
+    ],
+    "intro": "Dehradun is known for boarding schools and as a base for Mussoorie and Rishikesh tourism, with a growing real estate and healthcare sector. Schools, resorts, yoga retreats, and clinics all need a polished online presence that parents and travellers trust.",
+    "industries": [
+      "Boarding and day schools",
+      "Resorts and Mussoorie/Rishikesh tourism",
+      "Yoga and wellness retreats",
+      "Real estate and villa projects",
+      "Hospitals and clinics"
+    ],
+    "ideas": [
+      "A boarding school site with admissions, campus galleries, and a parent enquiry form",
+      "A yoga retreat site with course calendars and international booking enquiries",
+      "A resort site with rooms, packages, and direct booking"
+    ],
+    "localNote": "Dehradun schools and retreats serve families across India and abroad. We build sites that work for both audiences, with clear English pages and Hindi where it helps.",
+    "faqs": [
+      {
+        "question": "Can you build an admissions website for a Dehradun school?",
+        "answer": "Yes. Admissions pages, fee structure, campus galleries, and a parent enquiry form are a typical first milestone."
+      },
+      {
+        "question": "Can you build a booking site for a yoga retreat?",
+        "answer": "Yes. Course calendars, accommodation options, and an enquiry or deposit payment form are common first features."
+      }
+    ],
+    "nearby": [
+      "shimla",
+      "chandigarh",
+      "delhi",
+      "lucknow"
+    ]
+  },
+  {
+    "slug": "thiruvananthapuram",
+    "name": "Thiruvananthapuram",
+    "shortName": "Thiruvananthapuram",
+    "state": "Kerala",
+    "region": "South",
+    "kind": "State capital",
+    "languages": [
+      "Malayalam",
+      "English"
+    ],
+    "intro": "Thiruvananthapuram has Technopark's IT companies, Kovalam's beach tourism, and a strong Ayurveda and healthcare sector. Many families also run businesses with NRI relatives abroad. Websites here often need to serve visitors from India, the Gulf, and Europe at once.",
+    "industries": [
+      "Technopark IT and startups",
+      "Ayurveda centres and wellness resorts",
+      "Kovalam and Varkala tourism",
+      "Hospitals and medical tourism",
+      "NRI-focused real estate"
+    ],
+    "ideas": [
+      "An Ayurveda centre site with treatment packages and international booking enquiries",
+      "A beach resort or homestay site for Kovalam or Varkala",
+      "A real estate site for NRI buyers with project updates and video tours"
+    ],
+    "localNote": "Kerala's tourism and Ayurveda businesses get many international visitors. We build fast English sites with clear packages, and add Malayalam pages for local customers if needed.",
+    "faqs": [
+      {
+        "question": "Can you build a Malayalam website?",
+        "answer": "Yes. We add Malayalam pages with proper Unicode fonts and separate URLs that Google can index."
+      },
+      {
+        "question": "Can you build a site that attracts international Ayurveda guests?",
+        "answer": "Yes. Clear treatment packages, accommodation details, testimonials, and an enquiry form for overseas guests are a typical first milestone."
+      }
+    ],
+    "nearby": [
+      "chennai",
+      "bengaluru",
+      "puducherry",
+      "panaji"
+    ]
+  },
+  {
+    "slug": "panaji",
+    "name": "Panaji (Goa)",
+    "shortName": "Goa",
+    "state": "Goa",
+    "region": "West",
+    "kind": "State capital",
+    "languages": [
+      "Konkani",
+      "Marathi",
+      "English",
+      "Hindi"
+    ],
+    "intro": "Goa's economy is tourism, hospitality, and events - villas, beach shacks, boutique hotels, wedding planners, and water-sports operators. Seasonal businesses need a website that brings in bookings before peak season and does not cost a full season's profit to build.",
+    "industries": [
+      "Villas and boutique hotels",
+      "Wedding and event planners",
+      "Restaurants and beach shacks",
+      "Water sports and adventure operators",
+      "Real estate and holiday homes"
+    ],
+    "ideas": [
+      "A villa rental site with availability, photo galleries, and direct booking enquiries",
+      "A destination wedding planner portfolio with venue pages and enquiry forms",
+      "A water sports booking site with packages and UPI payment"
+    ],
+    "localNote": "Goa bookings peak from October to March. We plan launches so your site is live and indexed before the season starts.",
+    "faqs": [
+      {
+        "question": "When should a Goa business launch its website?",
+        "answer": "Ideally by August or September, so Google has time to index it before the October-to-March season. A focused first milestone can be ready in a few weeks."
+      },
+      {
+        "question": "Can you build a direct booking site for my villa?",
+        "answer": "Yes. Photos, amenities, availability, and an enquiry or deposit form are a typical first milestone, so you depend less on OTAs."
+      }
+    ],
+    "nearby": [
+      "mumbai",
+      "pune",
+      "bengaluru",
+      "thiruvananthapuram"
+    ]
+  },
+  {
+    "slug": "vijayawada",
+    "name": "Amaravati and Vijayawada",
+    "shortName": "Vijayawada",
+    "state": "Andhra Pradesh",
+    "region": "South",
+    "kind": "State capital region",
+    "languages": [
+      "Telugu",
+      "English"
+    ],
+    "intro": "With Amaravati developing as Andhra Pradesh's capital, Vijayawada and Guntur are busy with real estate, education, agricultural trade, and new businesses. Many are building their first website, and they need a partner who keeps the scope realistic and the price clear.",
+    "industries": [
+      "Real estate and plotted developments",
+      "Colleges and coaching centres",
+      "Agricultural traders and exporters",
+      "Hospitals and clinics",
+      "Jewellery and textile retail"
+    ],
+    "ideas": [
+      "A real estate site for plots near Amaravati with maps, layouts, and lead capture",
+      "A coaching institute site with course pages and online enquiries",
+      "A trader catalogue for chilli, cotton, or rice exports with enquiry forms"
+    ],
+    "localNote": "Andhra customers often search in Telugu. Telugu versions of your key pages, written in proper text rather than images, help you rank for those searches.",
+    "faqs": [
+      {
+        "question": "Can you build a Telugu website?",
+        "answer": "Yes. We add Telugu pages with proper Unicode fonts and separate URLs that Google can index."
+      },
+      {
+        "question": "Can you build a real estate site for Amaravati projects?",
+        "answer": "Yes. Project pages, layout plans, location maps, and lead capture forms are a typical first milestone. A CRM integration can follow."
+      }
+    ],
+    "nearby": [
+      "hyderabad",
+      "chennai",
+      "bhubaneswar",
+      "bengaluru"
+    ]
+  },
+  {
+    "slug": "itanagar",
+    "name": "Itanagar",
+    "shortName": "Itanagar",
+    "state": "Arunachal Pradesh",
+    "region": "Northeast",
+    "kind": "State capital",
+    "languages": [
+      "English",
+      "Hindi",
+      "Nyishi"
+    ],
+    "intro": "Itanagar is the gateway to Arunachal Pradesh's tourism - Tawang, Ziro, and Mechuka - and home to government suppliers, local retailers, and a growing number of young entrepreneurs. There are few local web developers, so businesses here often hire from Guwahati or Kolkata anyway.",
+    "industries": [
+      "Tour operators and homestays",
+      "Government suppliers and contractors",
+      "Local retail and cafes",
+      "Handloom and handicraft makers",
+      "Education"
+    ],
+    "ideas": [
+      "A tour operator site with Tawang, Ziro, and Mechuka itineraries and permit information",
+      "A homestay listing site with photos and WhatsApp booking",
+      "A company profile site for a government supplier"
+    ],
+    "localNote": "Arunachal travel searches often include questions about Inner Line Permits. Clear, helpful pages that answer those questions can bring in visitors who are ready to book.",
+    "faqs": [
+      {
+        "question": "Can you build a website for an Arunachal tour operator?",
+        "answer": "Yes. Itinerary pages, permit guidance, photo galleries, and a WhatsApp enquiry form are a typical first milestone."
+      },
+      {
+        "question": "How do we work together from Itanagar?",
+        "answer": "Fully online, through video calls, WhatsApp, and demo links. You review a working version at every milestone."
+      }
+    ],
+    "nearby": [
+      "guwahati",
+      "shillong",
+      "kohima",
+      "imphal"
+    ]
+  },
+  {
+    "slug": "imphal",
+    "name": "Imphal",
+    "shortName": "Imphal",
+    "state": "Manipur",
+    "region": "Northeast",
+    "kind": "State capital",
+    "languages": [
+      "Meitei (Manipuri)",
+      "English"
+    ],
+    "intro": "Imphal has a strong handloom tradition, well-known sports academies, and a growing number of young entrepreneurs selling across India online. A good website or online store lets Manipur businesses reach customers far beyond the state at a reasonable cost.",
+    "industries": [
+      "Handloom and textile makers",
+      "Sports academies and fitness",
+      "Local food and specialty products",
+      "Cafes and restaurants",
+      "Education and coaching"
+    ],
+    "ideas": [
+      "An online store for Manipuri handloom with shipping across India",
+      "A sports academy site with programmes, trainers, and registration",
+      "A specialty food store for black rice and other local products"
+    ],
+    "localNote": "Manipur products like handloom and black rice have national demand. We build stores that rank for those product searches across India, not just in Imphal.",
+    "faqs": [
+      {
+        "question": "Can you build an online store for Manipuri products?",
+        "answer": "Yes. Product pages, stories behind the products, cart, and UPI or Razorpay checkout are a typical first milestone."
+      },
+      {
+        "question": "Do you work with clients in Manipur?",
+        "answer": "Yes, fully online through video calls, WhatsApp, and shared demo links, with milestone-based payments."
+      }
+    ],
+    "nearby": [
+      "kohima",
+      "aizawl",
+      "guwahati",
+      "agartala"
+    ]
+  },
+  {
+    "slug": "shillong",
+    "name": "Shillong",
+    "shortName": "Shillong",
+    "state": "Meghalaya",
+    "region": "Northeast",
+    "kind": "State capital",
+    "languages": [
+      "Khasi",
+      "English",
+      "Garo"
+    ],
+    "intro": "Shillong is known for its music, cafes, and as the base for Cherrapunji and Dawki tourism, with good schools and colleges as well. Homestays, cafes, travel operators, and schools here want a modern website that reflects the city's character without a big-city price.",
+    "industries": [
+      "Homestays and boutique hotels",
+      "Cafes, restaurants, and music venues",
+      "Cherrapunji and Dawki tour operators",
+      "Schools and colleges",
+      "Local produce and crafts"
+    ],
+    "ideas": [
+      "A homestay site with rooms, photos, and direct booking",
+      "A travel operator site with Cherrapunji, Dawki, and Mawlynnong packages",
+      "A cafe or venue site with menus and an events calendar"
+    ],
+    "localNote": "Most Meghalaya visitors plan their trips online. Itinerary pages that answer real questions - best season, travel time, what to book in advance - help travellers choose you.",
+    "faqs": [
+      {
+        "question": "Can you build a booking site for my Shillong homestay?",
+        "answer": "Yes. Room pages, photos, prices, and a WhatsApp or booking form are a typical first milestone."
+      },
+      {
+        "question": "Can you build an events calendar for a cafe or venue?",
+        "answer": "Yes. A site with menus, an events calendar you can update yourself, and table or ticket enquiries is a common project."
+      }
+    ],
+    "nearby": [
+      "guwahati",
+      "agartala",
+      "aizawl",
+      "itanagar"
+    ]
+  },
+  {
+    "slug": "aizawl",
+    "name": "Aizawl",
+    "shortName": "Aizawl",
+    "state": "Mizoram",
+    "region": "Northeast",
+    "kind": "State capital",
+    "languages": [
+      "Mizo",
+      "English"
+    ],
+    "intro": "Aizawl has high literacy, a strong church and community network, and a growing base of small businesses, handloom makers, and young entrepreneurs. Few web developers work locally, so businesses here often hire remotely. We keep the process simple and the pricing clear.",
+    "industries": [
+      "Small retail and local brands",
+      "Handloom (puan) makers",
+      "Churches, NGOs, and community groups",
+      "Tourism and homestays",
+      "Education"
+    ],
+    "ideas": [
+      "An online store for Mizo puan and handloom",
+      "A website for an NGO or community organisation with events and donations",
+      "A homestay or travel site for visitors to Mizoram"
+    ],
+    "localNote": "Community organisations and NGOs in Aizawl often need simple, editable websites. We hand over an easy admin so your own team can post updates without a developer.",
+    "faqs": [
+      {
+        "question": "Can you build a website for an NGO or church?",
+        "answer": "Yes. News, events, galleries, and a donation or contact form, with an admin your team can update, are a typical first milestone."
+      },
+      {
+        "question": "Do you work with clients in Mizoram?",
+        "answer": "Yes. We work fully online through video calls, WhatsApp, and demo links, with milestone payments."
+      }
+    ],
+    "nearby": [
+      "imphal",
+      "agartala",
+      "shillong",
+      "kohima"
+    ]
+  },
+  {
+    "slug": "kohima",
+    "name": "Kohima",
+    "shortName": "Kohima",
+    "state": "Nagaland",
+    "region": "Northeast",
+    "kind": "State capital",
+    "languages": [
+      "English",
+      "Nagamese"
+    ],
+    "intro": "Kohima is home to the Hornbill Festival, which draws visitors from across the world every December, along with handicraft makers, homestays, and small businesses. A good website lets Nagaland businesses reach those visitors well before the festival season begins.",
+    "industries": [
+      "Homestays and guesthouses",
+      "Hornbill Festival tourism and events",
+      "Handicrafts and Naga shawls",
+      "Local food products",
+      "Cafes and small retail"
+    ],
+    "ideas": [
+      "A homestay site for Hornbill Festival visitors with early booking enquiries",
+      "An online store for Naga shawls, crafts, and food products",
+      "A tour operator site with festival and village itineraries"
+    ],
+    "localNote": "Hornbill visitors book months ahead. A site that is live and indexed by mid-year gives you time to rank before December searches peak.",
+    "faqs": [
+      {
+        "question": "When should a Kohima homestay launch its website?",
+        "answer": "By mid-year if possible, so Google can index it before Hornbill Festival searches peak in the autumn."
+      },
+      {
+        "question": "Can you build an online store for Naga crafts?",
+        "answer": "Yes. Product pages with the story behind each item, a cart, and UPI checkout are a typical first milestone."
+      }
+    ],
+    "nearby": [
+      "imphal",
+      "guwahati",
+      "itanagar",
+      "aizawl"
+    ]
+  },
+  {
+    "slug": "agartala",
+    "name": "Agartala",
+    "shortName": "Agartala",
+    "state": "Tripura",
+    "region": "Northeast",
+    "kind": "State capital",
+    "languages": [
+      "Bengali",
+      "Kokborok",
+      "English"
+    ],
+    "intro": "Agartala's economy includes bamboo crafts, rubber, cross-border trade with Bangladesh, and a growing retail sector. Most people here speak Bengali, just like our Kolkata team, which makes conversations and content much easier.",
+    "industries": [
+      "Bamboo and cane handicraft makers",
+      "Rubber and agro-product traders",
+      "Retail and wholesale shops",
+      "Schools and coaching",
+      "Hospitals and clinics"
+    ],
+    "ideas": [
+      "An online store for Tripura bamboo and cane products",
+      "A trader website for rubber or agro products with enquiry forms",
+      "A coaching or school site with notices and admissions"
+    ],
+    "localNote": "We work in Bengali as well as English, so meetings, content, and Bengali-language pages are straightforward for Agartala businesses.",
+    "faqs": [
+      {
+        "question": "Can we discuss the project in Bengali?",
+        "answer": "Yes. Our team in Kolkata speaks Bengali, so calls, briefs, and website copy can all be in Bengali."
+      },
+      {
+        "question": "Can you build a Bengali website?",
+        "answer": "Yes. We build Bengali pages with proper Unicode fonts and separate URLs that Google can index."
+      }
+    ],
+    "nearby": [
+      "guwahati",
+      "shillong",
+      "aizawl",
+      "imphal"
+    ]
+  },
+  {
+    "slug": "gangtok",
+    "name": "Gangtok",
+    "shortName": "Gangtok",
+    "state": "Sikkim",
+    "region": "Northeast",
+    "kind": "State capital",
+    "languages": [
+      "Nepali",
+      "English",
+      "Hindi"
+    ],
+    "intro": "Gangtok runs on tourism - travel agents, hotels, and taxi operators running trips to Nathula, Tsomgo Lake, and North Sikkim - along with Sikkim's organic produce businesses. Most of your customers come from Kolkata and other eastern cities, which is our home market.",
+    "industries": [
+      "Travel agents and tour operators",
+      "Hotels and homestays",
+      "Taxi operators",
+      "Organic produce and tea",
+      "Handicrafts"
+    ],
+    "ideas": [
+      "A travel agency site with Nathula, Tsomgo, and North Sikkim packages and permit information",
+      "A hotel or homestay site with rooms and direct booking",
+      "An online store for Sikkim organic products and tea"
+    ],
+    "localNote": "Many Sikkim tourists come from Kolkata and Bengal. We know how they search and plan trips, and can add Bengali pages if they would help.",
+    "faqs": [
+      {
+        "question": "Can you build a website for a Gangtok travel agency?",
+        "answer": "Yes. Package pages, permit information, photo galleries, and WhatsApp booking are a typical first milestone."
+      },
+      {
+        "question": "Can you sell Sikkim organic products online?",
+        "answer": "Yes. A small store with product pages, a cart, and UPI checkout is a practical first milestone."
+      }
+    ],
+    "nearby": [
+      "guwahati",
+      "shillong",
+      "agartala",
+      "itanagar"
+    ]
+  },
+  {
+    "slug": "srinagar",
+    "name": "Srinagar",
+    "shortName": "Srinagar",
+    "state": "Jammu and Kashmir",
+    "region": "North",
+    "kind": "UT capital",
+    "languages": [
+      "Kashmiri",
+      "Urdu",
+      "English",
+      "Hindi"
+    ],
+    "intro": "Srinagar's businesses - houseboats, hotels, pashmina and carpet makers, and dry fruit and saffron sellers - serve customers across India and abroad. A strong website or online store lets them sell directly instead of through middlemen.",
+    "industries": [
+      "Houseboats and hotels",
+      "Pashmina, carpet, and papier-mache artisans",
+      "Dry fruit and saffron sellers",
+      "Tour operators and taxi services",
+      "Handicraft exporters"
+    ],
+    "ideas": [
+      "A houseboat or hotel site with rooms, photos, and direct booking enquiries",
+      "An online store for genuine pashmina or Kashmiri saffron with shipping across India",
+      "A tour operator site with Gulmarg, Pahalgam, and Sonamarg packages"
+    ],
+    "localNote": "Buyers of Kashmiri products want to know they are genuine. Product pages that explain origin, craft, and certification build that trust and help you rank for those searches.",
+    "faqs": [
+      {
+        "question": "Can you build an online store for Kashmiri products?",
+        "answer": "Yes. Product pages with origin and craft details, a cart, and UPI or Razorpay checkout are a typical first milestone."
+      },
+      {
+        "question": "Can you add Urdu pages?",
+        "answer": "Yes. We support Urdu with right-to-left layout and proper fonts on separate, indexable pages."
+      }
+    ],
+    "nearby": [
+      "chandigarh",
+      "shimla",
+      "delhi",
+      "dehradun"
+    ]
+  },
+  {
+    "slug": "puducherry",
+    "name": "Puducherry",
+    "shortName": "Puducherry",
+    "state": "Puducherry",
+    "region": "South",
+    "kind": "UT capital",
+    "languages": [
+      "Tamil",
+      "English",
+      "French"
+    ],
+    "intro": "Puducherry draws visitors to its French Quarter, beaches, and nearby Auroville. Heritage stays, cafes, boutiques, and wellness centres here serve a mix of Indian and international guests, and need a website that matches the town's style.",
+    "industries": [
+      "Heritage hotels and guesthouses",
+      "Cafes and restaurants",
+      "Boutiques and Auroville crafts",
+      "Yoga and wellness centres",
+      "Education"
+    ],
+    "ideas": [
+      "A heritage guesthouse site with rooms, galleries, and direct booking",
+      "A cafe or restaurant site with menus and reservations",
+      "An online store for Auroville-style crafts, incense, or clothing"
+    ],
+    "localNote": "Many Puducherry visitors are international. We can add a French version of key pages alongside English and Tamil.",
+    "faqs": [
+      {
+        "question": "Can you build a website in English, Tamil, and French?",
+        "answer": "Yes. We create separate, indexable pages for each language, so visitors can read the site in the language they search in."
+      },
+      {
+        "question": "Can you build a direct booking site for a guesthouse?",
+        "answer": "Yes. Rooms, photos, prices, and an enquiry or deposit form are a typical first milestone."
+      }
+    ],
+    "nearby": [
+      "chennai",
+      "bengaluru",
+      "thiruvananthapuram",
+      "vijayawada"
+    ]
+  }
+]

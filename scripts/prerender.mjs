@@ -117,6 +117,84 @@ function pageSchema(page) {
     };
   }
 
+  if (page.schemaType === "City" && page.city) {
+    const { city } = page;
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          name: `Website and app development in ${city.name}`,
+          serviceType: "Website and mobile app development",
+          description: page.description,
+          provider: {
+            "@type": "Organization",
+            name: "Dhinova Technology Pvt Ltd",
+            url: `${SITE_URL}/`,
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Kolkata",
+              addressRegion: "West Bengal",
+              addressCountry: "IN",
+            },
+          },
+          areaServed: {
+            "@type": "City",
+            name: city.shortName,
+            containedInPlace: { "@type": "State", name: city.state },
+          },
+          availableLanguage: city.languages,
+          url: pageUrl,
+        },
+        {
+          "@type": "FAQPage",
+          mainEntity: city.faqs.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+            { "@type": "ListItem", position: 2, name: "Cities", item: absolute("/freelancer") },
+            { "@type": "ListItem", position: 3, name: city.name, item: pageUrl },
+          ],
+        },
+      ],
+    };
+  }
+
+  if (page.schemaType === "CityHub" && Array.isArray(page.cities)) {
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ItemList",
+          name: page.title,
+          url: pageUrl,
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Kolkata", url: absolute("/blogs/affordable-freelancer-in-kolkata") },
+            ...page.cities.map((city, index) => ({
+              "@type": "ListItem",
+              position: index + 2,
+              name: city.name,
+              url: absolute(`/freelancer/${city.slug}`),
+            })),
+          ],
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+            { "@type": "ListItem", position: 2, name: "Cities", item: pageUrl },
+          ],
+        },
+      ],
+    };
+  }
+
   if (page.schemaType === "Service" && page.service) {
     const serviceSchema = {
       "@type": "Service",
